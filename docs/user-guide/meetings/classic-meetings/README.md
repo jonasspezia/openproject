@@ -13,7 +13,8 @@ Meetings in OpenProject allow you to manage and document your project meetings, 
 <div class="glossary">
 **Meetings** is defined as a module that allows the organization of meetings. The module has to be activated in the project settings in order to be displayed in the side navigation.
 </div>
-> *Note:* [Dynamic meetings](../dynamic-meetings) were introduced in OpenProject 13.1. At the moment, the Meetings module lets you create classic or dynamic meetings but please keep in mind that the ability to create classic meetings will eventually be removed from OpenProject.
+> [!NOTE]
+> [Dynamic meetings](../dynamic-meetings) were introduced in OpenProject 13.1. At the moment, the Meetings module lets you create classic or dynamic meetings but please keep in mind that the ability to create classic meetings will eventually be removed from OpenProject.
 
 | Topic                                                                     | Content                                     |
 |---------------------------------------------------------------------------|---------------------------------------------|
@@ -30,20 +31,26 @@ Meetings in OpenProject allow you to manage and document your project meetings, 
 
 By selecting **Meetings** in the project menu on the left, you get an overview of all project meetings sorted by date. By clicking on a meeting name you can view further details of the meeting.
 
-**Note:** In order to be able to use the meetings plugin, the **Meetings module needs to be activated** in the [Project Settings](../../projects/project-settings/modules/).
+> [!NOTE]
+> In order to be able to use the meetings plugin, the **Meetings module needs to be activated** in the [Project Settings](../../projects/project-settings/modules/).
 
 ![Meetings module in OpenProject](meetings.png)
 
 ## Create a new meeting
 
-1. To create a new meeting, click the green **+ Meeting** button in the upper right corner.
-2. Enter your meeting title.
-3. Choose 'Classic meeting'.
-3. Enter meeting information, such as location, start date and duration.
-5. Select the meeting participants from the project members list.
-6. Click the **Create** button to save your changes.
+To create a new classic meeting, click the green **+ Meeting** button in the upper right corner and choose the respective option.
 
-![create-new-meeting](create-new-classic-meeting.png)
+![Button to create a new classic meeting in OpenProject](openproject_user_guide_create_classic_meeting_button.png)
+
+You can then specify the following:
+
+1. Enter your meeting title.
+2. Enter meeting information, such as location, start date and duration.
+3. Select the meeting participants from the project members list.
+4. Choose if you want to invite meeting participants via email after the meeting has been created (this option is disabled by default). 
+5. Click the **Create** button to save your changes.
+
+![Create a new classic meeting in OpenProject](openproject_user_guide_create_classic_meeting_form.png)
 
 ## Edit a meeting
 
@@ -61,7 +68,7 @@ You can **add participants** (Invitees and Attendees) to a meeting while being i
 
 You can see the list of all the project members under **Participants**. This list varies from project to project. If you select the field in the columns Invitees or Attendees, the selected project members will be notified automatically when an agenda or a meeting protocol is created.
 
-![participants](meeting-participants.png)
+![Edit meeting participants in OpenProject classic meetings](openproject_user_guide_create_classic_meeting_edit_participants.png)
 
 By removing the check mark you can remove project members from the meetings.
 
@@ -105,11 +112,14 @@ To add a meeting to a calendar, select the dropdown menu behind the three dots a
 
 If you have recurring meetings, such as a Jour Fixe, and want to simplify the process of creating meetings and agendas, you can **copy an existing meeting**. To do that select the meeting, open the dropdown menu behind the three dots and select **Copy**.
 
-![copy-meeting](copy-meeting.png)
+![Button to copy a classic meeting in OpenProject](copy-meeting.png)
 
-You can now edit the copied meeting and add the new details. Click the **Save** button to secure your changes.
+You can now edit the copied meeting details, specify if you want to copy the agenda or attachments and fine tune the participants list. Click the **Create** button to secure your changes.
 
-> **Note**: all the settings will be copied, except for the minutes, participants and meeting history. So if you want to keep the minutes as well, you have to copy it separately.
+> [!NOTE]
+> All the settings will be copied, except for the minutes and meeting history. So if you want to keep the minutes as well, you have to copy them separately.
+
+![Edit a copied classic meeting in OpenProject](openproject_user_guide_create_classic_meeting_copy_form.png)
 
 ## Delete a meeting
 

@@ -41,8 +41,20 @@ The menu on the left will allow you to filter for upcoming or past meetings. You
 
 ![Meetings overview in openproject global modules](openproject_userguide_dynamic_meetings_overview.png)
 
+You can also use the meetings filters to refine the list of meetings based on the following criteria: 
+
+- **Attended user** - shows meetings that a specific user attended
+- **Author** - shows meetings that a specific user created
+- **Invited user** - shows meetings that a specific user was invited to
+- **Project** - shows meetings for a specific project (this will only be displayed in the global module view, i.e. not within a specific project)
+- **Time** - shows past or upcoming meetings
+
+![Filter the list of dynamic meetings in OpenProject](openproject_dynamic_meetings_filters.png)
+
 > [!TIP]
 > If you are interested in how the Meetings module is used by the OpenProject team, please take a look at [this blog article](https://www.openproject.org/blog/meeting-management-example/).
+
+
 
 ## Create and edit dynamic meetings
 
@@ -54,27 +66,29 @@ You can either create a meeting from within a project or from the global **Meeti
 > [!NOTE]
 > Dynamic meetings were introduced in OpenProject 13.1. At the moment, the Meetings module lets you create [classic](../classic-meetings) or dynamic meetings but please keep in mind that the ability to create [classic meetings](../classic-meetings) will eventually be removed from OpenProject.
 
-To create a new meeting, click the green **+ Meeting** button in the upper right corner.
+To create a new meeting, click the green **+ Meeting** button in the upper right corner and select if you want to create a dynamic or a classic meeting.
 
-![Create new meeting in OpenProject](openproject_userguide_create_new_meeting.png)
+![Create new meeting in OpenProject](openproject_dynamic_meetings_create_button.png)
 
-Enter your meeting's title, type, location, start date and duration. You can also choose if you want to invite meeting participants via email after the meeting has been created (this option is disabled by default). 
+Enter your meeting's title, type, location, start date and duration. 
 
 If you are creating a meeting from a global module you will first need to select a project to which the meeting is attributed. After you have selected a project, the list of potential participants (project members) will appear for you to select who to invite. After the meeting you can note who attended the meeting.
 
-Click the blue **Create** button to save your changes.
+![Create a new dynamic meeting in OpenProject](openproject_dynamic_meetings_new_dynamic_meeting_form.png)
+
+Click the **Create meeting** button to save your changes. You can proceed to adding more meeting details.
 
 ### Edit a meeting
 
 If you want to change the details of a meeting, for example its time or location, open the meetings details view by clicking on pencil icon next to the **Meeting details**.
 
-![edit-meeting](openproject_userguide_edit_dynamic_meeting.png)
+![Edit a dynamic meeting in OpenProject](openproject_userguide_edit_dynamic_meeting_icon.png)
 
 An edit screen will be displayed, where you can adjust the date, time, duration and location of the meeting.
 
 ![edit-meeting](openproject_userguide_edit_screen.png)
 
-Do not forget to save the changes by clicking the green **Save** button. Cancel will bring you back to the details view.
+Do not forget to save the changes by clicking the **Save** button. Cancel will bring you back to the details view.
 
 > [!TIP]
 > If someone else edits or updates the current meeting page at the same time and saves their changes, you and all other users on the same page will be notified of this with a small banner at the top of the page. Click the **Reload** button to load the updated version of the page.
@@ -233,9 +247,11 @@ You can copy an existing meeting. This is useful if you have recurring meetings.
 
 ![Copy a dynamic meeting in OpenProject](openproject_dynamic_meetings_copy_meeting.png)
 
-A screen will open, which will allow you adjust the name, time, location and further details of the copied meeting. By default, the date for the copied meeting will be moved forward by one week from the original meeting's date. You also have an option of copying the agenda and attachments. If you copy a closed meeting, the new meeting status will automatically be set to open. Don't forget to **Save** the copied meeting by clicking the green **Create** button.
+A modal will open, which will allow you adjust the title, time, location and further details of the copied meeting. By default, the date for the copied meeting will be set to the next day. You also have an option of copying the agenda, attachments and the list of participants. You also have an option to email all participants after the meeting was copied.
 
-![Edit details of a copied dynamic meeting in OpenProject](openproject_dynamic_meetings_copy_meeting_details.png)
+If you copy a closed meeting, the new meeting status will automatically be set to open. Don't forget to **Save** the copied meeting by clicking the **Create** button.
+
+![Edit details of a copied dynamic meeting in OpenProject](openproject_dynamic_meetings_copy_modal.png)
 
 ## Delete a meeting
 
