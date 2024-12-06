@@ -67,7 +67,7 @@ module OpenIDConnect
                         .permit(:display_name, :oidc_provider, :limit_self_registration,
                                 *OpenIDConnect::Provider.stored_attributes[:options])
       call = OpenIDConnect::Providers::UpdateService
-        .new(model: @provider, user: User.current)
+        .new(model: @provider, user: User.current, fetch_metadata: fetch_metadata?)
         .call(update_params)
 
       if call.success?
@@ -161,6 +161,10 @@ module OpenIDConnect
       @edit_state = params[:edit_state].to_sym if params.key?(:edit_state)
       @edit_mode = ActiveRecord::Type::Boolean.new.cast(params[:edit_mode])
       @next_edit_state = params[:next_edit_state].to_sym if params.key?(:next_edit_state)
+    end
+
+    def fetch_metadata?
+      params[:fetch_metadata] == "true"
     end
   end
 end
