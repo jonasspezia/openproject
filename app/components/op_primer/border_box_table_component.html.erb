@@ -58,6 +58,12 @@ See COPYRIGHT and LICENSE files for more details.
         end
       end
     end
+
+    if has_footer?
+      component.with_footer(classes: grid_class, color: :muted) do
+        footer
+      end
+    end
   end
 %>
 

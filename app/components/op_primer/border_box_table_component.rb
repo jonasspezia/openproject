@@ -106,6 +106,10 @@ module OpPrimer
       false
     end
 
+    def has_footer?
+      false
+    end
+
     def sortable?
       false
     end
@@ -132,6 +136,10 @@ module OpPrimer
 
     def blank_icon
       nil
+    end
+
+    def footer
+      raise ArgumentError, "Need to provide footer content"
     end
   end
 end
