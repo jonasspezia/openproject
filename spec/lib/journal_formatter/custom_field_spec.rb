@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -50,8 +52,8 @@ RSpec.describe OpenProject::JournalFormatter::CustomField do
     allow(CustomField).to receive(:find_by).and_return(nil)
     allow(CustomField)
       .to receive(:find_by)
-            .with(id: custom_field.id)
-            .and_return(custom_field)
+      .with(id: custom_field.id)
+      .and_return(custom_field)
   end
 
   context "with html requested by default" do
@@ -196,8 +198,8 @@ RSpec.describe OpenProject::JournalFormatter::CustomField do
 
       allow(wherestub)
         .to receive(:where)
-              .with(id: [user1.id, user2.id])
-              .and_return(visible_users)
+        .with(id: [user1.id, user2.id])
+        .and_return(visible_users)
     end
 
     describe "with two visible users" do
@@ -248,37 +250,37 @@ RSpec.describe OpenProject::JournalFormatter::CustomField do
 
       allow(custom_field)
         .to receive(:custom_options)
-              .and_return(cf_options)
+        .and_return(cf_options)
 
       allow(cf_options)
         .to receive(:where)
-              .with(id: [1, 2])
-              .and_return(old_options)
+        .with(id: [1, 2])
+        .and_return(old_options)
 
       allow(cf_options)
         .to receive(:where)
-              .with(id: [3, 4])
-              .and_return(new_options)
+        .with(id: [3, 4])
+        .and_return(new_options)
 
       allow(old_options)
         .to receive(:order)
-              .with(:position)
-              .and_return(old_options)
+        .with(:position)
+        .and_return(old_options)
 
       allow(new_options)
         .to receive(:order)
-              .with(:position)
-              .and_return(new_options)
+        .with(:position)
+        .and_return(new_options)
 
       allow(old_options)
         .to receive(:pluck)
-              .with(:id, :value)
-              .and_return(old_custom_option_names)
+        .with(:id, :value)
+        .and_return(old_custom_option_names)
 
       allow(new_options)
         .to receive(:pluck)
-              .with(:id, :value)
-              .and_return(new_custom_option_names)
+        .with(:id, :value)
+        .and_return(new_custom_option_names)
     end
 
     describe "with both values being a comma separated list of ids" do
@@ -389,6 +391,80 @@ RSpec.describe OpenProject::JournalFormatter::CustomField do
           I18n.t(:text_journal_changed_with_diff,
                  label: "<strong>#{custom_field.name}</strong>",
                  link: full_url_link)
+        end
+
+        it { expect(rendered).to be_html_eql(expected) }
+      end
+    end
+  end
+
+  context "for hierarchy custom field" do
+    shared_let(:custom_field) { create(:hierarchy_wp_custom_field) }
+    shared_let(:service) { CustomFields::Hierarchy::HierarchicalItemService.new }
+    shared_let(:root) { service.generate_root(custom_field).value! }
+    shared_let(:luke) { service.insert_item(parent: root, label: "luke", short: "LS").value! }
+    shared_let(:mara) { service.insert_item(parent: luke, label: "mara").value! }
+
+    describe "first value being nil and second value a string" do
+      let(:values) { [nil, mara.id.to_s] }
+      let(:formatted_value) { mara.ancestry_path }
+      let(:expected) do
+        I18n.t(:text_journal_set_to,
+               label: "<strong>#{custom_field.name}</strong>",
+               value: "<i>#{formatted_value}</i>")
+      end
+
+      it { expect(rendered).to be_html_eql(expected) }
+    end
+
+    describe "first value being a string and second value being nil" do
+      let(:values) { [mara.id.to_s, nil] }
+      let(:formatted_value) { mara.ancestry_path }
+      let(:expected) do
+        I18n.t(:text_journal_deleted,
+               label: "<strong>#{custom_field.name}</strong>",
+               old: "<strike><i>#{formatted_value}</i></strike>")
+      end
+
+      it { expect(rendered).to be_html_eql(expected) }
+    end
+
+    context "with multiple values" do
+      describe "first value being nil and second value a string" do
+        let(:values) { [nil, [luke.id, mara.id].join(",")] }
+        let(:formatted_value) { [luke.ancestry_path, mara.ancestry_path].join(", ") }
+        let(:expected) do
+          I18n.t(:text_journal_set_to,
+                 label: "<strong>#{custom_field.name}</strong>",
+                 value: "<i>#{formatted_value}</i>")
+        end
+
+        it { expect(rendered).to be_html_eql(expected) }
+      end
+
+      describe "first value being a string and second value being nil" do
+        let(:values) { [[luke.id, mara.id].join(","), nil] }
+        let(:formatted_value) { [luke.ancestry_path, mara.ancestry_path].join(", ") }
+        let(:expected) do
+          I18n.t(:text_journal_deleted,
+                 label: "<strong>#{custom_field.name}</strong>",
+                 old: "<strike><i>#{formatted_value}</i></strike>")
+        end
+
+        it { expect(rendered).to be_html_eql(expected) }
+      end
+
+      describe "both values being strings" do
+        let(:values) { [[luke.id, mara.id].join(","), luke.id.to_s] }
+        let(:original_value) { [luke.ancestry_path, mara.ancestry_path].join(", ") }
+        let(:formatted_value) { luke.ancestry_path }
+
+        let(:expected) do
+          I18n.t(:text_journal_changed_plain,
+                 label: "<strong>#{custom_field.name}</strong>",
+                 linebreak: "",
+                 old: "<i>#{original_value}</i>",
+                 new: "<i>#{formatted_value}</i>")
         end
 
         it { expect(rendered).to be_html_eql(expected) }

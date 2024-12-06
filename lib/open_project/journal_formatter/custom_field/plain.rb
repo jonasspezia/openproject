@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -38,7 +40,9 @@ class OpenProject::JournalFormatter::CustomField::Plain < JournalFormatter::Base
     label = label_for_custom_field(custom_field)
 
     old_value, value = if custom_field
-                         get_formatted_values(custom_field, values)
+                         coisa = get_formatted_values(custom_field, values)
+                         Rails.logger.error "[MARCELLOGGER] #{coisa.inspect}"
+                         coisa
                        else
                          [values.first, values.last]
                        end
@@ -53,6 +57,8 @@ class OpenProject::JournalFormatter::CustomField::Plain < JournalFormatter::Base
 
   def get_modifier_function(custom_field)
     case custom_field.field_format
+    when "hierarchy"
+      :find_item_value
     when "list"
       :find_list_value
     when "user"
@@ -65,6 +71,8 @@ class OpenProject::JournalFormatter::CustomField::Plain < JournalFormatter::Base
   end
 
   def formatted_values(custom_field, values, modifier_fn)
+    Rails.logger.error "[MARCELLOGGER] #{values.inspect} #{modifier_fn.inspect} #{custom_field.inspect}"
+
     values.map { |value| formatted_value(custom_field, value, modifier_fn) }
   end
 
@@ -79,11 +87,21 @@ class OpenProject::JournalFormatter::CustomField::Plain < JournalFormatter::Base
 
     # Lookup any visible user we can find
     user_lookup = Principal
-      .in_visible_project_or_me(User.current)
-      .where(id: ids)
-      .index_by(&:id)
+                  .in_visible_project_or_me(User.current)
+                  .where(id: ids)
+                  .index_by(&:id)
 
     ids_to_names(ids, user_lookup)
+  end
+
+  def find_item_value(value, _custom_field)
+    ids = value.split(",").map(&:to_i)
+
+    CustomField::Hierarchy::Item.where(id: ids).map do |item|
+      next I18n.t(:label_deleted_custom_option) unless ids.include?(item.id)
+
+      item.ancestry_path
+    end.join(", ")
   end
 
   def find_list_value(value, custom_field)
@@ -105,9 +123,9 @@ class OpenProject::JournalFormatter::CustomField::Plain < JournalFormatter::Base
 
     # Lookup visible versions we can find
     version_lookup = Version
-      .visible(User.current)
-      .where(id: ids)
-      .index_by(&:id)
+                     .visible(User.current)
+                     .where(id: ids)
+                     .index_by(&:id)
 
     ids_to_names(ids, version_lookup)
   end
