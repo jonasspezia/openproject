@@ -162,7 +162,8 @@ Important data inputs:
 - `"show-when-value-selected-target": "effect"` is the input that will get hidden or shown depending on the selected value
 - `data: { value: 'XYZ'}` or `data-value="XYZ"` the value to be checked against the cause
 - `data: { not_value: 'XYZ'}` or `data-not-value="XYZ"` the value to be checked against the cause, resulting in it being hidden if the selected value is NOT the given one.
-- data: `{ target_name: "abc"}` or `data-target-name="abc"` allows you to define multiple sets of cause/effect handlers
+- data: `{ target_name: "abc"}` or `data-target-name="abc"` allows you to define multiple sets of cause/effect handlers
+- If you want the target to be visibly blocked, not hidden, then use `data: { set_visibility: "true" }`. By default, the field will be hidden and removed from DOM computation.
 
 
 

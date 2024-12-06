@@ -48,18 +48,23 @@
 
         if @meeting.is_a?(RecurringMeeting)
           modal_body.with_row(mt: 3) do
-            render(RecurringMeeting::Frequency.new(f))
-          end
+            flex_layout(classes: "FormControl-horizontalGroup") do |frequency_row|
+              frequency_row.with_column(flex: 1) do
+                render(RecurringMeeting::Frequency.new(f))
+              end
 
-          modal_body.with_row(
-            mt: 3,
-            hidden: @meeting.frequency_working_days?,
-            data: {
-              target_name: "frequency",
-              not_value: "working_days",
-              "show-when-value-selected-target": "effect"
-            }) do
-            render(RecurringMeeting::Interval.new(f))
+              frequency_row.with_column(
+                flex: 1,
+                hidden: @meeting.frequency_working_days?,
+                data: {
+                  target_name: "frequency",
+                  not_value: "working_days",
+                  set_visibility: "true",
+                  "show-when-value-selected-target": "effect"
+                }) do
+                render(RecurringMeeting::Interval.new(f))
+              end
+            end
           end
 
           modal_body.with_row(mt: 3) do

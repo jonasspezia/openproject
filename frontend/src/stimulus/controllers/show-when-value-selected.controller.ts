@@ -21,11 +21,22 @@ export default class OpShowWhenValueSelectedController extends ApplicationContro
       .effectTargets
       .filter((el) => targetName === el.dataset.targetName)
       .forEach((el) => {
-        if (el.dataset.notValue) {
-          el.hidden = el.dataset.notValue === input.value;
+        const disabled = this.willDisable(el, input.value);
+        el.disabled = disabled;
+
+        if (el.dataset.setVisibility === 'true') {
+          el.style.setProperty('visibility', disabled ? 'hidden' : 'visible');
         } else {
-          el.hidden = !(el.dataset.value === input.value);
+          el.hidden = disabled;
         }
     });
+  }
+
+  private willDisable(el:HTMLElement, value:string):boolean {
+    if (el.dataset.notValue) {
+      return el.dataset.notValue === value;
+    }
+
+    return !(el.dataset.value === value);
   }
 }
