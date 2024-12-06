@@ -51,13 +51,17 @@ RSpec.describe "Recurring meetings complete template",
     post template_completed_recurring_meeting_path(recurring_meeting)
   end
 
+  subject do
+    Timecop.freeze("2024-12-04T10:00:00Z".to_datetime) { request }
+  end
+
   before do
     login_as(current_user)
   end
 
   context "when first occurrence is not existing" do
     it "instantiates the first occurrence from template" do
-      expect { request }.to change(recurring_meeting.scheduled_meetings, :count).by(1)
+      expect { subject }.to change(recurring_meeting.scheduled_meetings, :count).by(1)
       expect(response).to be_redirect
 
       expect(recurring_meeting.scheduled_meetings.count).to eq(1)
@@ -81,7 +85,7 @@ RSpec.describe "Recurring meetings complete template",
     end
 
     it "does not create a new meeting" do
-      expect { request }.not_to change(recurring_meeting.scheduled_meetings, :count)
+      expect { subject }.not_to change(recurring_meeting.scheduled_meetings, :count)
       expect(response).to be_redirect
 
       expect(recurring_meeting.scheduled_meetings.count).to eq(1)
@@ -99,7 +103,7 @@ RSpec.describe "Recurring meetings complete template",
     end
 
     it "takes over that occurrence" do
-      expect { request }.to change(recurring_meeting.meetings, :count).by(1)
+      expect { subject }.to change(recurring_meeting.meetings, :count).by(1)
       expect(response).to be_redirect
 
       expect(recurring_meeting.scheduled_meetings.count).to eq(1)
@@ -113,7 +117,7 @@ RSpec.describe "Recurring meetings complete template",
     let(:current_user) { create(:user) }
 
     it "does not authorize" do
-      request
+      subject
       expect(response).to have_http_status(:not_found)
     end
   end
