@@ -40,9 +40,7 @@ class OpenProject::JournalFormatter::CustomField::Plain < JournalFormatter::Base
     label = label_for_custom_field(custom_field)
 
     old_value, value = if custom_field
-                         coisa = get_formatted_values(custom_field, values)
-                         Rails.logger.error "[MARCELLOGGER] #{coisa.inspect}"
-                         coisa
+                         get_formatted_values(custom_field, values)
                        else
                          [values.first, values.last]
                        end
@@ -71,8 +69,6 @@ class OpenProject::JournalFormatter::CustomField::Plain < JournalFormatter::Base
   end
 
   def formatted_values(custom_field, values, modifier_fn)
-    Rails.logger.error "[MARCELLOGGER] #{values.inspect} #{modifier_fn.inspect} #{custom_field.inspect}"
-
     values.map { |value| formatted_value(custom_field, value, modifier_fn) }
   end
 
