@@ -493,4 +493,52 @@ RSpec.describe SysController, with_settings: { sys_api_enabled: true } do
       end
     end
   end
+
+  describe "#fetch_changesets" do
+    let(:params) { { id: repository_project.identifier } }
+
+    before do
+      request.env["HTTP_AUTHORIZATION"] =
+        ActionController::HttpAuthentication::Basic.encode_credentials(
+          valid_user.login,
+          valid_user_password
+        )
+
+      allow_any_instance_of(Repository::Subversion).to receive(:fetch_changesets).and_return(true)
+
+      get "fetch_changesets", params: params.merge({ key: api_key })
+    end
+
+    context "with a project identifier" do
+      it "is successful" do
+        expect(response)
+          .to have_http_status(:ok)
+      end
+    end
+
+    context "without a project identifier" do
+      let(:params) { {} }
+
+      it "is successful" do
+        expect(response)
+          .to have_http_status(:ok)
+      end
+    end
+
+    context "for an unknown project" do
+      let(:params) { { id: 0 } }
+
+      it "returns 404" do
+        expect(response)
+          .to have_http_status(:not_found)
+      end
+    end
+
+    context "when disabled", with_settings: { sys_api_enabled?: false } do
+      it "is 403 forbidden" do
+        expect(response)
+          .to have_http_status(:forbidden)
+      end
+    end
+  end
 end

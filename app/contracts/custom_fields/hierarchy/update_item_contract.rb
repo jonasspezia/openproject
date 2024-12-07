@@ -52,6 +52,7 @@ module CustomFields
 
       rule(:short) do
         next if schema_error?(:item)
+        next unless key?
 
         key.failure(:not_unique) if values[:item].siblings.exists?(short: value)
       end
