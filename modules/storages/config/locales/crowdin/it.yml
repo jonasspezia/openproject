@@ -289,7 +289,6 @@ it:
     label_creation_time: Data di creazione
     label_creator: Autore
     label_delete_storage: Elimina archivio
-    label_edit_storage: Modifica archivio
     label_edit_storage_access_management: Modifica gestione degli accessi all'archivio
     label_edit_storage_automatically_managed_folders: Modifica cartelle gestite automaticamente dall'archivio
     label_edit_storage_host: Modifica host dell'archivio

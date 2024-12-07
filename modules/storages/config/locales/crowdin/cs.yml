@@ -289,7 +289,6 @@ cs:
     label_creation_time:
     label_creator: Vytvořil
     label_delete_storage: Smazat úložiště
-    label_edit_storage:
     label_edit_storage_access_management: Upravit správu přístupu k úložišti
     label_edit_storage_automatically_managed_folders: Upravit automaticky spravované složky úložiště
     label_edit_storage_host: Upravit host úložiště

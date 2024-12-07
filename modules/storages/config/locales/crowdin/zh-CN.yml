@@ -289,7 +289,6 @@ zh-CN:
     label_creation_time: 创建时间
     label_creator: 创建者
     label_delete_storage: 删除存储
-    label_edit_storage: 编辑存储
     label_edit_storage_access_management: 编辑存储访问管理
     label_edit_storage_automatically_managed_folders: 编辑存储自动管理的文件夹
     label_edit_storage_host: 编辑存储主机

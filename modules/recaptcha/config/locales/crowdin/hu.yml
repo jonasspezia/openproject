@@ -9,7 +9,7 @@ hu:
     verify_account: "Fiók ellenőrzése..."
     error_captcha: "Fiókját nem lehetett ellenőrizni. Vegye fel a kapcsolatot egy rendszergazdával."
     settings:
-      website_key: 'Website key (May also be called "Site key")'
+      website_key: 'Weboldal-kulcs (más néven "Site key")'
       response_limit: 'HCaptcha válaszadási limit'
       response_limit_text: 'A karakterek maximális száma a HCaptcha-válasz érvényesként való kezeléséhez.'
       website_key_text: 'Írja be az e domain reCAPTCHA adminisztrációs konzolján létrehozott webhelykulcsot.'
@@ -22,4 +22,4 @@ hu:
       type_hcaptcha: 'HChaptcha'
       type_turnstile: 'Cloudflare Turnstile™'
       captcha_description_html: >
-        reCAPTCHA is a free service by Google that can be enabled for your OpenProject instance. If enabled, a captcha form will be rendered upon login for all users that have not verified a captcha yet. <br/> Please see the following link for more details on reCAPTCHA and their versions, and how to create the website and secret keys: %{recaptcha_link} <br/> HCaptcha is a Google-free alternative that you can use if you do not want to use reCAPTCHA. See this link for more information: %{hcaptcha_link} <br/> Cloudflare Turnstile™ is another alternative that is more convenient for users while still providing the same level of security. See this link for more information: %{turnstile_link}
+        A reCAPTCHA a Google ingyenes szolgáltatása, amely engedélyezhető az Ön OpenProject példányában. Ha engedélyezett, a bejelentkezéskor egy captcha űrlap jelenik meg minden olyan felhasználó számára, aki még nem erősítette meg a captchát. <br/> A reCAPTCHA-ról és annak változatairól, valamint a weboldal és a titkos kulcsok létrehozásának módjáról az alábbi linken talál további részleteket: %{recaptcha_link} <br/> A HCaptcha egy Google-mentes alternatíva, amelyet használhat, ha nem szeretné a reCAPTCHA-t használni. További információkért lásd ezt a linket: %{hcaptcha_link} <br/> A Cloudflare Turnstile™ egy másik alternatíva, amely kényelmesebb a felhasználók számára, miközben ugyanolyan szintű biztonságot nyújt. További információért lásd ezt a linket: %{turnstile_link}

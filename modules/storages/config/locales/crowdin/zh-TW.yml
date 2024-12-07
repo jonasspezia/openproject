@@ -289,7 +289,6 @@ zh-TW:
     label_creation_time: 建立時間
     label_creator: 建立者
     label_delete_storage: 刪除儲存區
-    label_edit_storage: 編輯儲存
     label_edit_storage_access_management: 編輯儲存存取管理
     label_edit_storage_automatically_managed_folders: 編輯自動管理的儲存資料夾
     label_edit_storage_host: 編輯儲存主機

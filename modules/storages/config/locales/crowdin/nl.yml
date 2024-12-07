@@ -289,7 +289,6 @@ nl:
     label_creation_time: Aanmaaktijd
     label_creator: Maker
     label_delete_storage: Opslag verwijderen
-    label_edit_storage: Opslag bewerken
     label_edit_storage_access_management: Beheer van toegang tot opslag bewerken
     label_edit_storage_automatically_managed_folders: Bewerk automatisch beheerde opslagmappen
     label_edit_storage_host: Edit storage host

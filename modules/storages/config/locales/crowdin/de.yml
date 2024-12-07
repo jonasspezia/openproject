@@ -289,7 +289,6 @@ de:
     label_creation_time: Erstellungszeit
     label_creator: Ersteller
     label_delete_storage: Dateispeicher löschen
-    label_edit_storage: Dateispeicher bearbeiten
     label_edit_storage_access_management: Speicherzugriffsverwaltung bearbeiten
     label_edit_storage_automatically_managed_folders: Automatisch verwaltete Projektordner des Dateispeichers bearbeiten
     label_edit_storage_host: Dateispeicher-Host bearbeiten

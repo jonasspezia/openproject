@@ -289,7 +289,6 @@ ms:
     label_creation_time: Masa penciptaan
     label_creator: Pencipta
     label_delete_storage: Padamkan storan
-    label_edit_storage: Edit storan
     label_edit_storage_access_management: Edit pengurusan akses storan
     label_edit_storage_automatically_managed_folders: Edit storan folder yang dikendalikan secara automatik
     label_edit_storage_host: Edit hos storan

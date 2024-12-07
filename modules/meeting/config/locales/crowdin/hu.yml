@@ -51,15 +51,15 @@ hu:
       meeting_section:
         title: "Cím"
       recurring_meeting:
-        frequency: "Frequency"
-        interval: "Interval"
+        frequency: "Gyakoriság"
+        interval: "Időköz"
         end_after: "End after"
-        iterations: "Occurrences"
+        iterations: "Előfordulások"
     errors:
       messages:
         invalid_time_format: "nem egy érvényes időpont. Előírt formátum: óó:pp"
     models:
-      recurring_meeting: "Recurring meeting"
+      recurring_meeting: "Ismétlődő megbeszélés"
       structured_meeting: "Megbeszélés (dinamikus)"
       meeting_agenda_item: "Napirendi pont"
       meeting_agenda: "Napirend"
@@ -113,7 +113,7 @@ hu:
   label_recurring_meeting_part_of: "Part of a meeting series"
   label_recurring_meeting_new: "New recurring meeting"
   label_recurring_meeting_plural: "Recurring meetings"
-  label_template: "Template"
+  label_template: "Sablon"
   label_recurring_meeting_view: "View meeting series"
   label_recurring_meeting_create: "Create from template"
   label_recurring_meeting_copy: "Copy as one-off"
@@ -193,7 +193,17 @@ hu:
         Enter the number of days or weeks between each occurrence.
     occurrence:
       infoline: "This meeting is part of a recurring meeting series."
+      error_no_next: "There is no next occurrence for this meeting."
+      first_already_exists: "The first occurrence of this meeting series is already instantiated."
+      first_created: >
+        The first meeting has been successfuly created from template. All future meetings will be created automatically at the time of the previous occurrence.
     template:
+      button_finalize: "Finish template"
+      blank_title: "Your meeting series template is empty"
+      description: >
+        This template will be used whenever new meetings in the series get created. You can add agenda items, participants, and attachments to this template.
+      blankslate_finalize: >
+        When you're done preparing this template, click the '%{button_title}' button above to finish the setup and schedule the first meeting of the series.
       label_view_template: "View template"
       label_edit_template: "Edit template"
       banner_html: >

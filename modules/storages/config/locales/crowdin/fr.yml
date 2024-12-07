@@ -289,7 +289,6 @@ fr:
     label_creation_time: Heure de création
     label_creator: Créateur
     label_delete_storage: Supprimer le stockage
-    label_edit_storage: Modifier le stockage
     label_edit_storage_access_management: Modifier la gestion de l'accès à l'espace de stockage
     label_edit_storage_automatically_managed_folders: Modifier les dossiers automatiquement gérés
     label_edit_storage_host: Modifier l'hôte de stockage

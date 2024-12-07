@@ -289,7 +289,6 @@ lt:
     label_creation_time: Sukūrimo laikas
     label_creator: Kūrėjas
     label_delete_storage: Trinti saugyklą
-    label_edit_storage: Keisti saugyklą
     label_edit_storage_access_management: Keisti saugyklos prieigos valdymą
     label_edit_storage_automatically_managed_folders: Keisti saugyklos automatiškai tvarkomus aplankus
     label_edit_storage_host: Keisti saugyklos adresą

@@ -289,7 +289,6 @@ ru:
     label_creation_time: Время создания
     label_creator: Создатель
     label_delete_storage: Удалить хранилище
-    label_edit_storage: Редактировать хранилище
     label_edit_storage_access_management: Редактировать управление доступом к хранилищу
     label_edit_storage_automatically_managed_folders: Редактирование хранилища автоматически управляемых папок
     label_edit_storage_host: Изменить узел хранения
@@ -344,8 +343,8 @@ ru:
         subtitle: Вы будете перенаправлены
         title: Установка интеграции завершена
       timeout:
-        link_text: health status of the file storage setup
-        subtitle: OpenProject could not provide you access to the project folder within the expected period of time. Please, try once again.<br><br> If that problem persists please contact your OpenProject administrator to check the %{storages_health_link}.
+        link_text: статус файлового хранилища
+        subtitle: OpenProject не смог предоставить вам доступ к папке проекта в течение ожидаемого периода времени. Пожалуйста, попробуйте ещё раз.<br><br> Если проблема не исчезла, пожалуйста, обратитесь к администратору OpenProject, чтобы проверить %{storages_health_link}.
       waiting:
         subtitle: Одну минутку, пожалуйста, это может занять некоторое время...
         title: Мы настраиваем ваши права доступа к папке проекта.

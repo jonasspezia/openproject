@@ -289,7 +289,6 @@
     label_creation_time: Opprettingstidspunkt
     label_creator: Skaper
     label_delete_storage: Slett fillagring
-    label_edit_storage: Redigere fillagring
     label_edit_storage_access_management: Redigere administrasjon for lagringstilgang
     label_edit_storage_automatically_managed_folders: Rediger automatisk administrerte mapper
     label_edit_storage_host: Redigere lagringsvert

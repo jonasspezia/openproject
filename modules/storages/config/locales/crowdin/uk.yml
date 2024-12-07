@@ -289,7 +289,6 @@ uk:
     label_creation_time: Час створення
     label_creator: Автор
     label_delete_storage: Видалити сховище
-    label_edit_storage: Редагувати сховище
     label_edit_storage_access_management: Змінити керування доступом до сховища
     label_edit_storage_automatically_managed_folders: Редагувати папки сховища з автоматичним керуванням
     label_edit_storage_host: Редагувати хост сховища

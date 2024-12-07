@@ -289,7 +289,6 @@ ko:
     label_creation_time: 생성 시간
     label_creator: 생성자
     label_delete_storage: 저장소 삭제
-    label_edit_storage: 저장소 편집
     label_edit_storage_access_management: 저장소 액세스 관리 편집
     label_edit_storage_automatically_managed_folders: 저장소 자동 관리 폴더 편집
     label_edit_storage_host: 저장소 호스트 편집

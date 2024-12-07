@@ -289,7 +289,6 @@ pt-PT:
     label_creation_time: Hora de criação
     label_creator: Criador
     label_delete_storage: Eliminar armazenamento
-    label_edit_storage: Editar armazenamento
     label_edit_storage_access_management: Editar a gestão do acesso ao armazenamento
     label_edit_storage_automatically_managed_folders: Editar o armazenamento pastas geridas automaticamente
     label_edit_storage_host: Editar anfitrião de armazenamento
