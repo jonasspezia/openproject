@@ -414,22 +414,22 @@ ru:
       will_remove_the_groups_role: "Это удалит роль группы из этого проекта."
       however_work_packages_shared_with_user_html:
         one: "Однако, %{shared_work_packages_link} также был предоставлен этому пользователю."
-        few: "However, %{shared_work_packages_link} have also been shared with this user."
-        many: "However, %{shared_work_packages_link} have also been shared with this user."
+        few: "Однако, %{shared_work_packages_link} так же были предоставлены этому пользователю."
+        many: "Однако, %{shared_work_packages_link} так же были предоставлены этому пользователю."
         other: "Однако, %{shared_work_packages_link} также был предоставлен этому пользователю."
       however_work_packages_shared_with_group_html:
         one: "Однако, %{shared_work_packages_link} также был предоставлен этой группе."
-        few: "However, %{shared_work_packages_link} have also been shared with this group."
-        many: "However, %{shared_work_packages_link} have also been shared with this group."
-        other: "Однако, %{shared_work_packages_link} также был предоставлен этой группе."
+        few: "Однако, %{shared_work_packages_link} так же были предоставлены этой группе."
+        many: "Однако, %{shared_work_packages_link} так же были предоставлены этой группе."
+        other: "Однако, %{shared_work_packages_link} так же был предоставлен этой группе."
       remove_work_packages_shared_with_user_too: "Пользователь, который был удален как участник по-прежнему может получить доступ к общим пакетам работ. Вы хотели бы также удалить эти доступы?"
       remove_work_packages_shared_with_group_too: "Группа, которая была удалена как участник, все еще может получить доступ к общим пакетам работ. Вы хотели бы также удалить эти доступы?"
       will_not_affect_inherited_shares: "(Это не повлияет на рабочие пакеты, которыми они делятся со своей группой)."
       can_remove_direct_but_not_shared_roles: "Вы можете удалить этого пользователя как непосредственного участника проекта, но группа, в которой он состоит, также является участником этого проекта, поэтому он будет продолжать оставаться участником через группу."
       also_work_packages_shared_with_user_html:
         one: "Также, %{shared_work_packages_link} был предоставлен этому пользователю."
-        few: "Also, %{shared_work_packages_link} have been shared with this user."
-        many: "Also, %{shared_work_packages_link} have been shared with this user."
+        few: "Также, %{shared_work_packages_link} были предоставлены этому пользователю."
+        many: "Также, %{shared_work_packages_link} были предоставлены этому пользователю."
         other: "Также, %{shared_work_packages_link} был предоставлен этому пользователю."
       remove_project_membership_or_work_package_shares_too: "Вы хотите удалить только пользователя как непосредственного участника (и сохранить общие ресурсы) или также удалить общие ресурсы рабочего пакета?"
       will_remove_all_user_access_priveleges: "Удаление этого участника удалит все права доступа пользователя к проекту. Пользователь по-прежнему будет существовать как часть системы."
@@ -441,18 +441,18 @@ ru:
       title: "Отменить общий доступ к пакету работ"
       shared_with_this_user_html:
         one: "%{all_shared_work_packages_link} был предоставлен этому пользователю."
-        few: "%{all_shared_work_packages_link} have been shared with this user."
-        many: "%{all_shared_work_packages_link} have been shared with this user."
-        other: "%{all_shared_work_packages_link} был предоставлен этому пользователю."
+        few: "%{all_shared_work_packages_link} были предоставлены этому пользователю."
+        many: "%{all_shared_work_packages_link} были предоставлены этому пользователю."
+        other: "%{all_shared_work_packages_link} были предоставлены этому пользователю."
       shared_with_this_group_html:
         one: "%{all_shared_work_packages_link} был предоставлен этой группе."
-        few: "%{all_shared_work_packages_link} have been shared with this group."
-        many: "%{all_shared_work_packages_link} have been shared with this group."
-        other: "%{all_shared_work_packages_link} был предоставлен этой группе."
+        few: "%{all_shared_work_packages_link} были предоставлены этой группе."
+        many: "%{all_shared_work_packages_link} были предоставлены этой группе."
+        other: "%{all_shared_work_packages_link} были предоставлены этой группе."
       shared_with_permission_html:
         one: "Только %{shared_work_packages_link} был предоставлен общий доступ с правами %{shared_role_name}."
-        few: "Only %{shared_work_packages_link} have been shared with %{shared_role_name} permissions."
-        many: "Only %{shared_work_packages_link} have been shared with %{shared_role_name} permissions."
+        few: "Только %{shared_work_packages_link} был предоставлен общий доступ с правами %{shared_role_name}."
+        many: "Только %{shared_work_packages_link} был предоставлен общий доступ с правами %{shared_role_name}."
         other: "Только %{shared_work_packages_link} был предоставлен общий доступ с правами %{shared_role_name}."
       revoke_all_or_with_role: "Хотите ли Вы отменить доступ ко всем общим пакетам работ или только к тем, которые имеют разрешения %{shared_role_name}?"
       will_not_affect_inherited_shares: "(Это не повлияет на пакеты работ, разделенные с их группой)."
@@ -538,8 +538,8 @@ ru:
     and_user: "и %{user}"
     and_others:
       one: и еще 1
-      few: and %{count} others
-      many: and %{count} others
+      few: и еще %{count}
+      many: и еще %{count}
       other: и еще %{count}
     reaction_by: "%{reaction} от"
   reportings:
@@ -1355,8 +1355,8 @@ ru:
       status: "Статус пакета работ"
       token/api:
         one: Токен доступа
-        few: Access tokens
-        many: Access tokens
+        few: Токены доступа
+        many: Токены доступа
         other: Токены доступа
       type: "Тип"
       user: "Пользователь"
