@@ -192,17 +192,17 @@ zh-CN:
         输入每次事件之间的天数或周数。
     occurrence:
       infoline: "本次会议是定期会议系列的一部分。"
-      error_no_next: "There is no next occurrence for this meeting."
-      first_already_exists: "The first occurrence of this meeting series is already instantiated."
+      error_no_next: "此会议没有下一个发生时间。"
+      first_already_exists: "此会议系列的第一次发生已经被实例化。"
       first_created: >
-        The first meeting has been successfuly created from template. All future meetings will be created automatically at the time of the previous occurrence.
+        第一次会议已成功从模板创建。所有未来的会议将会在上一次发生的时间自动创建。
     template:
-      button_finalize: "Finish template"
-      blank_title: "Your meeting series template is empty"
+      button_finalize: "完成模板"
+      blank_title: "您的会议系列模板为空"
       description: >
-        This template will be used whenever new meetings in the series get created. You can add agenda items, participants, and attachments to this template.
+        此模板将在系列中创建新会议时使用。您可以在此模板中添加议程项目、参与者和附件。
       blankslate_finalize: >
-        When you're done preparing this template, click the '%{button_title}' button above to finish the setup and schedule the first meeting of the series.
+        准备好模板后，单击上方的 "%{button_title}"按钮完成设置并安排系列会议的第一次会议。
       label_view_template: "查看模板"
       label_edit_template: "编辑模板"
       banner_html: >

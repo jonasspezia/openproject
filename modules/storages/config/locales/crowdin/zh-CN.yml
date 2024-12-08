@@ -343,8 +343,8 @@ zh-CN:
         subtitle: 正在将您重定向
         title: 集成设置已完成
       timeout:
-        link_text: health status of the file storage setup
-        subtitle: OpenProject could not provide you access to the project folder within the expected period of time. Please, try once again.<br><br> If that problem persists please contact your OpenProject administrator to check the %{storages_health_link}.
+        link_text: 文件存储设置的健康状态
+        subtitle: OpenProject 无法让您在预期时间内访问项目文件夹。请再试一次。<br><br> 如果问题仍然存在，请联系 OpenProject 管理员检查 %{storages_health_link}。
       waiting:
         subtitle: 请稍候，此操作可能需要一些时间…
         title: 我们正在设置您对项目文件夹的权限。
