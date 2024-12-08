@@ -25,13 +25,15 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
-
-module Cron
-  class ClearOldSessionsJob < ApplicationJob
-    include ::RakeJob
-
-    def perform
-      Sessions::ClearOldSessionsService.call!
+module Sessions
+  class ClearOldSessionsService
+    class << self
+      ##
+      # Drop all sessions for the given user
+      def call!(days_ago: 30)
+        # sessions expire after 30 days of inactivity by default
+        ActiveRecord::SessionStore::Session.where("updated_at < ?", days_ago.days.ago).delete_all
+      end
     end
   end
 end
