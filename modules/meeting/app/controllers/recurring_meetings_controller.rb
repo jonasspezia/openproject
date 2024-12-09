@@ -1,4 +1,5 @@
 class RecurringMeetingsController < ApplicationController
+  include RecurringMeetingsHelper
   include Layout
   include PaginationHelper
   include OpTurbo::ComponentStream
@@ -36,17 +37,16 @@ class RecurringMeetingsController < ApplicationController
     @recurring_meeting = RecurringMeeting.new(project: @project)
   end
 
-  def show # rubocop:disable Metrics/AbcSize
+  def show
     @direction = params[:direction]
-    if params[:direction] == "past"
-      @meetings = @recurring_meeting
-        .scheduled_instances(upcoming: false)
-        .page(page_param)
-        .per_page(per_page_param)
-    else
-      @meetings = upcoming_meetings
-      @total_count = @recurring_meeting.remaining_occurrences.count - @meetings.count
-    end
+    @max_count = max_count
+    @count = [(params[:count].to_i + 5), @max_count].min
+
+    @meetings = if @direction == "past"
+                  @recurring_meeting.scheduled_instances(upcoming: false).limit(@count)
+                else
+                  upcoming_meetings(count: @count)
+                end
 
     respond_to do |format|
       format.html do
@@ -180,13 +180,13 @@ class RecurringMeetingsController < ApplicationController
 
   private
 
-  def upcoming_meetings
+  def upcoming_meetings(count:)
     meetings = @recurring_meeting
       .scheduled_instances(upcoming: true)
       .index_by(&:start_time)
 
     merged = @recurring_meeting
-      .scheduled_occurrences(limit: 5)
+      .scheduled_occurrences(limit: count)
       .map do |start_time|
       meetings.delete(start_time) || scheduled_meeting(start_time)
     end

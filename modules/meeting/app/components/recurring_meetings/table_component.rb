@@ -30,12 +30,28 @@
 
 module RecurringMeetings
   class TableComponent < ::OpPrimer::BorderBoxTableComponent
-    options :current_project
+    options :current_project, :count, :direction, :max_count
 
     columns :start_time, :relative_time, :last_edited, :status, :create
 
     def has_actions?
       true
+    end
+
+    def has_footer?
+      return false unless recurring_meeting
+
+      options[:max_count] - count > 0
+    end
+
+    def footer
+      render RecurringMeetings::FooterComponent.new(
+        meeting: recurring_meeting,
+        project: options[:current_project],
+        direction: options[:direction],
+        max_count: options[:max_count],
+        count:
+      )
     end
 
     def header_args(column)
@@ -62,6 +78,16 @@ module RecurringMeetings
 
     def columns
       @columns ||= headers.map(&:first)
+    end
+
+    def recurring_meeting
+      return if model.blank?
+
+      @recurring_meeting ||= model.first.recurring_meeting
+    end
+
+    def count
+      @count ||= [options[:count], rows.count].max
     end
   end
 end
