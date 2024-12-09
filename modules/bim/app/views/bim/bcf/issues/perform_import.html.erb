@@ -1,6 +1,14 @@
 <link rel="stylesheet" href="/highlighting/styles.css" />
 
-<%= toolbar title: t(:label_summary) %>
+<%=
+  render Primer::OpenProject::PageHeader.new do |header|
+    header.with_title { t(:label_summary) }
+    header.with_breadcrumbs([{ href: project_overview_path(@project.id), text: @project.name  },
+                             { href: defaults_bcf_project_ifc_models_path(@project.identifier), text: I18n.t(:"bcf.label_bcf") },
+                             I18n.t("menus.breadcrumb.nested_element", section_header: t("bcf.bcf_xml.import_title"), title: t(:label_summary)).html_safe],
+                            selected_item_font_weight: :normal)
+  end
+%>
 
 <%= link_to t('bcf.bcf_xml.import.button_back_to_list'),
             defaults_bcf_project_ifc_models_path(@project),

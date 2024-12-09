@@ -46,9 +46,7 @@ RSpec.describe "Upload attachment to budget", :js do
   it "can upload an image to new and existing budgets via drag & drop" do
     visit projects_budgets_path(project)
 
-    within ".toolbar-items" do
-      click_on "Budget"
-    end
+    page.find_test_selector("budget-create-button").click
 
     fill_in "Subject", with: "New budget"
 
@@ -65,9 +63,7 @@ RSpec.describe "Upload attachment to budget", :js do
     expect(page).to have_content("Image uploaded on creation")
     attachments_list.expect_attached("image.png")
 
-    within ".toolbar-items" do
-      click_on "Update"
-    end
+    page.find_test_selector("budget-edit-button").click
 
     editor.drag_attachment image_fixture.path, "Image uploaded the second time"
 
@@ -84,9 +80,7 @@ RSpec.describe "Upload attachment to budget", :js do
   it "can upload an image to new and existing budgets via drag & drop on attachment list" do
     visit projects_budgets_path(project)
 
-    within ".toolbar-items" do
-      click_on "Budget"
-    end
+    page.find_test_selector("budget-create-button").click
 
     fill_in "Subject", with: "New budget"
     editor.set_markdown "Some content because it's required"
@@ -102,9 +96,7 @@ RSpec.describe "Upload attachment to budget", :js do
 
     attachments_list.expect_attached("image.png")
 
-    within ".toolbar-items" do
-      click_on "Update"
-    end
+    page.find_test_selector("budget-edit-button").click
 
     # adding an image
     editor.attachments_list.drag_enter

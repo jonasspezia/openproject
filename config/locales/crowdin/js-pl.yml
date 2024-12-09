@@ -1355,5 +1355,3 @@ pl:
       waiting_subtitle:
         network_off: "Występuje problem z siecią."
         network_on: "Sieć znów działa. Staramy się."
-        timeout: >
-          OpenProject nie mógł Ci zapewnić dostępu do folderu projektu w oczekiwanym czasie. Spróbuj ponownie.<br><br> Jeśli problem nie ustąpi, skontaktuj się z administratorem OpenProject w celu sprawdzenia <a href="https://www.openproject.org/docs/system-admin-guide/files/external-file-storages/file-storage-troubleshooting/">stanu konfiguracji magazynu plików</a>.

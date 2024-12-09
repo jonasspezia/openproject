@@ -29,6 +29,11 @@ See COPYRIGHT and LICENSE files for more details.
 
 <% title = t("copy_project.title", source_project_name: @project.name) %>
 <% html_title title %>
-<%= toolbar title: title %>
 
+<%=
+  render Primer::OpenProject::PageHeader.new do |header|
+    header.with_title { title }
+    header.with_breadcrumbs([{ href: project_overview_path(@project.id), text: @project.name },
+                             { href: project_settings_general_path(@project.id), text: I18n.t("label_project_settings") },
+                             title ]) end %>
 <%= angular_component_tag "opce-copy-project" %>

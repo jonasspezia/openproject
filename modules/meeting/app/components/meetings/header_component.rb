@@ -55,7 +55,13 @@ module Meetings
     private
 
     def delete_enabled?
-      !@meeting.templated? && User.current.allowed_in_project?(:delete_meetings, @meeting.project)
+      !@meeting.template? && User.current.allowed_in_project?(:delete_meetings, @meeting.project)
+    end
+
+    def finish_setup_enabled?
+      @meeting.template? &&
+        User.current.allowed_in_project?(:create_meetings, @meeting.project) &&
+        @series.scheduled_meetings.none?
     end
 
     def breadcrumb_items

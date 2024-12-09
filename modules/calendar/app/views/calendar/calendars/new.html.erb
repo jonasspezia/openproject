@@ -28,7 +28,17 @@ See COPYRIGHT and LICENSE files for more details.
 ++#%>
 
 <% html_title t(:label_new_calendar) %>
-<%= toolbar title: t(:label_new_calendar) %>
+
+<%=
+  render Primer::OpenProject::PageHeader.new do |header|
+    header.with_title { t(:label_new_calendar) }
+    header.with_breadcrumbs( [{ href: home_path, text: organization_name },
+                              { href: calendars_path, text: t(:label_calendar_plural) },
+                              t(:label_new_calendar)
+                             ])
+  end
+%>
+
 <%= labelled_tabular_form_for @view, url: { controller: '/calendar/calendars', action: 'create' }, :html => {:id => 'calendar-form'} do |f| -%>
   <%= render :partial => 'form', :locals => {:f => f} %>
   <%= styled_button_tag t(:button_create), class: '-primary' %>

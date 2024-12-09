@@ -28,15 +28,16 @@ See COPYRIGHT and LICENSE files for more details.
 ++#%>
 <% html_title t(:label_administration), t("project_module_storages"), @storage.name %>
 
-<%
-    breadcrumb_paths(
-      ActionController::Base.helpers
-        .link_to(t("project_module_storages"), external_file_storages_project_settings_project_storages_path(@project)),
-      default_breadcrumb
-    )
+<%=
+    render Primer::OpenProject::PageHeader.new do |header|
+      header.with_title { t("storages.page_titles.project_storage_members.title") }
+      header.with_breadcrumbs([{ href: project_overview_path(@project.id), text: @project.name },
+                               { href: project_settings_general_path(@project.id), text: I18n.t("label_project_settings") },
+                               { href: external_file_storages_project_settings_project_storages_path(@project), text: t("project_module_storages") },
+                               I18n.t("menus.breadcrumb.nested_element", section_header:  @storage.name, title: t("storages.page_titles.project_storage_members.title")).html_safe],
+                              selected_item_font_weight: :normal)
+    end
 %>
-
-<%= toolbar title: t("storages.page_titles.project_storage_members.title") %>
 
 <%= content_tag(:p,
   t("storages.page_titles.project_storage_members.subtitle",

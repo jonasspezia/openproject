@@ -1347,5 +1347,3 @@ pt-PT:
       waiting_subtitle:
         network_off: "Há um problema de rede."
         network_on: "A rede está de volta. Estamos a tentar."
-        timeout: >
-          O OpenProject não pôde fornecer acesso à pasta do projeto dentro do período esperado de tempo, tente novamente.<br><br> Se esse problema continuar, entre em contacto com o administrador do OpenProject para verificar o <a href="https://www.openproject.org/docs/system-admin-guide/files/external-file-storages/file-storage-troubleshooting/">estado de funcionamento da configuração de armazenamento de ficheiros</a>.

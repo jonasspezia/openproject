@@ -49,24 +49,39 @@ See COPYRIGHT and LICENSE files for more details.
   <% end %>
 </div>
 
-<%= toolbar title: @forum.name, subtitle: format_text(@forum.description) do %>
-  <% if authorize_for(:messages, :new) %>
-    <li class="toolbar-item">
-      <%= link_to({ controller: '/messages', action: 'new', forum_id: @forum },
-                  { class: 'add-message-button button -primary',
-                    aria: { label: t(:label_message_new) },
-                    title: t(:label_message_new) }) do %>
-        <%= op_icon('button--icon icon-add') %>
-        <span class="button--text"><%= t(:label_message) %></span>
-      <% end %>
-      <% csp_onclick('jQuery("#add-message").show(); jQuery("#message_subject").focus();', '.add-message-button') %>
-    </li>
-  <% end %>
-  <% unless User.current.anonymous? %>
-    <li class="toolbar-item">
-      <%= watcher_link(@forum, User.current) %>
-    </li>
-  <% end %>
+
+<%=
+  render(Primer::OpenProject::PageHeader.new) do |header|
+    header.with_title { @forum.name }
+    header.with_description { @forum.description }
+    header.with_breadcrumbs([{ href: project_overview_path(@project.id), text: @project.name },
+                             { href: project_forums_path(@project), text: t(:label_forum_plural) },
+                             @forum.name])
+    unless User.current.anonymous?
+      watcher_button_args = watcher_button_arguments(@forum, User.current)
+      header.with_action_button(**watcher_button_args) do |button|
+        button.with_leading_visual_icon(icon: watcher_button_args[:mobile_icon])
+        watcher_button_args[:mobile_label]
+      end
+    end
+  end
+%>
+<% if authorize_for(:messages, :new) %>
+  <%=
+    render(Primer::OpenProject::SubHeader.new) do |subheader|
+      if authorize_for(:messages, :new)
+        subheader.with_action_button(scheme: :primary,
+                                     aria: { label: t(:label_message_new) },
+                                     title: t(:label_message_new),
+                                     tag: :a,
+                                     class: 'add-message-button',
+                                     href: url_for({controller: '/messages', action: 'new', forum_id: @forum})) do |button|
+          button.with_leading_visual_icon(icon: :plus)
+          t(:label_message)
+        end
+      end
+    end
+  %>
 <% end %>
 
 <% if @topics.any? %>

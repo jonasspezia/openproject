@@ -106,6 +106,9 @@ RSpec.describe "Primerized work package relations tab",
   describe "rendering" do
     it "renders the relations tab" do
       scroll_to_element relations_panel
+
+      wait_for_network_idle
+
       expect(page).to have_css(relations_panel_selector)
 
       tabs.expect_counter("relations", 4)
@@ -120,6 +123,8 @@ RSpec.describe "Primerized work package relations tab",
     it "can delete relations" do
       scroll_to_element relations_panel
 
+      wait_for_network_idle
+
       relations_tab.remove_relation(relation_follows)
 
       expect { relation_follows.reload }.to raise_error(ActiveRecord::RecordNotFound)
@@ -129,6 +134,8 @@ RSpec.describe "Primerized work package relations tab",
 
     it "can delete children" do
       scroll_to_element relations_panel
+
+      wait_for_network_idle
 
       relations_tab.remove_child(child_wp)
       expect(child_wp.reload.parent).to be_nil
@@ -140,6 +147,8 @@ RSpec.describe "Primerized work package relations tab",
   describe "editing" do
     it "renders an edit form" do
       scroll_to_element relations_panel
+
+      wait_for_network_idle
 
       relation_row = relations_tab.expect_relation(relation_follows)
 
@@ -166,6 +175,8 @@ RSpec.describe "Primerized work package relations tab",
 
     it "does not have an edit action for children" do
       scroll_to_element relations_panel
+
+      wait_for_network_idle
 
       child_row = relations_panel.find("[data-test-selector='op-relation-row-#{child_wp.id}']")
 
@@ -196,10 +207,18 @@ RSpec.describe "Primerized work package relations tab",
                relation_type: Relation::TYPE_FOLLOWS)
       end
 
+      before do
+        another_wp
+        relation_to
+      end
+
       it "shows the correct related WorkPackage in the dialog (regression #59771)" do
         scroll_to_element relations_panel
 
-        relations_tab.open_relation_dialog(relation_to)
+        wait_for_network_idle
+
+        relations_tab.expect_relation(another_wp)
+        relations_tab.open_relation_dialog(another_wp)
 
         within "##{WorkPackageRelationsTab::WorkPackageRelationDialogComponent::DIALOG_ID}" do
           expect(page).to have_field("Work package",
@@ -215,6 +234,8 @@ RSpec.describe "Primerized work package relations tab",
 
     it "renders the new relation form for the selected type and creates the relation" do
       scroll_to_element relations_panel
+
+      wait_for_network_idle
 
       relations_tab.add_relation(type: :precedes, relatable: wp_successor,
                                  description: "Discovered relations have descriptions!")
@@ -251,6 +272,8 @@ RSpec.describe "Primerized work package relations tab",
   describe "attaching a child" do
     it "renders the new child form and creates the child relationship" do
       scroll_to_element relations_panel
+
+      wait_for_network_idle
 
       tabs.expect_counter("relations", 4)
 
@@ -310,6 +333,8 @@ RSpec.describe "Primerized work package relations tab",
     it "does not show options to add or edit relations" do
       scroll_to_element relations_panel
 
+      wait_for_network_idle
+
       tabs.expect_counter("relations", 4)
 
       relations_tab.expect_no_add_relation_button
@@ -324,6 +349,8 @@ RSpec.describe "Primerized work package relations tab",
 
       it "does not show the option to delete the child" do
         scroll_to_element relations_panel
+
+        wait_for_network_idle
 
         tabs.expect_counter("relations", 4)
 
@@ -345,6 +372,8 @@ RSpec.describe "Primerized work package relations tab",
 
       it "does not show the option to edit the relation but only the child" do
         scroll_to_element relations_panel
+
+        wait_for_network_idle
 
         tabs.expect_counter("relations", 4)
 

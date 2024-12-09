@@ -289,7 +289,6 @@
     label_creation_time: Opprettingstidspunkt
     label_creator: Skaper
     label_delete_storage: Slett fillagring
-    label_edit_storage: Redigere fillagring
     label_edit_storage_access_management: Redigere administrasjon for lagringstilgang
     label_edit_storage_automatically_managed_folders: Rediger automatisk administrerte mapper
     label_edit_storage_host: Redigere lagringsvert
@@ -343,6 +342,9 @@
       success:
         subtitle: Du blir omdirigert
         title: Integrasjonsoppsettet er fullført
+      timeout:
+        link_text: health status of the file storage setup
+        subtitle: OpenProject could not provide you access to the project folder within the expected period of time. Please, try once again.<br><br> If that problem persists please contact your OpenProject administrator to check the %{storages_health_link}.
       waiting:
         subtitle: Ett øyeblikk, dette kan ta litt tid ...
         title: Vi setter opp dine tillatelser på prosjektmappen.

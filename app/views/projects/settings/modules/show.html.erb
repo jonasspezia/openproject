@@ -27,9 +27,14 @@ See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
 
-<%= toolbar title: t(:label_module_plural), html: { class: '-minimum-title' } do -%>
-  <%= render partial: 'projects/settings/form_toolbar', locals: { form_name: "edit_project_#{@project.id}" } %>
-<% end %>
+<%=
+  render Primer::OpenProject::PageHeader.new do |header|
+    header.with_title { I18n.t(:label_module_plural) }
+    header.with_breadcrumbs( [ { href: project_overview_path(@project.id), text: @project.name  },
+                               { href: project_settings_general_path(@project.id), text: I18n.t("label_project_settings") },
+                               I18n.t(:label_module_plural)])
+  end
+%>
 
 <%= error_messages_for(@project) %>
 

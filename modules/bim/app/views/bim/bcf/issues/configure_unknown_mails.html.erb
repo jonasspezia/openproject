@@ -1,4 +1,11 @@
-<%= toolbar title: t('bcf.bcf_xml.import_title') %>
+<%=
+  render Primer::OpenProject::PageHeader.new do |header|
+    header.with_title { t("bcf.bcf_xml.import_title") }
+    header.with_breadcrumbs([{ href: project_overview_path(@project.id), text: @project.name  },
+                             { href: defaults_bcf_project_ifc_models_path(@project.identifier), text: I18n.t(:"bcf.label_bcf") },
+                             t("bcf.bcf_xml.import_title")])
+  end
+%>
 
 <%= styled_form_tag({ action: :configure_import }, multipart: true, method: :post) do %>
   <%= render partial: 'import_errors', locals: { error_message: t('bcf.bcf_xml.import.unknown_emails_found'),

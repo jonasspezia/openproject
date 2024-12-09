@@ -69,7 +69,7 @@ module Pages
     end
   end
 
-  class Group < Pages::Page
+  class Group < Page
     include ::Components::Autocompleter::NgSelectAutocompleteHelpers
     attr_reader :id
 

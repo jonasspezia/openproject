@@ -27,48 +27,12 @@ See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
 
-<% breadcrumb_paths(
-     link_to(t(:label_forum_plural), project_forums_path(@project)),
-     link_to(h(@forum.name), project_forum_path(@project, @forum)))
-%>
+<%= render Messages::ShowPageHeaderComponent.new(topic: @topic, message: @message, forum: @forum, project:@project) %>
 
 <% content_controller 'forum-messages',
                       dynamic: true %>
 
 <% title avatar(@topic.author) + h(@topic.subject) %>
-<%= toolbar title: title do %>
-  <li class="toolbar-item hidden-for-tablet">
-    <%= watcher_link(@topic, User.current) %>
-  </li>
-  <li class="toolbar-item hidden-for-tablet">
-    <% if !@topic.locked? && authorize_for('messages', 'reply') %>
-      <%= link_to(
-            { action: 'quote', id: @topic },
-            data: { 'action': 'forum-messages#quote' },
-            class: 'boards--quote-button button'
-          ) do %>
-        <%= op_icon('button--icon icon-quote') %>
-        <span class="button--text"><%= t(:button_quote) %></span>
-      <% end %>
-    <% end %>
-  </li>
-  <li class="toolbar-item">
-    <% if @message.editable_by?(User.current) %>
-      <%= link_to(edit_topic_path(@topic), accesskey: accesskey(:edit), class: 'button') do %>
-        <%= op_icon('button--icon icon-edit') %>
-        <span class="button--text"><%= t(:button_edit) %></span>
-      <% end %>
-    <% end %>
-  </li>
-  <li class="toolbar-item">
-    <% if @message.destroyable_by?(User.current) %>
-      <%= link_to(topic_path(@topic), method: :delete, data: { confirm: t(:text_are_you_sure) }, class: 'button') do %>
-        <%= op_icon('button--icon icon-delete') %>
-        <span class="button--text"><%= t(:button_delete) %></span>
-      <% end %>
-    <% end %>
-  </li>
-<% end %>
 
 <div class="forum-message">
   <p class="author additional-information"><%= authoring @topic.created_at, @topic.author %></p>

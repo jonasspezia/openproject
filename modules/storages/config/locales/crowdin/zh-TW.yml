@@ -289,7 +289,6 @@ zh-TW:
     label_creation_time: 建立時間
     label_creator: 建立者
     label_delete_storage: 刪除儲存區
-    label_edit_storage: 編輯儲存
     label_edit_storage_access_management: 編輯儲存存取管理
     label_edit_storage_automatically_managed_folders: 編輯自動管理的儲存資料夾
     label_edit_storage_host: 編輯儲存主機
@@ -343,6 +342,9 @@ zh-TW:
       success:
         subtitle: 您正被重新導向
         title: 整合設定完成
+      timeout:
+        link_text: health status of the file storage setup
+        subtitle: OpenProject could not provide you access to the project folder within the expected period of time. Please, try once again.<br><br> If that problem persists please contact your OpenProject administrator to check the %{storages_health_link}.
       waiting:
         subtitle: 請稍候，這可能需要一些時間...
         title: 我們正在設定您在專案資料夾上的權限。

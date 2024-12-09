@@ -27,7 +27,12 @@ See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
 <% html_title t(:label_required_disk_storage) %>
-<%= toolbar title: t(:label_required_disk_storage) %>
+<%=
+  render Primer::OpenProject::PageHeader.new do |header|
+    header.with_title { t(:label_required_disk_storage) }
+    header.with_breadcrumbs([{ href: project_overview_path(@project.id), text: @project.name },
+                             { href: project_settings_general_path(@project.id), text: I18n.t("label_project_settings") },
+                             t(:label_required_disk_storage)]) end %>
 
 <section class="form--section">
   <% if storage['modules'].empty? %>

@@ -40,14 +40,12 @@ module Pages
     end
 
     def click_copy
-      within ".toolbar-items" do
-        click_link "Copy"
-      end
+      page.find_test_selector("budget-copy-button").click
     end
 
     def click_delete
-      within ".toolbar-items" do
-        click_link "Delete"
+      accept_confirm do
+        page.find_test_selector("budget-delete-button").click
       end
     end
 

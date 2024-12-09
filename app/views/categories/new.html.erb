@@ -26,7 +26,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
-<%= toolbar title: t(:label_work_package_category_new) %>
+
+<%=
+  render Primer::OpenProject::PageHeader.new do |header|
+    header.with_title { t(:label_work_package_category_new) }
+    header.with_breadcrumbs([{ href: project_overview_path(@project.id), text: @project.name  },
+                             { href: project_settings_general_path(@project.id), text: I18n.t("label_project_settings") },
+                             { href: project_settings_categories_path(@project.id), text: t(:label_work_package_category_plural) },
+                            t(:label_work_package_category_new)
+                            ])
+  end %>
+
 <%= labelled_tabular_form_for [@project, @category], as: :category  do |f| %>
   <%= render partial: 'categories/form', locals: { f: f } %>
   <%= f.button t(:button_create), class: 'button -primary -with-icon icon-checkmark' %>

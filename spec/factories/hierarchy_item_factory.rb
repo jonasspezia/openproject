@@ -31,6 +31,5 @@
 FactoryBot.define do
   factory :hierarchy_item, class: "CustomField::Hierarchy::Item" do
     sequence(:label) { |n| "Item #{n}" }
-    sequence(:short) { |n| "I #{n}" }
   end
 end

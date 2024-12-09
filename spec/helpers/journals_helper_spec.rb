@@ -38,6 +38,8 @@ RSpec.describe JournalsHelper do
       "unsupported_gizmo" => nil,
       "users/5" => "http://test.host/users/5",
       "work_packages/42" => "http://test.host/work_packages/42",
+      # Sometimes the url is erroneous (having an extra ') for unknown reasons.
+      "work_packages/42'" => "http://test.host/work_packages/42",
       nil => nil
     }.each do |activity_page, expected_url|
       context "when activity page is #{activity_page.inspect}" do

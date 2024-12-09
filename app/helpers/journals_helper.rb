@@ -38,7 +38,8 @@ module JournalsHelper
     in ["users", user_id]
       user_url(user_id)
     in ["work_packages", work_package_id]
-      work_package_url(work_package_id)
+      # Sometimes the parameter provided is erroneous (having an extra ') for unknown reasons.
+      work_package_url(work_package_id.chomp("'"))
     else
       nil
     end

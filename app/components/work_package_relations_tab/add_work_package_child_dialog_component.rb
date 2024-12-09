@@ -51,4 +51,8 @@ class WorkPackageRelationsTab::AddWorkPackageChildDialogComponent < ApplicationC
     child_label = t("#{I18N_NAMESPACE}.relations.label_child_singular")
     t("#{I18N_NAMESPACE}.label_add_x", x: child_label)
   end
+
+  def body_classes
+    "Overlay-body_autocomplete_height"
+  end
 end

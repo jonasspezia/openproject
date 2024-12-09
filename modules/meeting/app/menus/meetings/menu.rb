@@ -44,7 +44,8 @@ module Meetings
       my_meetings_href = polymorphic_path([project, :meetings])
 
       [
-        menu_item(title: I18n.t(:label_my_meetings), selected: params[:current_href] == my_meetings_href),
+        menu_item(title: I18n.t(:label_my_meetings),
+                  selected: params[:current_href] == my_meetings_href && params[:filters].blank?),
         recurring_menu_item,
         menu_item(title: I18n.t(:label_all_meetings),
                   query_params: { filters: all_filter })

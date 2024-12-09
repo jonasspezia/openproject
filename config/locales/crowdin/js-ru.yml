@@ -620,7 +620,7 @@ ru:
         prioritized: "Приоритетный"
         dateAlert: "Дата оповещения"
         shared: "Общий доступ"
-        reminder: "Reminder"
+        reminder: "Напоминания"
       date_alerts:
         milestone_date: "Дата вехи"
         overdue: "Просрочено"
@@ -1354,5 +1354,3 @@ ru:
       waiting_subtitle:
         network_off: "Проблема с сетью."
         network_on: "Проблема с сетью решена."
-        timeout: >
-          OpenProject не смог предоставить вам доступ к папке проекта в течение ожидаемого периода времени. Пожалуйста, попробуйте еще раз.<br><br> Если проблема не исчезнет, ​​обратитесь к администратору OpenProject, чтобы проверить <a href="https://www.openproject.org/docs/system-admin-guide/files/external -file-storages/file-storage-troubleshooting/">состояние файлового хранилища</a>.

@@ -27,7 +27,14 @@ See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
 
-<%= toolbar title: t(:label_repository) %>
+<%=
+  render Primer::OpenProject::PageHeader.new do |header|
+    header.with_title { t(:label_repository) }
+    header.with_breadcrumbs([{ href: project_overview_path(@project.id), text: @project.name  },
+                             { href: project_settings_general_path(@project.id), text: I18n.t("label_project_settings") },
+                             t(:label_repository)])
+  end
+%>
 
 <% is_creation_form = @repository.nil? || @repository.new_record? %>
 <%= form_for :repository,

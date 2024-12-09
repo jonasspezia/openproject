@@ -30,6 +30,7 @@ require "icalendar/tzinfo"
 
 module Meetings
   class ICalService
+    include ICalHelpers
     attr_reader :user, :meeting, :timezone, :url_helpers
 
     def initialize(meeting:, user:)
@@ -52,7 +53,7 @@ module Meetings
 
     # rubocop:disable Metrics/AbcSize
     def generate_ical
-      ical_event do |e|
+      ical_event(meeting.start_time) do |e|
         tzinfo = timezone.tzinfo
         tzid = tzinfo.canonical_identifier
 
@@ -62,57 +63,16 @@ module Meetings
         e.summary = "[#{meeting.project.name}] #{meeting.title}"
         e.description = ical_subject
         e.uid = "#{meeting.id}@#{meeting.project.identifier}"
-        e.organizer = ical_organizer
+        e.organizer = ical_organizer(meeting)
         e.location = meeting.location.presence
 
-        add_attendees(e)
+        add_attendees(e, meeting)
       end
     end
     # rubocop:enable Metrics/AbcSize
 
-    def ical_event(&)
-      calendar = ::Icalendar::Calendar.new
-
-      ical_timezone = @timezone.tzinfo.ical_timezone meeting.start_time
-      calendar.add_timezone ical_timezone
-
-      calendar.event(&)
-
-      calendar.publish
-
-      calendar.to_ical
-    end
-
-    def add_attendees(event)
-      meeting.participants.includes(:user).find_each do |participant|
-        user = participant.user
-        next unless user
-
-        address = Icalendar::Values::CalAddress.new(
-          "mailto:#{user.mail}",
-          {
-            "CN" => user.name,
-            "PARTSTAT" => "NEEDS-ACTION",
-            "RSVP" => "TRUE",
-            "CUTYPE" => "INDIVIDUAL",
-            "ROLE" => "REQ-PARTICIPANT"
-          }
-        )
-
-        event.append_attendee(address)
-      end
-    end
-
     def ical_subject
       "[#{meeting.project.name}] #{I18n.t(:label_meeting)}: #{meeting.title}"
-    end
-
-    def ical_datetime(time, timezone_id)
-      Icalendar::Values::DateTime.new time.in_time_zone(timezone_id), "tzid" => timezone_id
-    end
-
-    def ical_organizer
-      Icalendar::Values::CalAddress.new("mailto:#{meeting.author.mail}", cn: meeting.author.name)
     end
   end
 end

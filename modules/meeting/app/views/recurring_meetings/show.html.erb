@@ -26,6 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
+
 <% html_title t(:label_recurring_meeting_plural) %>
 
 <%= render(RecurringMeetings::ShowPageHeaderComponent.new(project: @project, meeting: @recurring_meeting)) %>
@@ -34,5 +35,5 @@ See COPYRIGHT and LICENSE files for more details.
 <% if @recurring_meeting.nil? -%>
   <%= no_results_box %>
 <% else -%>
-  <%= render RecurringMeetings::TableComponent.new(rows: @meetings, current_project: @project) %>
+  <%= render RecurringMeetings::TableComponent.new(rows: @meetings, current_project: @project, count: @count, direction: @direction, max_count: @max_count) %>
 <% end -%>

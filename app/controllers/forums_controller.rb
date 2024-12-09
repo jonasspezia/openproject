@@ -35,7 +35,6 @@ class ForumsController < ApplicationController
   accept_key_auth :show
 
   include SortHelper
-  include WatchersHelper
   include PaginationHelper
 
   def index

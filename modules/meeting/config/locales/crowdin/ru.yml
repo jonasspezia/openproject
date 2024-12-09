@@ -53,15 +53,15 @@ ru:
       meeting_section:
         title: "Заголовок"
       recurring_meeting:
-        frequency: "Frequency"
-        interval: "Interval"
-        end_after: "End after"
-        iterations: "Occurrences"
+        frequency: "Периодичность"
+        interval: "Промежуток"
+        end_after: "Окончание через"
+        iterations: "События"
     errors:
       messages:
         invalid_time_format: "недопустимое время. Требуемый формат: ЧЧ:ММ"
     models:
-      recurring_meeting: "Recurring meeting"
+      recurring_meeting: "Повторяющаяся встреча"
       structured_meeting: "Встреча (динамическая)"
       meeting_agenda_item: "Пункт повестки"
       meeting_agenda: "Повестка дня"
@@ -97,7 +97,7 @@ ru:
   label_meeting_plural: "Совещания"
   label_meeting_new: "Новое совещание"
   label_meeting_new_dynamic: "Новая динамичная встреча"
-  label_meeting_new_recurring: "New recurring meeting"
+  label_meeting_new_recurring: "Новая повторяющаяся встреча"
   label_meeting_create: "Создать совещание"
   label_meeting_copy: "Копировать совещание"
   label_meeting_edit: "Измененить совещание"
@@ -111,47 +111,47 @@ ru:
   label_meeting_date_time: "Дата/Время"
   label_meeting_date_and_time: "Дата и время"
   label_meeting_diff: "Различия"
-  label_recurring_meeting: "Recurring meeting"
-  label_recurring_meeting_part_of: "Part of a meeting series"
-  label_recurring_meeting_new: "New recurring meeting"
-  label_recurring_meeting_plural: "Recurring meetings"
-  label_template: "Template"
-  label_recurring_meeting_view: "View meeting series"
-  label_recurring_meeting_create: "Create from template"
-  label_recurring_meeting_copy: "Copy as one-off"
-  label_recurring_meeting_cancel: "Cancel this occurrence"
-  label_recurring_meeting_delete: "Delete occurrence"
+  label_recurring_meeting: "Повторяющаяся встреча"
+  label_recurring_meeting_part_of: "Часть серии встреч"
+  label_recurring_meeting_new: "Новая повторяющаяся встреча"
+  label_recurring_meeting_plural: "Повторяющиеся встречи"
+  label_template: "Шаблон"
+  label_recurring_meeting_view: "Посмотреть серию встреч"
+  label_recurring_meeting_create: "Создать из шаблона"
+  label_recurring_meeting_copy: "Копировать как одноразовое"
+  label_recurring_meeting_cancel: "Отменить это событие"
+  label_recurring_meeting_delete: "Удалить событие"
   label_recurring_meeting_delete_confirmation: >
-    This meeting is part of a series called %{name}. This will only delete this particular occurrence and not the entire series. Do you want to continue?
+    Эта встреча является частью серии под названием %{name}. Это приведет к удалению только этой конкретной встречи, а не всей серии. Вы хотите продолжить?
   label_recurring_occurrence_delete_confirmation: >
-    Any meeting information not in the template will be lost. Do you want to continue?
-  label_recurring_meeting_restore: "Restore this occurrence"
-  label_recurring_meeting_series_edit: "Edit meeting series"
-  label_recurring_meeting_series_delete: "Delete meeting series"
-  label_my_meetings: "My meetings"
-  label_all_meetings: "All meetings"
+    Любая информация о встрече, не включенная в шаблон, будет потеряна. Вы хотите продолжить?
+  label_recurring_meeting_restore: "Восстановить это событие"
+  label_recurring_meeting_series_edit: "Изменить серию встреч"
+  label_recurring_meeting_series_delete: "Удалить серию встреч"
+  label_my_meetings: "Мои встречи"
+  label_all_meetings: "Все встречи"
   label_upcoming_meetings: "Предстоящие встречи"
   label_past_meetings: "Прошедшие встречи"
   label_upcoming_meetings_short: "Предстоящие"
   label_past_meetings_short: "Прошедшие"
   label_involvement: "Вовлечение"
-  label_invitations: "Invitations"
+  label_invitations: "Приглашения"
   label_past_invitations: "Прошлые приглашения"
-  label_attended: "Attended"
-  label_created_by_me: "Created by me"
+  label_attended: "Участвовал"
+  label_created_by_me: "Создано мной"
   label_notify: "Отправка на рецензию"
   label_icalendar: "Отправить iCalendar"
   label_icalendar_download: "Скачать мероприятие iCalendar"
-  label_view_meeting_series: "View meeting series"
-  label_meeting_series: "Meeting series"
+  label_view_meeting_series: "Посмотреть серию встреч"
+  label_meeting_series: "Серия встреч"
   label_version: "Версия"
   label_time_zone: "Часовой пояс"
   label_start_date: "Дата начала"
   meeting:
     participants:
-      template: "These participants will be invited automatically to all future meetings as they are created."
+      template: "Эти участники будут автоматически приглашаться на все будущие встречи по мере их создания."
     attachments:
-      template: "These attached files will be included in all future meetings in the series."
+      template: "Эти прикрепленные файлы будут включены во все последующие встречи этой серии."
       text: "Прикрепленные файлы доступны всем участникам встречи. Вы также можете перенести их в примечания к пунктам повестки дня."
     copy:
       title: "Копировать встречу %{title}"
@@ -180,7 +180,7 @@ ru:
       classic: "Классический"
       classic_text: "Организуйте своё совещание с помощью форматируемой текстовой повестки и протокола."
       structured: "Динамический"
-      recurring: "Recurring"
+      recurring: "Периодичность"
       structured_text: "Организуйте своё совещание в виде списка пунктов повестки, при необходимости связав их с пакетом работ."
       structured_text_copy: "При копировании совещания в настоящее время не скопируются связанные с ним пункты повестки, будут скопированы только детали"
     copied: "Скопировано со встречи #%{id}"
@@ -192,30 +192,40 @@ ru:
   recurring_meeting:
     interval:
       instructions: >
-        Enter the number of days or weeks between each occurrence.
+        Введите количество дней или недель между каждым событием.
     occurrence:
-      infoline: "This meeting is part of a recurring meeting series."
+      infoline: "Эта встреча является частью повторяющейся серии встреч."
+      error_no_next: "There is no next occurrence for this meeting."
+      first_already_exists: "The first occurrence of this meeting series is already instantiated."
+      first_created: >
+        The first meeting has been successfuly created from template. All future meetings will be created automatically at the time of the previous occurrence.
     template:
-      label_view_template: "View template"
-      label_edit_template: "Edit template"
+      button_finalize: "Finish template"
+      blank_title: "Your meeting series template is empty"
+      description: >
+        This template will be used whenever new meetings in the series get created. You can add agenda items, participants, and attachments to this template.
+      blankslate_finalize: >
+        When you're done preparing this template, click the '%{button_title}' button above to finish the setup and schedule the first meeting of the series.
+      label_view_template: "Посмотреть шаблон"
+      label_edit_template: "Изменить шаблон"
       banner_html: >
-        You are currently editing a template of a meeting series: %{link}. Every new instance of a meeting in this series will use this template. Changes will not affect past or already created meetings.
+        В настоящее время вы редактируете шаблон серии встреч: %{link}. Каждый новый экземпляр встречи в этой серии будет использовать этот шаблон. Изменения не повлияют на прошлые или уже созданные встречи.
     frequency:
-      every_weekday: "Every %{day_of_the_week}"
-      daily: "Daily"
-      working_days: "Working Days"
-      weekly: "Weekly"
+      every_weekday: "Каждый %{day_of_the_week}"
+      daily: "Ежедневно"
+      working_days: "Рабочие дни"
+      weekly: "Еженедельно"
     end_after:
-      specific_date: "A specific date"
-      iterations: "A number of occurrences"
-    starts: "Starts"
+      specific_date: "Конкретная дата"
+      iterations: "Количество событий"
+    starts: "Начало"
     in_words:
-      daily_interval: "Every %{interval} day"
-      working_days: "Every working day"
-      working_days_interval: "Every %{interval} working day"
-      weekly: "Weekly on %{weekday}"
-      weekly_interval: "Every %{interval} week on %{weekday}"
-      full: "%{base} at %{time}, ends on %{end_date}"
+      daily_interval: "Каждый %{interval} день"
+      working_days: "Каждый рабочий день"
+      working_days_interval: "Каждый %{interval} рабочий день"
+      weekly: "Еженедельно в %{weekday}"
+      weekly_interval: "Каждую %{interval} неделю в %{weekday}"
+      full: "%{base} в %{time}, заканчивается %{end_date}"
   notice_successful_notification: "Уведомление успешно отправленно"
   notice_timezone_missing: Не установлен часовой пояс и применена %{zone}. Чтобы выбрать часовой пояс, пожалуйста, нажмите сюда.
   notice_meeting_updated: "Эта страница была обновлена кем-то другим. Перезагрузите страницу, чтобы просмотреть изменения."
@@ -274,10 +284,10 @@ ru:
   label_meeting_state_open_html: "<i>Открыть</i>"
   label_meeting_state_closed: "Закрыть"
   label_meeting_state_closed_html: "<i>Закрытый</i>"
-  label_meeting_state_agenda_created: "Agenda created"
-  label_meeting_state_scheduled: "Scheduled"
-  label_meeting_state_cancelled: "Cancelled"
-  label_meeting_state_skipped: "Skipped"
+  label_meeting_state_agenda_created: "Повестка дня создана"
+  label_meeting_state_scheduled: "Запланировано"
+  label_meeting_state_cancelled: "Отменено"
+  label_meeting_state_skipped: "Пропущено"
   label_meeting_reopen_action: "Открыть совещание заново"
   label_meeting_close_action: "Закрыть совещание"
   text_meeting_open_description: "Эта совещание является открытым. Вы можете добавлять/удалять пункты повестки и редактировать их по своему усмотрению. После завершения совещания закройте его, чтобы заблокировать."

@@ -30,6 +30,21 @@
       end
       header.with_breadcrumbs(breadcrumb_items)
       header.with_description { render(Meetings::HeaderInfolineComponent.new(@meeting)) }
+      if finish_setup_enabled?
+        header.with_action_button(
+          tag: :a,
+          scheme: :primary,
+          mobile_label: I18n.t("recurring_meeting.template.button_finalize"),
+          mobile_icon: :check,
+          size: :medium,
+          data: { "turbo-method": :post },
+          href: template_completed_recurring_meeting_path(@meeting.recurring_meeting),
+        ) do |button|
+          button.with_leading_visual_icon(icon: :check)
+          I18n.t("recurring_meeting.template.button_finalize")
+        end
+      end
+
       header.with_action_menu(menu_arguments: {},
                               button_arguments: { icon: "kebab-horizontal",
                                                   "aria-label": t("label_meeting_actions"),

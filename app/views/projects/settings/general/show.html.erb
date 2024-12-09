@@ -26,6 +26,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
-<%= render partial: 'projects/toolbar' %>
+<%= render Projects::Settings::IndexPageHeaderComponent.new(project: @project) %>
 
 <%= angular_component_tag "opce-project-settings" %>

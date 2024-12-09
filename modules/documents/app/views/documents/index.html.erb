@@ -27,19 +27,29 @@ See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
 
-<%= toolbar title: t(:label_document_plural) do %>
-  <% if authorize_for(:documents, :new) %>
-    <li class="toolbar-item">
-      <%= link_to({:controller => '/documents', :action => 'new', :project_id => @project},
-                  { class: 'button -primary',
-                    aria: {label: t(:label_document_new)},
-                    title: t(:label_document_new)}) do %>
-        <%= op_icon('button--icon icon-add') %>
-        <span class="button--text"><%= t('activerecord.models.document') %></span>
-      <% end %>
-    </li>
-  <% end %>
+<%=
+  render(Primer::OpenProject::PageHeader.new) do |header|
+    header.with_title { t(:label_document_plural) }
+    header.with_breadcrumbs([{ href: project_overview_path(@project.id), text: @project.name },
+                             t(:label_document_plural)])
+  end
+%>
+
+<% if authorize_for(:documents, :new) %>
+  <%=
+    render(Primer::OpenProject::SubHeader.new) do |subheader|
+      subheader.with_action_button(scheme: :primary,
+                                   aria: { label: t(:label_document_new) },
+                                   title: t(:label_document_new),
+                                   tag: :a,
+                                   href: url_for({:controller => '/documents', :action => 'new', :project_id => @project})) do |button|
+        button.with_leading_visual_icon(icon: :plus)
+        t('activerecord.models.document')
+      end
+    end
+  %>
 <% end %>
+
 
 <% if @grouped.empty? %>
   <%= no_results_box %>

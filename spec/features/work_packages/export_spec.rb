@@ -126,7 +126,7 @@ RSpec.describe "work package export" do
     context "with activated options" do
       let(:query) do
         create(
-          :query, user: current_user, project:,
+          :query, id: 1234, user: current_user, project:,
                   display_sums: true,
                   include_subprojects: true,
                   show_hierarchies: true,
@@ -135,6 +135,7 @@ RSpec.describe "work package export" do
       end
       let(:expected_params) do
         default_expected_params.merge({
+                                        query_id: "1234",
                                         showSums: "true",
                                         includeSubprojects: "true",
                                         showHierarchies: "true"

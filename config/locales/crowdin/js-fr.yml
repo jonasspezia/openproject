@@ -1347,5 +1347,3 @@ fr:
       waiting_subtitle:
         network_off: "Un problème de réseau est survenu."
         network_on: "Le réseau est à nouveau disponible. Nous essayons."
-        timeout: >
-          OpenProject n'a pas pu vous donner accès au dossier du projet dans le délai imparti. Veuillez réessayer.<br><br> Si ce problème persiste, veuillez contacter votre administrateur OpenProject pour vérifier le <a href="https://www.openproject.org/docs/system-admin-guide/files/external-file-storages/file-storage-troubleshooting/">statut de santé de l'espace de stockage de fichiers</a>.

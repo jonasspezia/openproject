@@ -29,7 +29,23 @@ See COPYRIGHT and LICENSE files for more details.
 
 <% html_title t(:label_administration), "#{t(:label_edit)} #{I18n.t((@project.nil? ? :caption_default_rate_history_for : :caption_rate_history_for), user: ' ')} #{@user.name}" %>
 
-<%= toolbar title: (@project.nil? ? t(:caption_default_rate_history_for, user: @user.name) :  t(:caption_rate_history_for_project, user: @user.name, project: @project.name) ) %>
+<%
+  breadcrumb_items = if @project
+                       [{href: project_overview_path(@project.identifier), text: @project.name},
+                        {href: projects_budgets_path(@project.identifier), text: I18n.t(:label_budget_plural)}]
+                     else
+                        [{ href: home_path, text: organization_name}]
+                     end
+%>
+
+<%=
+  render Primer::OpenProject::PageHeader.new do |header|
+    header.with_title { t(:caption_default_rate_history_for, user: @user.name) }
+    header.with_breadcrumbs([*(breadcrumb_items),
+                             t(:caption_default_rate_history_for, user: @user.name)])
+  end
+%>
+
 
 <%- default_rate = @user.current_default_rate -%>
 <% if default_rate%>

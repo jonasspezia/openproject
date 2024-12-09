@@ -27,33 +27,46 @@ See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
 
-<%= toolbar title: "#{avatar(@news.author)}  #{h @news.title}".html_safe do %>
-  <% if User.current.allowed_in_project?(:manage_news, @project) %>
-    <li class="toolbar-item">
-      <%= link_to(edit_news_path(@news),
-        accesskey: accesskey(:edit),
-        class: 'button edit-news-button') do %>
-        <%= op_icon('button--icon icon-edit') %>
-        <span class="button--text"><%= t(:button_edit) %></span>
-      <% end %>
-      <% csp_onclick('jQuery("#edit-news").show()', '.edit-news-button') %>
-    </li>
-  <% end %>
-  <li class="toolbar-item">
-    <%= watcher_link(@news, User.current) %>
-  </li>
-  <% if User.current.allowed_in_project?(:manage_news, @project) %>
-    <li class="toolbar-item">
-      <%= link_to(news_path(@news),
-        data: { confirm: t(:text_are_you_sure) },
-        method: :delete,
-        class: 'button') do %>
-        <%= op_icon('button--icon icon-delete') %>
-        <span class="button--text"><%= t(:button_delete) %></span>
-      <% end %>
-    </li>
-  <% end %>
-<% end %>
+<%=
+  render Primer::OpenProject::PageHeader.new do |header|
+    header.with_title { "#{avatar(@news.author)}  #{h @news.title}".html_safe }
+    header.with_breadcrumbs([*([ href: home_path, text: organization_name ] unless @project),
+                             *([ href: project_overview_path(@project.id), text: @project.name ] if @project),
+                             *([ href: project_news_index_path(@project.id), text: t(:label_news_plural) ] if @project),
+                             @news.title])
+    if User.current.allowed_in_project?(:manage_news, @project)
+      header.with_action_button(tag: :a,
+                                mobile_icon: :pencil,
+                                mobile_label: t(:button_edit),
+                                size: :medium,
+                                href: edit_news_path(@news),
+                                aria: { label: I18n.t(:button_edit) },
+                                title: I18n.t(:button_edit)) do |button|
+        csp_onclick('jQuery("#edit-news").show()', '.edit-news-button')
+        button.with_leading_visual_icon(icon: :pencil)
+        t(:button_edit)
+      end
+    end
+    watcher_button_args = watcher_button_arguments(@news, User.current)
+    header.with_action_button(**watcher_button_args) do |button|
+      button.with_leading_visual_icon(icon: watcher_button_args[:mobile_icon])
+      watcher_button_args[:mobile_label]
+    end
+    if User.current.allowed_in_project?(:manage_news, @project)
+      header.with_action_button(scheme: :danger,
+                                tag: :a,
+                                href: news_path(@news),
+                                mobile_icon: :trash,
+                                mobile_label: I18n.t("button_delete"),
+                                data: { confirm: t(:text_are_you_sure), method: :delete, },
+                                aria: { label: I18n.t("button_delete") },
+                                ) do |button|
+        button.with_leading_visual_icon(icon: :trash)
+        I18n.t("button_delete")
+      end
+    end
+  end
+%>
 
 <% if authorize_for('news', 'edit') %>
   <div id="edit-news" style="display:none;">

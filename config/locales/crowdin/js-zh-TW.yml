@@ -1341,5 +1341,3 @@ zh-TW:
       waiting_subtitle:
         network_off: "網路有問題。"
         network_on: "網絡已恢復。我們正在努力。"
-        timeout: >
-          OpenProject 無法讓您在預期時間內訪問專案文件夾。請再試一次。<br><br> 如果問題仍然存在，請聯繫 OpenProject 管理員檢查<a href="https://www.openproject.org/docs/system-admin-guide/files/external-file-storages/file-storage-troubleshooting/">文件存儲設置的健康狀態</a>。

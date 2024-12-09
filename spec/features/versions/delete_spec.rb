@@ -47,10 +47,8 @@ RSpec.describe "version delete", :js, :with_cuprite do
     # from the version show page
     visit version_path(version)
 
-    within ".toolbar" do
-      accept_confirm do
-        click_link "Delete"
-      end
+    accept_confirm do
+      page.find_test_selector("version-delete-button").click
     end
 
     expect_flash(type: :error, message: I18n.t(:error_can_not_delete_in_use_archived_undisclosed))
@@ -61,10 +59,8 @@ RSpec.describe "version delete", :js, :with_cuprite do
     # from the version show page
     visit version_path(version)
 
-    within ".toolbar" do
-      accept_confirm do
-        click_link "Delete"
-      end
+    accept_confirm do
+      page.find_test_selector("version-delete-button").click
     end
 
     expect_flash(type: :error, message: "There are also work packages in archived projects.")

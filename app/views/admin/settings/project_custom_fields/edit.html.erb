@@ -28,7 +28,6 @@ See COPYRIGHT and LICENSE files for more details.
 ++#%>
 
 <% html_title t(:label_administration), t("settings.project_attributes.heading"), @custom_field.name %>
-<% local_assigns[:additional_breadcrumb] = @custom_field.name %>
 
 <%=
   render(Settings::ProjectCustomFields::EditFormHeaderComponent.new(

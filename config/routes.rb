@@ -704,8 +704,8 @@ Rails.application.routes.draw do
 
   scope controller: "sys" do
     match "/sys/repo_auth", action: "repo_auth", via: %i[get post]
+    get "/sys/fetch_changesets", action: "fetch_changesets"
     match "/sys/projects", to: proc { [410, {}, [""]] }, via: :all
-    match "/sys/fetch_changesets", to: proc { [410, {}, [""]] }, via: :all
     match "/sys/projects/:id/repository/update_storage", to: proc { [410, {}, [""]] }, via: :all
   end
 

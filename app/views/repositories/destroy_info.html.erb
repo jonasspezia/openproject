@@ -26,6 +26,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
+
+<%=
+  render Primer::OpenProject::PageHeader.new do |header|
+    header.with_title { t(:label_repository_remove) }
+    header.with_breadcrumbs([{ href: project_overview_path(@project.id), text: @project.name },
+                             { href: project_settings_general_path(@project.id), text: I18n.t("label_project_settings") },
+                             { href: project_settings_repository_path, text: t(:label_repository) },
+                             t(:label_repository_remove)]) end %>
 <% if @repository.managed? %>
   <%= styled_form_tag(project_repository_path(@project), method: :delete, class: 'danger-zone') do %>
     <section class="form--section">
@@ -78,9 +86,10 @@ See COPYRIGHT and LICENSE files for more details.
       </p>
       <p>
         <%= link_to project_repository_path(@project),
-          title: t(:button_delete),
-          method: :delete,
-          class: 'button' do %>
+                    title: t(:button_delete),
+                    method: :delete,
+                    data: { "test-selector": "remove-repository-button"},
+                    class: 'button' do %>
           <%= op_icon('button--icon icon-remove') %>
           <span class="button--text"><%= t(:button_remove) %></span>
         <% end %>

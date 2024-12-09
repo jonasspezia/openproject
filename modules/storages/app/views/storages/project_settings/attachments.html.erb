@@ -31,7 +31,8 @@ See COPYRIGHT and LICENSE files for more details.
 
 <%= render(Primer::OpenProject::PageHeader.new(border_bottom: 0)) do |header|
   header.with_title { t("project_module_storages") }
-  header.with_breadcrumbs([{ href: project_settings_general_path, text: t("label_project_settings") },
+  header.with_breadcrumbs([{ href: project_overview_path(@project.id), text: @project.name },
+                            { href: project_settings_general_path, text: t("label_project_settings") },
                            t("project_module_storages")])
   header.with_action_button(tag: :a,
                             href: new_project_settings_project_storage_path,

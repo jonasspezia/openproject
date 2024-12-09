@@ -620,7 +620,7 @@ zh-CN:
         prioritized: "已优先"
         dateAlert: "日期提醒"
         shared: "已共享"
-        reminder: "Reminder"
+        reminder: "提醒"
       date_alerts:
         milestone_date: "里程碑日期"
         overdue: "逾期"
@@ -1342,5 +1342,3 @@ zh-CN:
       waiting_subtitle:
         network_off: "网络有问题。"
         network_on: "网络已恢复。我们正在努力。"
-        timeout: >
-          OpenProject 无法让您在预期时间内访问项目文件夹。请再试一次。<br><br> 如果问题仍然存在，请联系 OpenProject 管理员检查<a href="https://www.openproject.org/docs/system-admin-guide/files/external-file-storages/file-storage-troubleshooting/">文件存储设置的健康状态</a>。

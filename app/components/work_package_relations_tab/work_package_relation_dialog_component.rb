@@ -58,4 +58,8 @@ class WorkPackageRelationsTab::WorkPackageRelationDialogComponent < ApplicationC
       t("#{I18N_NAMESPACE}.label_add_x", x: relation_label)
     end
   end
+
+  def body_classes
+    @relation.persisted? ? nil : "Overlay-body_autocomplete_height"
+  end
 end

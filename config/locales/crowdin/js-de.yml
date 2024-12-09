@@ -359,7 +359,7 @@ de:
           "15_1":
             standard:
               new_features_html: >
-                Die Version bringt verschiedene Funktionen und Verbesserungen für Sie, z.B. <br> <ul class="%{list_styling_class}"> <li>Benutzerdefinierte Felder vom Typ Hierarchie (Enterprise Add-on).</li> <li>Neugestaltung des Beziehungen-Tabs in Arbeitspaketen.</li> <li>Neugestaltung der Meeting-Indexseite.</li> <li>Manuelle Seitenumbrüche beim Export von PDF-Arbeitspaketen.</li> <li>Zen-Modus für Projektlisten.</li> </ul>
+                Die Version bringt verschiedene Funktionen und Verbesserungen für Sie, z.B. <br> <ul class="%{list_styling_class}"> <li>Selbstdefinierte Felder vom Typ Hierarchie (Enterprise Add-on).</li> <li>Neugestaltung des Beziehungen-Tabs in Arbeitspaketen.</li> <li>Neugestaltung der Besprechungen-Indexseite.</li> <li>Manuelle Seitenumbrüche beim PDF-Export von Arbeitspaketen.</li> <li>Zen-Modus für Projektlisten.</li> </ul>
     ical_sharing_modal:
       title: "Kalender abonnieren"
       inital_setup_error_message: "Beim Abrufen der Daten ist ein Fehler aufgetreten."
@@ -620,7 +620,7 @@ de:
         prioritized: "Priorisiert"
         dateAlert: "Datums-Erinnerung"
         shared: "Geteilt"
-        reminder: "Reminder"
+        reminder: "Erinnerung"
       date_alerts:
         milestone_date: "Datum des Meilensteins"
         overdue: "Überfällig"
@@ -1346,5 +1346,3 @@ de:
       waiting_subtitle:
         network_off: "Es gibt ein Netzwerkproblem."
         network_on: "Netzwerk ist wieder da. Wir versuchen es erneut."
-        timeout: >
-          OpenProject konnte Ihnen den Zugriff auf den Projektordner nicht innerhalb des erwarteten Zeitlimits ermöglichen. Bitte versuchen Sie es noch einmal.<br><br> Wenn das Problem weiterhin besteht, wenden Sie sich bitte an Ihren OpenProject-Administrator, um den Status der <a href="https://www.openproject.org/de/docs/system-admin-guide/dateien/external-file-storages/file-storage-troubleshooting/">Dateiablage</a> zu überprüfen.

@@ -27,20 +27,28 @@ See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
 <% html_title t(:label_forum_plural) %>
-<%= toolbar title: t(:label_forum_plural) do %>
-  <% if User.current.allowed_in_project?(:manage_forums, @project) %>
-    <li class="toolbar-item">
-      <%= link_to(new_project_forum_path(@project),
-                  { aria: { label: t(:label_forum_new) },
-                    title: t(:label_forum_new),
-                    class: 'button -primary' }) do %>
-        <%= op_icon('button--icon icon-add') %>
-        <span class="button--text"><%= t('activerecord.models.forum') %></span>
-      <% end %>
-    </li>
-  <% end  %>
-<% end %>
 
+<%=
+  render Primer::OpenProject::PageHeader.new do |header|
+    header.with_title { t(:label_forum_plural) }
+    header.with_breadcrumbs( [{ href: project_overview_path(@project.id), text: @project.name },
+                               t(:label_forum_plural)
+                             ]) end %>
+
+<% if User.current.allowed_in_project?(:manage_forums, @project) %>
+  <%=
+    render(Primer::OpenProject::SubHeader.new) do |subheader|
+      subheader.with_action_button(scheme: :primary,
+                                   aria: { label: t(:label_forum_new) },
+                                   title: t(:label_forum_new),
+                                   tag: :a,
+                                   href: new_project_forum_path(@project)) do |button|
+        button.with_leading_visual_icon(icon: :plus)
+        t('activerecord.models.forum')
+      end
+    end
+  %>
+<% end %>
 <% if @forums.empty? %>
   <%= no_results_box(action_url: new_project_forum_path(@project)) %>
 <% else %>

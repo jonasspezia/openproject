@@ -40,12 +40,6 @@ module Pages
       @project_identifier = project_identifier
     end
 
-    def visit!
-      super
-
-      self
-    end
-
     def path
       "/projects/#{project_identifier}/members"
     end
@@ -61,7 +55,7 @@ module Pages
     def search_for_name(name)
       fill_in "name", with: name
       find(".simple-filters--controls input[type=submit]").click
-      wait_for_network_idle
+      wait_for_reload
     end
 
     def expect_menu_item(text, selected: false)
@@ -193,7 +187,7 @@ module Pages
       Array(remove_roles).each { |role| uncheck role }
 
       click_on "Change"
-      wait_for_network_idle
+      wait_for_reload
     end
 
     def has_group_membership?(user_name)
@@ -276,7 +270,7 @@ module Pages
 
     def go_to_page!(number)
       find(".op-pagination--pages a", text: number.to_s).click
-      wait_for_network_idle
+      wait_for_reload
     end
   end
 end

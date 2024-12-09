@@ -58,6 +58,7 @@ RSpec.describe "Meetings close" do
 
       # Go to minutes, expect uneditable
       find(".op-tab-row--link", text: "MINUTES").click
+      wait_for_network_idle
       expect(page).to have_css(".button", text: "Close the agenda to begin the Minutes")
 
       # Close the meeting

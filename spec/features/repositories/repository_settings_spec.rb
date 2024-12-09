@@ -86,7 +86,7 @@ RSpec.describe "Repository Settings", :js do
         find("a.icon-remove", text: I18n.t(:button_remove)).click
         expect(page).to have_css(".op-toast.-warning")
         SeleniumHubWaiter.wait
-        find("a", text: I18n.t(:button_remove)).click
+        page.find_test_selector("remove-repository-button").click
       end
 
       vendor = find('select[name="scm_vendor"]')

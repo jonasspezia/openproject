@@ -38,6 +38,7 @@ RSpec.describe CustomFields::Hierarchy::UpdateItemContract do
     let!(:vader) { create(:hierarchy_item) }
     let!(:luke) { create(:hierarchy_item, label: "luke", short: "ls", parent: vader) }
     let!(:leia) { create(:hierarchy_item, label: "leia", short: "lo", parent: vader) }
+    let!(:starkiller) { create(:hierarchy_item, label: "starkiller", parent: vader) }
 
     context "when all required fields are valid" do
       it "is valid" do

@@ -26,7 +26,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
-<%= toolbar title: @color.name %>
+
+<%=
+  render(Primer::OpenProject::PageHeader.new) do |header|
+    header.with_title { @color.name }
+    header.with_breadcrumbs([{ href: admin_index_path, text: t(:label_administration) },
+                            { href: colors_path, text: t(:label_color_plural) },
+                            @color.name])
+  end
+%>
+
 <%= labelled_tabular_form_for @color,
             url: color_url(@color),
             html: {method: 'delete'},

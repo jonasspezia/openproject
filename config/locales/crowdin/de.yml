@@ -494,12 +494,12 @@ de:
     groups:
       member_in_these_groups: "Dieser Benutzer ist Mitglied der folgenden Gruppen:"
       no_results_title_text: Dieser Benutzer ist derzeit kein Mitglied in einer Gruppe.
-      summary_with_more: Member of %{names} and %{count_link}.
-      more: "%{count} more"
-      summary: Member of %{names}.
+      summary_with_more: Mitglied von %{names} und %{count_link}.
+      more: "%{count} weitere"
+      summary: Mitglied von %{names}.
     memberships:
       no_results_title_text: Dieser Nutzer ist derzeit in keinem Projekt Mitglied.
-    open_profile: "Open profile"
+    open_profile: "Profil öffnen"
   page:
     text: "Text"
   placeholder_users:
@@ -641,9 +641,9 @@ de:
     label_edit_x: "%{x} editieren"
     label_add_description: "Beschreibung hinzufügen"
     lag:
-      subject: "Lag"
-      title: "Lag (in days)"
-      caption: "The gap in number of working days in between the two work packages"
+      subject: "Verzögerung"
+      title: "Verzögerung (in Tagen)"
+      caption: "Die Anzahl der Arbeitstage, die zwischen den beiden Arbeitspaketen liegen"
     relations:
       label_relates_singular: "Beziehung mit"
       label_relates_plural: "Beziehungen mit"
@@ -936,7 +936,7 @@ de:
       messages:
         accepted: "muss akzeptiert werden."
         after: "muss nach %{date} sein."
-        after_today: "must be in the future."
+        after_today: "muss in der Zukunft liegen."
         after_or_equal_to: "muss nach oder gleich %{date} sein."
         before: "muss vor %{date} sein."
         before_or_equal_to: "muss vor oder gleich %{date} sein."
@@ -983,7 +983,7 @@ de:
         not_an_integer: "ist keine ganzzahlige Zahl."
         not_an_iso_date: "ist kein gültiges Datum - Erwartetes Format: YYY-MM-DD."
         not_same_project: "gehört nicht zum selben Projekt."
-        datetime_must_be_in_future: "must be in the future."
+        datetime_must_be_in_future: "muss in der Zukunft liegen."
         odd: "muss ungerade sein."
         regex_match_failed: "stimmt nicht mit dem regulären Ausdruck %{expression} überein."
         regex_invalid: "konnte nicht mit dem zugehörigen regulären Ausdruck überprüft werden."
@@ -2235,6 +2235,7 @@ de:
   label_default: "Standard"
   label_delete_user: "Benutzer löschen"
   label_delete_project: "Projekt löschen"
+  label_delete: "Löschen"
   label_deleted: "gelöscht"
   label_deleted_custom_field: "(gelöschtes benutzerdefiniertes Feld)"
   label_deleted_custom_option: "(gelöschte Option)"
@@ -2559,6 +2560,7 @@ de:
   label_reporting: "Statusbericht"
   label_reporting_plural: "Statusberichte"
   label_repository: "Projektarchiv"
+  label_repository_remove: "Projektarchiv entfernen"
   label_repository_root: "Stammverzeichnis des Projektarchivs"
   label_repository_plural: "Projektarchive"
   label_required: "benötigt von"
@@ -2656,6 +2658,7 @@ de:
   label_user_settings: "Benutzereinstellungen"
   label_users_settings: "Benutzereinstellungen"
   label_version_new: "Neue Version"
+  label_version_edit: "Version bearbeiten"
   label_version_plural: "Versionen"
   label_version_sharing_descendants: "Mit Unterprojekten"
   label_version_sharing_hierarchy: "Mit Projekthierarchie"
@@ -2961,7 +2964,7 @@ de:
   notice_successful_connection: "Verbindung erfolgreich."
   notice_successful_create: "Erfolgreich angelegt."
   notice_successful_delete: "Erfolgreich gelöscht."
-  notice_successful_cancel: "Successful cancellation."
+  notice_successful_cancel: "Erfolgreiche Absage."
   notice_successful_update: "Erfolgreich aktualisiert."
   notice_successful_update_custom_fields_added_to_project: |
     Erfolgreich aktualisiert. Die benutzerdefinierten Felder der aktivierten Typen werden automatisch
@@ -3071,7 +3074,7 @@ de:
   permission_select_project_modules: "Projektmodule auswählen"
   permission_share_work_packages: "Arbeitspakete teilen"
   permission_manage_types: "Typen auswählen"
-  permission_manage_own_reminders: "Create own reminders"
+  permission_manage_own_reminders: "Eigene Erinnerungen erstellen"
   permission_view_project: "Projekt anzeigen"
   permission_view_changesets: "Revisionen des Projektarchivs in OpenProject ansehen"
   permission_view_commit_author_statistics: "Commit Autor Statistiken ansehen"

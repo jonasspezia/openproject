@@ -289,7 +289,6 @@ es:
     label_creation_time: Tiempo de creación
     label_creator: Autor
     label_delete_storage: Eliminar almacenamiento
-    label_edit_storage: Editar almacenamiento
     label_edit_storage_access_management: Editar la gestión de acceso al almacenamiento
     label_edit_storage_automatically_managed_folders: Editar carpetas gestionadas automáticamente
     label_edit_storage_host: Editar host del almacenamiento
@@ -343,6 +342,9 @@ es:
       success:
         subtitle: Se te está redirigiendo
         title: Configuración de integración completada
+      timeout:
+        link_text: health status of the file storage setup
+        subtitle: OpenProject could not provide you access to the project folder within the expected period of time. Please, try once again.<br><br> If that problem persists please contact your OpenProject administrator to check the %{storages_health_link}.
       waiting:
         subtitle: Un momento, por favor, esto puede llevar algún tiempo...
         title: Estamos configurando tus permisos en la carpeta del proyecto.

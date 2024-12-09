@@ -26,9 +26,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
-<%= toolbar title: t(:enumeration_activities), html: { class: '-minimum-title' } do -%>
-  <%= render partial: 'projects/settings/form_toolbar', locals: { form_name: "edit_project_#{@project.id}" } %>
-<% end %>
+
+<%=
+  render Primer::OpenProject::PageHeader.new do |header|
+    header.with_title { t(:enumeration_activities) }
+    header.with_breadcrumbs([{ href: project_overview_path(@project.id), text: @project.name  },
+                             { href: project_settings_general_path(@project.id), text: I18n.t(:label_project_settings) },
+                             t(:enumeration_activities)])
+  end
+%>
 
 <% if TimeEntryActivity.any? %>
   <%= labelled_tabular_form_for @project,

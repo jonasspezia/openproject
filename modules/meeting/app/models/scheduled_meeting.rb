@@ -33,6 +33,9 @@ class ScheduledMeeting < ApplicationRecord
   scope :upcoming, -> { where(start_time: Time.current..) }
   scope :past, -> { where(start_time: ...Time.current) }
 
+  scope :instantiated, -> { where.not(meeting_id: nil) }
+  scope :not_instantiated, -> { where(meeting_id: nil) }
+
   scope :cancelled, -> { where(cancelled: true) }
   scope :not_cancelled, -> { where(cancelled: false) }
 

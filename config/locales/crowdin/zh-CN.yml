@@ -488,12 +488,12 @@ zh-CN:
     groups:
       member_in_these_groups: "此用户当前是以下组的成员："
       no_results_title_text: 此用户当前不是任何组的成员。
-      summary_with_more: Member of %{names} and %{count_link}.
-      more: "%{count} more"
-      summary: Member of %{names}.
+      summary_with_more: '%{names} 和 %{count_link} 成员。'
+      more: "还有 %{count} 个"
+      summary: '%{names} 的成员。'
     memberships:
       no_results_title_text: 该用户当前非项目成员。
-    open_profile: "Open profile"
+    open_profile: "人员详情"
   page:
     text: "文本"
   placeholder_users:
@@ -930,7 +930,7 @@ zh-CN:
       messages:
         accepted: "必须接受。"
         after: "必须在 %{date} 之后。"
-        after_today: "must be in the future."
+        after_today: "必须是将来的时间"
         after_or_equal_to: "必须后或等于 %{date}。"
         before: "必须在 %{date} 之前。"
         before_or_equal_to: "必须在早于或等于 %{date}"
@@ -977,7 +977,7 @@ zh-CN:
         not_an_integer: "不是一个整数。"
         not_an_iso_date: "不是有效日期。所需格式：YYYY-MM-DD。"
         not_same_project: "不属于同一个项目。"
-        datetime_must_be_in_future: "must be in the future."
+        datetime_must_be_in_future: "必须是将来的时间"
         odd: "必须是奇数。"
         regex_match_failed: "与正则表达式 %{expression}不匹配。"
         regex_invalid: "无法与关联的正则表达式进行验证。"
@@ -2201,6 +2201,7 @@ zh-CN:
   label_default: "默认"
   label_delete_user: "删除用户"
   label_delete_project: "删除项目"
+  label_delete: "删除"
   label_deleted: "已删除"
   label_deleted_custom_field: "（删除自定义字段）"
   label_deleted_custom_option: "（删除的选项）"
@@ -2525,6 +2526,7 @@ zh-CN:
   label_reporting: "报告"
   label_reporting_plural: "报告"
   label_repository: "存储库"
+  label_repository_remove: "移除存储库"
   label_repository_root: "存储库根"
   label_repository_plural: "存储库"
   label_required: "必填"
@@ -2622,6 +2624,7 @@ zh-CN:
   label_user_settings: "用户设置"
   label_users_settings: "用户设置"
   label_version_new: "新版本"
+  label_version_edit: "编辑版本"
   label_version_plural: "版本"
   label_version_sharing_descendants: "与子项目"
   label_version_sharing_hierarchy: "与项目层次结构"
@@ -2924,7 +2927,7 @@ zh-CN:
   notice_successful_connection: "成功连接。"
   notice_successful_create: "成功创建。"
   notice_successful_delete: "成功删除。"
-  notice_successful_cancel: "Successful cancellation."
+  notice_successful_cancel: "取消成功"
   notice_successful_update: "成功更新。"
   notice_successful_update_custom_fields_added_to_project: |
     更新成功。已激活类型的自定义字段在工作包表单上自动激活。<a href="%{url}" target="_blank">了解详情</a>。
@@ -3032,7 +3035,7 @@ zh-CN:
   permission_select_project_modules: "选择项目模块"
   permission_share_work_packages: "共享工作包"
   permission_manage_types: "选择类型"
-  permission_manage_own_reminders: "Create own reminders"
+  permission_manage_own_reminders: "创建个人提醒事项"
   permission_view_project: "查看项目"
   permission_view_changesets: "查看 OpenProject 存储库修订"
   permission_view_commit_author_statistics: "查看提交作者统计信息"

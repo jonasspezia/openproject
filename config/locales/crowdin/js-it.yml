@@ -1347,5 +1347,3 @@ it:
       waiting_subtitle:
         network_off: "C'è un problema di rete."
         network_on: "La rete è tornata. Stiamo provando."
-        timeout: >
-          OpenProject non è stato in grado di darti accesso alla cartella del progetto entro il tempo previsto. Prova di nuovo.<br><br> Se il problema persiste contatta il tuo amministratore OpenProject per controllare lo <a href="https://www.openproject.org/docs/system-admin-guide/files/external-file-storages/file-storage-troubleshooting/">stato della configurazione di archiviazione dei file</a>.

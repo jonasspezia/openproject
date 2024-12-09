@@ -27,7 +27,15 @@ See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
 
-<%= toolbar title: Bim::IfcModels::IfcModel.model_name.human %>
+<%=
+  render Primer::OpenProject::PageHeader.new do |header|
+    header.with_title { @ifc_model.title }
+    header.with_breadcrumbs([{ href: project_overview_path(@project.id), text: @project.name  },
+                             { href: defaults_bcf_project_ifc_models_path(@project.identifier), text: I18n.t(:"bcf.label_bcf") },
+                             { href: bcf_project_ifc_models_path(@project.identifier), text: I18n.t(:"ifc_models.label_ifc_models") },
+                             @ifc_model.title ])
+  end
+%>
 
 <%= labelled_tabular_form_for @ifc_model, url: bcf_project_ifc_model_path(@project, @ifc_model), method: 'PATCH' do |f| -%>
   <%= error_messages_for @ifc_model %>

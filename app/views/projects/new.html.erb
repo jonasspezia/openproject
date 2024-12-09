@@ -27,6 +27,10 @@ See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
 <% html_title t("label_project_new") %>
-<%= toolbar title: t(:label_project_new) %>
-
+<%=
+  render(Primer::OpenProject::PageHeader.new) do |header|
+    header.with_title { t(:label_project_new)}
+    header.with_breadcrumbs([{ href: home_path, text: organization_name}, t(:label_project_new)])
+  end
+%>
 <%= angular_component_tag "opce-new-project" %>

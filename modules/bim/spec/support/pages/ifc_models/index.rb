@@ -50,7 +50,7 @@ module Pages
 
       def add_model_allowed(allowed)
         if allowed
-          click_toolbar_button "IFC model"
+          click_toolbar_button "ifc-create-button"
 
           expect_correct_page_loaded '.button[type="submit"]'
           expect(page).to have_current_path new_bcf_project_ifc_model_path(project)
@@ -112,7 +112,7 @@ module Pages
       end
 
       def show_defaults(models = [])
-        click_toolbar_button "Show defaults"
+        click_toolbar_button "ifc-show-default-button"
 
         expect_correct_page_loaded '[data-test-selector="op-ifc-viewer--container"]'
 
@@ -135,10 +135,8 @@ module Pages
         end
       end
 
-      def click_toolbar_button(name)
-        within ".toolbar" do
-          page.find(".button", text: name).click
-        end
+      def click_toolbar_button(test_selector)
+        page.find_test_selector(test_selector).click
       end
 
       def click_table_icon(model_name, icon_class)

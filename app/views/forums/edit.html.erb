@@ -26,7 +26,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
-<%= toolbar title: Forum.model_name.human %>
+<%=
+  render Primer::OpenProject::PageHeader.new do |header|
+    header.with_title { @forum.name }
+    header.with_breadcrumbs( [{ href: project_overview_path(@project.id), text: @project.name  },
+                              { href: project_forums_path(@project.id), text: t(:label_forum_plural)  },
+                              @forum.name
+                             ]) end %>
 
 <%= labelled_tabular_form_for [@project, @forum] do |f| %>
   <%= render partial: 'form', locals: { f: f } %>

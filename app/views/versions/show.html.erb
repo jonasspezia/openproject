@@ -26,40 +26,59 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
-
-<%= toolbar title: @version.name do %>
-  <% if authorize_for(:versions, :edit) %>
-    <li class="toolbar-item">
-      <%= link_to(edit_version_path(@version), class: 'button') do %>
-        <%= op_icon('button--icon icon-edit') %>
-        <span class="button--text"><%= t(:button_edit) %></span>
-      <% end %>
-    </li>
-  <% end %>
-  <% if authorize_for(:versions, :destroy) %>
-    <li class="toolbar-item">
-      <%= link_to version_path(@version),
-                  method: :delete,
-                  data: { confirm: t(:text_are_you_sure) },
-                  class: "button -danger" do %>
-        <%= op_icon 'button--icon icon-delete' %>
-        <span class="button--text"><%= t(:button_delete) %></span>
-      <% end %>
-    </li>
-  <% end %>
-  <% if authorize_for(:wiki, :edit) && !(@version.wiki_page_title.blank? || @version.project.wiki.nil?) %>
-    <li class="toolbar-item hidden-for-tablet">
-      <%= link_to({ controller: '/wiki', action: 'edit',
-                    project_id: @version.project,
-                    id: @version.wiki_page_title },
-                  class: 'button') do %>
-        <%= op_icon('button--icon icon-edit') %>
-        <span class="button--text"><%= t(:button_edit_associated_wikipage, page_title: truncate(@version.wiki_page_title, length: 50, separator: ' ')) %></span>
-      <% end %>
-    </li>
-  <% end %>
-  <%= call_hook(:view_versions_show_contextual, { version: @version, project: @project }) %>
-<% end %>
+<%=
+  render Primer::OpenProject::PageHeader.new do |header|
+    header.with_title { @version.name }
+    header.with_breadcrumbs( [{ href: project_overview_path(@project.id), text: @project.name  },
+                              { href: project_settings_general_path(@project.id), text: I18n.t("label_project_settings") },
+                              { href: project_settings_versions_path(@project.id), text: I18n.t("label_version_plural") },
+                              @version.name
+                             ])
+    if authorize_for(:versions, :edit)
+      header.with_action_button(tag: :a,
+                                mobile_icon: :pencil,
+                                mobile_label: t(:button_edit),
+                                size: :medium,
+                                href: edit_version_path(@version),
+                                aria: { label: I18n.t(:button_edit) },
+                                data: { test_selector: "version-edit-button" },
+                                title: I18n.t(:button_edit)) do |button|
+        button.with_leading_visual_icon(icon: :pencil)
+        t(:button_edit)
+      end
+    end
+    if authorize_for(:versions, :destroy)
+      header.with_action_button(tag: :a,
+                                scheme: :danger,
+                                mobile_icon: :trash,
+                                mobile_label: t(:button_delete),
+                                size: :medium,
+                                href: version_path(@version),
+                                aria: { label: I18n.t(:button_delete) },
+                                data: {
+                                  confirm: I18n.t(:text_are_you_sure),
+                                  method: :delete,
+                                  test_selector: "version-delete-button"
+                                },
+                                title: I18n.t(:button_delete)) do |button|
+        button.with_leading_visual_icon(icon: :trash)
+        t(:button_delete)
+      end
+    end
+    if authorize_for(:wiki, :edit) && !(@version.wiki_page_title.blank? || @version.project.wiki.nil?)
+      header.with_action_button(tag: :a,
+                                mobile_icon: :pencil,
+                                mobile_label: t(:button_edit_associated_wikipage, page_title: truncate(@version.wiki_page_title, length: 50, separator: ' ')),
+                                size: :medium,
+                                href: url_for({ controller: '/wiki', action: 'edit', project_id: @version.project, id: @version.wiki_page_title }),
+                                aria: { label: t(:button_edit_associated_wikipage, page_title: truncate(@version.wiki_page_title, length: 50, separator: ' ')) },
+                                title: t(:button_edit_associated_wikipage, page_title: truncate(@version.wiki_page_title, length: 50, separator: ' '))) do |button|
+        button.with_leading_visual_icon(icon: :pencil)
+        t(:button_edit_associated_wikipage, page_title: truncate(@version.wiki_page_title, length: 50, separator: ' '))
+      end
+    end
+    call_hook(:view_versions_show_contextual, { version: @version, project: @project })
+  end %>
 
 <div class="widget-boxes -grid">
   <div class="widget-box -thin">

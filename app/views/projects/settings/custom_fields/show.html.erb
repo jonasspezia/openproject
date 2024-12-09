@@ -27,21 +27,29 @@ See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
 
-<%= toolbar title: t(:label_custom_field_plural) , html: { class: '-minimum-title' } do -%>
-  <%= render partial: 'projects/settings/form_toolbar', locals: { form_name: "modules-form" } %>
+<%=
+  render Primer::OpenProject::PageHeader.new do |header|
+    header.with_title { I18n.t(:label_custom_field_plural) }
+    header.with_breadcrumbs( [ { href: project_overview_path(@project.id), text: @project.name  },
+                               { href: project_settings_general_path(@project.id), text: I18n.t("label_project_settings") },
+                               I18n.t(:label_custom_field_plural)])
+  end
+%>
 
-  <% if current_user.admin? %>
-    <li class="toolbar-item -no-grow">
-      <%= link_to new_custom_field_path(type: 'WorkPackageCustomField'),
-                  { class: 'button -primary',
-                    aria: {label: t(:label_custom_field_new)},
-                    title: t(:label_custom_field_new)} do %>
-        <%= op_icon('button--icon icon-add') %>
-        <span class="button--text"><%= CustomField.model_name.human %></span>
-      <% end %>
-    </li>
-  <% end %>
-<% end %>
+<%=
+  if current_user.admin?
+    render(Primer::OpenProject::SubHeader.new) do |subheader|
+      subheader.with_action_button(scheme: :primary,
+                                   aria: { label: t(:label_custom_field_new)},
+                                   title: I18n.t(:label_custom_field_new),
+                                   tag: :a,
+                                   href: new_custom_field_path(type: 'WorkPackageCustomField')) do |button|
+        button.with_leading_visual_icon(icon: :plus)
+        CustomField.model_name.human
+      end
+    end
+  end
+%>
 
 <% if @wp_custom_fields.any? %>
   <%= labelled_tabular_form_for @project,

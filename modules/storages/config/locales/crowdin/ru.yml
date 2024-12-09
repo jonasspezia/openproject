@@ -124,7 +124,7 @@ ru:
               not_found: "%{current_path} не найден."
             set_folders_permissions:
               permission_not_set: не удалось установить разрешения на %{path}.
-          error: An unexpected error occurred. Please ensure that your Nextcloud instance is reachable and check OpenProject worker logs for more information
+          error: Произошла непредвиденная ошибка. Пожалуйста, убедитесь, что Nextcloud доступен и проверьте журналы работы OpenProject для дополнительной информации
           group_does_not_exist: "%{group} не существует. Проверьте конфигурацию Nextcloud."
           insufficient_privileges: OpenProject не имеет достаточных прав для добавления %{user} в %{group}. Проверьте настройки группы в Nextcloud.
           not_allowed: Nextcloud блокирует запрос.
@@ -145,7 +145,7 @@ ru:
               not_found: "%{current_path} не найден."
             set_folders_permissions:
               permission_not_set: не удалось установить разрешения на %{path}.
-          error: An unexpected error occurred. Please ensure that OneDrive/SharePoint is reachable and check OpenProject worker logs for more information
+          error: Произошла непредвиденная ошибка. Пожалуйста, убедитесь, что OneDrive/SharePoint доступен и проверьте журналы работы OpenProject для дополнительной информации
           not_allowed: OpenProject не был разрешен доступ к OneDrive. Пожалуйста, проверьте разрешения, установленные в приложении Azure.
           unauthorized: OpenProject не удалось синхронизировать с OneDrive. Пожалуйста, проверьте конфигурацию хранилища и приложения Azure.
           user_does_not_exist: "%{user} не существует в Nextcloud."
@@ -289,7 +289,6 @@ ru:
     label_creation_time: Время создания
     label_creator: Создатель
     label_delete_storage: Удалить хранилище
-    label_edit_storage: Редактировать хранилище
     label_edit_storage_access_management: Редактировать управление доступом к хранилищу
     label_edit_storage_automatically_managed_folders: Редактирование хранилища автоматически управляемых папок
     label_edit_storage_host: Изменить узел хранения
@@ -343,6 +342,9 @@ ru:
       success:
         subtitle: Вы будете перенаправлены
         title: Установка интеграции завершена
+      timeout:
+        link_text: статус файлового хранилища
+        subtitle: OpenProject не смог предоставить вам доступ к папке проекта в течение ожидаемого периода времени. Пожалуйста, попробуйте ещё раз.<br><br> Если проблема не исчезла, пожалуйста, обратитесь к администратору OpenProject, чтобы проверить %{storages_health_link}.
       waiting:
         subtitle: Одну минутку, пожалуйста, это может занять некоторое время...
         title: Мы настраиваем ваши права доступа к папке проекта.

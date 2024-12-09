@@ -50,15 +50,15 @@ zh-CN:
       meeting_section:
         title: "标题"
       recurring_meeting:
-        frequency: "Frequency"
-        interval: "Interval"
-        end_after: "End after"
-        iterations: "Occurrences"
+        frequency: "频率"
+        interval: "周期"
+        end_after: "结束于"
+        iterations: "事件"
     errors:
       messages:
         invalid_time_format: "不是有效时间。所需格式：HH:MM"
     models:
-      recurring_meeting: "Recurring meeting"
+      recurring_meeting: "定期会议"
       structured_meeting: "会议(动态)"
       meeting_agenda_item: "议程项目"
       meeting_agenda: "议程"
@@ -94,7 +94,7 @@ zh-CN:
   label_meeting_plural: "会议"
   label_meeting_new: "新增会议"
   label_meeting_new_dynamic: "新动态会议"
-  label_meeting_new_recurring: "New recurring meeting"
+  label_meeting_new_recurring: "新的定期会议"
   label_meeting_create: "创建会议"
   label_meeting_copy: "复制会议"
   label_meeting_edit: "编辑会议"
@@ -108,47 +108,47 @@ zh-CN:
   label_meeting_date_time: "日期/时间"
   label_meeting_date_and_time: "日期和时间"
   label_meeting_diff: "比较"
-  label_recurring_meeting: "Recurring meeting"
-  label_recurring_meeting_part_of: "Part of a meeting series"
-  label_recurring_meeting_new: "New recurring meeting"
-  label_recurring_meeting_plural: "Recurring meetings"
-  label_template: "Template"
-  label_recurring_meeting_view: "View meeting series"
-  label_recurring_meeting_create: "Create from template"
-  label_recurring_meeting_copy: "Copy as one-off"
-  label_recurring_meeting_cancel: "Cancel this occurrence"
-  label_recurring_meeting_delete: "Delete occurrence"
+  label_recurring_meeting: "定期会议"
+  label_recurring_meeting_part_of: "会议系列的一部分"
+  label_recurring_meeting_new: "新的定期会议"
+  label_recurring_meeting_plural: "定期会议"
+  label_template: "模板"
+  label_recurring_meeting_view: "查看会议系列"
+  label_recurring_meeting_create: "使用模板创建"
+  label_recurring_meeting_copy: "一次性复制"
+  label_recurring_meeting_cancel: "取消此事件"
+  label_recurring_meeting_delete: "删除事件"
   label_recurring_meeting_delete_confirmation: >
-    This meeting is part of a series called %{name}. This will only delete this particular occurrence and not the entire series. Do you want to continue?
+    本次会议是名为 %{name} 的会议系列的一部分。只会删除本次会议，而不会删除整个系列。要继续吗？
   label_recurring_occurrence_delete_confirmation: >
-    Any meeting information not in the template will be lost. Do you want to continue?
-  label_recurring_meeting_restore: "Restore this occurrence"
-  label_recurring_meeting_series_edit: "Edit meeting series"
-  label_recurring_meeting_series_delete: "Delete meeting series"
-  label_my_meetings: "My meetings"
-  label_all_meetings: "All meetings"
+    任何不在模板中的会议信息都将丢失。要继续吗？
+  label_recurring_meeting_restore: "恢复此事件"
+  label_recurring_meeting_series_edit: "编辑会议系列"
+  label_recurring_meeting_series_delete: "删除会议系列"
+  label_my_meetings: "我的会议"
+  label_all_meetings: "所有会议"
   label_upcoming_meetings: "即将进行的会议"
   label_past_meetings: "过去的会议"
   label_upcoming_meetings_short: "即将到来"
   label_past_meetings_short: "过往"
   label_involvement: "参与"
-  label_invitations: "Invitations"
+  label_invitations: "邀请函"
   label_past_invitations: "过去的邀请"
-  label_attended: "Attended"
-  label_created_by_me: "Created by me"
+  label_attended: "已出席"
+  label_created_by_me: "我创建的"
   label_notify: "发送待审阅"
   label_icalendar: "发送 iCalendar"
   label_icalendar_download: "下载 iCalendar 事件"
-  label_view_meeting_series: "View meeting series"
-  label_meeting_series: "Meeting series"
+  label_view_meeting_series: "查看会议系列"
+  label_meeting_series: "会议系列"
   label_version: "版本"
   label_time_zone: "时区"
   label_start_date: "开始日期"
   meeting:
     participants:
-      template: "These participants will be invited automatically to all future meetings as they are created."
+      template: "这些与会者将被自动邀请参加之后创建的所有会议。"
     attachments:
-      template: "These attached files will be included in all future meetings in the series."
+      template: "这些文件将被自动添加到之后创建的所有系列会议中。"
       text: "所有与会者都可以查看附件。您还可以将这些文件拖放到议程项目注释中。"
     copy:
       title: "复制会议： %{title}"
@@ -177,7 +177,7 @@ zh-CN:
       classic: "经典"
       classic_text: "将您的会议以可格式化的文本议程和会议纪要的形式进行组织。"
       structured: "动态"
-      recurring: "Recurring"
+      recurring: "定期的"
       structured_text: "将您的会议组织为议程项目列表，并可选地将其与工作包链接。"
       structured_text_copy: "目前复制会议不会复制相关会议的议程项目，只会复制会议的详细信息。"
     copied: "从会议 #%{id} 复制"
@@ -189,30 +189,40 @@ zh-CN:
   recurring_meeting:
     interval:
       instructions: >
-        Enter the number of days or weeks between each occurrence.
+        输入每次事件之间的天数或周数。
     occurrence:
-      infoline: "This meeting is part of a recurring meeting series."
+      infoline: "本次会议是定期会议系列的一部分。"
+      error_no_next: "此会议没有下一个发生时间。"
+      first_already_exists: "此会议系列的第一次发生已经被实例化。"
+      first_created: >
+        第一次会议已成功从模板创建。所有未来的会议将会在上一次发生的时间自动创建。
     template:
-      label_view_template: "View template"
-      label_edit_template: "Edit template"
+      button_finalize: "完成模板"
+      blank_title: "您的会议系列模板为空"
+      description: >
+        此模板将在系列中创建新会议时使用。您可以在此模板中添加议程项目、参与者和附件。
+      blankslate_finalize: >
+        准备好模板后，单击上方的 "%{button_title}"按钮完成设置并安排系列会议的第一次会议。
+      label_view_template: "查看模板"
+      label_edit_template: "编辑模板"
       banner_html: >
-        You are currently editing a template of a meeting series: %{link}. Every new instance of a meeting in this series will use this template. Changes will not affect past or already created meetings.
+        您正在编辑会议系列的模板： %{link}。此系列的每个新建会议都将使用此模板。本更改不会影响过去或已创建的会议。
     frequency:
-      every_weekday: "Every %{day_of_the_week}"
-      daily: "Daily"
-      working_days: "Working Days"
-      weekly: "Weekly"
+      every_weekday: "每个 %{day_of_the_week}"
+      daily: "每日"
+      working_days: "工作日"
+      weekly: "每周"
     end_after:
-      specific_date: "A specific date"
-      iterations: "A number of occurrences"
-    starts: "Starts"
+      specific_date: "特定日期"
+      iterations: "一些事件"
+    starts: "开始"
     in_words:
-      daily_interval: "Every %{interval} day"
-      working_days: "Every working day"
-      working_days_interval: "Every %{interval} working day"
-      weekly: "Weekly on %{weekday}"
-      weekly_interval: "Every %{interval} week on %{weekday}"
-      full: "%{base} at %{time}, ends on %{end_date}"
+      daily_interval: "每 %{interval} 天"
+      working_days: "每个工作日"
+      working_days_interval: "每 %{interval} 个工作日"
+      weekly: "每周 %{weekday}"
+      weekly_interval: "每 %{interval} 周的星期 %{weekday}"
+      full: "%{base} 在 %{time}，在 %{end_date} 结束"
   notice_successful_notification: "通知发送成功"
   notice_timezone_missing: 没有设定时区，预设时区为 %{zone}。要选择您的时区，请单击此处。
   notice_meeting_updated: "此页面已被其他人更新。重新加载以查看更改。"
@@ -271,10 +281,10 @@ zh-CN:
   label_meeting_state_open_html: "<i>开放</i>"
   label_meeting_state_closed: "已关闭"
   label_meeting_state_closed_html: "<i>关闭</i>"
-  label_meeting_state_agenda_created: "Agenda created"
-  label_meeting_state_scheduled: "Scheduled"
-  label_meeting_state_cancelled: "Cancelled"
-  label_meeting_state_skipped: "Skipped"
+  label_meeting_state_agenda_created: "议程已创建"
+  label_meeting_state_scheduled: "已加入日程"
+  label_meeting_state_cancelled: "已取消"
+  label_meeting_state_skipped: "已跳过"
   label_meeting_reopen_action: "重新开放会议"
   label_meeting_close_action: "关闭会议"
   text_meeting_open_description: "本次会议已开放。您可以添加/移除议程项目并随时编辑它们。会议结束后，关闭它以锁定它。"

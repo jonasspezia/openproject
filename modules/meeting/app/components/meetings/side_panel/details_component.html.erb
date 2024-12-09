@@ -1,7 +1,11 @@
 <%=
   component_wrapper do
     render(Primer::OpenProject::SidePanel::Section.new) do |section|
-      section.with_title { t(:label_meeting_details) }
+      if @meeting.template?
+        section.with_title { t(:label_meeting_series_details) }
+      else
+        section.with_title { t(:label_meeting_details) }
+      end
 
       if @meeting.editable?
         href =

@@ -28,7 +28,15 @@ See COPYRIGHT and LICENSE files for more details.
 ++#%>
 
 <% html_title "#{t(:button_delete)} #{t(:label_budget_id, id: @budget.id)}: #{@budget.subject}" %>
-<%= toolbar title: "#{t(:button_delete)} #{t(:label_budget_id, id: @budget.id)}: #{@budget.subject}" %>
+
+<%=
+  render Primer::OpenProject::PageHeader.new do |header|
+    header.with_title { "#{t(:button_delete)} #{@budget.subject}" }
+    header.with_breadcrumbs([{href: project_overview_path(@project.identifier), text: @project.name},
+                             {href: projects_budgets_path(@project.identifier), text: I18n.t(:label_budget_plural)},
+                             "#{t(:button_delete)} #{@budget.subject}"])
+  end
+%>
 
 <%= styled_form_tag(budget_path(@budget), method: :delete) do %>
   <section class="form--section">

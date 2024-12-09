@@ -289,7 +289,6 @@ af:
     label_creation_time: Creation time
     label_creator: Creator
     label_delete_storage: Delete storage
-    label_edit_storage: Edit storage
     label_edit_storage_access_management: Edit storage access management
     label_edit_storage_automatically_managed_folders: Edit storage automatically managed folders
     label_edit_storage_host: Edit storage host
@@ -343,6 +342,9 @@ af:
       success:
         subtitle: You are being redirected
         title: Integration setup completed
+      timeout:
+        link_text: health status of the file storage setup
+        subtitle: OpenProject could not provide you access to the project folder within the expected period of time. Please, try once again.<br><br> If that problem persists please contact your OpenProject administrator to check the %{storages_health_link}.
       waiting:
         subtitle: One moment please, this might take some time...
         title: We are setting up your permissions on the project folder.

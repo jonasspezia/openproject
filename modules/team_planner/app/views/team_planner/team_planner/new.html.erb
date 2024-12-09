@@ -28,7 +28,15 @@ See COPYRIGHT and LICENSE files for more details.
 ++#%>
 
 <% html_title t('team_planner.label_new_team_planner') %>
-<%= toolbar title: t('team_planner.label_new_team_planner') %>
+<%=
+  render(Primer::OpenProject::PageHeader.new) do |header|
+    header.with_title { t('team_planner.label_new_team_planner') }
+    header.with_breadcrumbs([*([ href: home_path, text: organization_name ] unless @project),
+                             *([ href: project_overview_path(@project.id), text: @project.name ] if @project),
+                             t('team_planner.label_new_team_planner')])
+  end
+%>
+
 <%= labelled_tabular_form_for @view, url: { controller: '/team_planner/team_planner', action: 'create' }, :html => {:id => 'team-planner-form'} do |f| -%>
   <%= render :partial => 'form', :locals => {:f => f} %>
   <%= styled_button_tag t(:button_create), class: '-primary' %>

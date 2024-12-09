@@ -3,25 +3,78 @@ title: OpenProject 15.1.0
 sidebar_navigation:
     title: 15.1.0
 release_version: 15.1.0
-release_date: 2024-11-28
+release_date: 2024-12-11
 ---
 
 # OpenProject 15.1.0
 
-Release date: 2024-11-28
+Release date: 2024-12-11
 
-We released OpenProject [OpenProject 15.1.0](https://community.openproject.org/versions/2122).
-The release contains several bug fixes and we recommend updating to the newest version.
-In these Release Notes, we will give an overview of important feature changes.
-At the end, you will find a complete list of all changes and bug fixes.
+We released [OpenProject 15.1.0](https://community.openproject.org/versions/2122). The release contains several bug fixes, and we recommend updating to the newest version.
+In these Release Notes, we will give an overview of important feature changes and technical updates. At the end, you will find a complete list of all changes and bug fixes.
 
 ## Important feature changes
 
-<!-- Inform about the major features in this section -->
+### Custom fields of type hierarchy (Enterprise add-on)
 
-## Important updates and breaking changes
+Enterprise customers can now use a new type of custom field that allows **multi-level selections**. This makes it easier for users to organize and navigate complex data in structured, multi-level formats within work packages. The new custom fields of the hierarchy type can be added to work packages and then structured into several lower-level values.
 
-<!-- Remove this section if empty, add to it in pull requests linking to tickets and provide information -->
+Each custom field of type hierarchy can be given a short name (e.g. B for Berlin). Here's an example of how custom fields of the hierarchy type look like, using the example of a detailed assignment of workspaces:
+
+![Example screenshot of custom fields of type hiearchy, displaying different cities as main offices](openproject-15-1-custom-field-hierarchy.jpg)
+
+[Read all about custom fields in our system admin guide](../../system-admin-guide/custom-fields/).
+
+### Redesign of the Relations tab in work packages
+
+The Relations tab in work packages has been completely redesigned using Primer design system, including a **new dropdown menu that allows you to directly choose the type of relation**, e.g. if the related work package is a successor and necessarily needs to start after the selected one finishes. 
+
+Additionally, you can now add a description to add further information about the relation. Please note that the description will be displayed on both work packages, below the related other work package.
+
+> [!NOTE]
+> Important information: With this redesign, **you will no longer be able to create new work packages directly on the Relations tab**. Please tell us if you were using this feature a lot. If it will be missed by many users, we will find a way to bring it back.
+
+![Screenshot showing the new Relations tab in a work package](openproject-15-1-relations.png)
+
+[Read all about work package relations and hierarchies in our user guide](../../user-guide/work-packages/work-package-relations-hierarchies/).
+
+### Redesign of the Meetings index page
+
+The index page of the Meetings module has been redesigned with Primer as well, making it easier to read and have a more modern look. You see your list of meetings in some kind of table view, with the columns being: Title, Date and time, Duration, and Location.
+
+The + Meeting button in the top right corner now offers a dropdown menu where you can directly choose whether you want to add a dynamic or classic meeting.
+
+Here's an example screenshot of the redesigned Meetings index page:
+
+![Example screenshot of the redesigned Meetings index page](openproject-15-1-meetings.png)
+
+[Learn what is possible with OpenProject's Dynamic Meetings to improve collaboration with your colleagues](../../user-guide/meetings/dynamic-meetings/).
+
+### Manual page breaks in PDF work package exports
+
+With our work package export feature, people can generate good-looking PDFs. Sometimes, however, the page break comes at an inconvenient place. With version 15.1, users can now force a manual page break in the work package description. This ensures, for example, that a signature can always be inserted on the correct page.
+
+![Example of a work package description with an employee conctract and inserted page breaks](openproject-15-1-page-break-contract-highlighted.png)
+
+[Learn how to export work packages and what options you have](../../user-guide/work-packages/exporting/).
+
+### Zen mode for project lists
+
+Zen mode allows users to focus on a certain page, as all other menu items and elements are hidden, and the page is displayed in full screen. OpenProject already offers zen mode for other modules like Work packages, Boards, Gantt charts or Calendar – and with version 15.1 also for project lists.
+
+Here is how zen mode for project lists looks like:
+
+![Example screenshot of a project list in zen mode](openproject-15-1-zen-mode-highlighted.png)
+
+[Read all about OpenProject's project lists in our user guide](../../user-guide/projects/project-lists/).
+
+## Important technical updates
+
+### Possibility to lock seeded admin users, e.g. when using LDAP
+
+Administrators of automated deployments can now choose to skip the automatically integrated creation of an admin user. This is useful if you have set up an LDAP or SSO integration – such as those used for openDesk environments – and you want to prevent the admin user from logging in. Administrators no longer have to manually disable this automatically created admin user and thus run the risk of forgetting to do so, which would pose a security risk.
+
+Read more about [seeding through environment for OpenProject configuration in our Installation & operations guide](../../installation-and-operations/configuration/#seeding-through-environment)
 
 <!--more-->
 
@@ -68,12 +121,14 @@ At the end, you will find a complete list of all changes and bug fixes.
 <!-- Warning: Anything above this line will be automatically removed by the release script -->
 
 ## Contributions
-A very special thank you goes to our sponsors for this release.
-Also a big thanks to our Community members for reporting bugs and helping us identify and provide fixes.
-Special thanks for reporting and finding bugs go to Frank Long, Claudio Pagnani, Ivan Kuchin, samuel law, Gerrit B..
 
-Last but not least, we are very grateful for our very engaged translation contributors on Crowdin, who translated quite a few OpenProject strings!
-Would you like to help out with translations yourself?
-Then take a look at our translation guide and find out exactly how you can contribute.
-It is very much appreciated!
+A very special thank you goes to our sponsors of this release: Deutsche Bahn for sponsoring custom fields of type hierarchy, and City of Cologne for sponsoring custom fields of type hierarchy as well as zen mode for project lists.
 
+Also, a big thanks to our Community members for reporting bugs and helping us identify and provide fixes. Special thanks for reporting and finding bugs go to Bill Bai, Sam Yelman, Knight Chang, Gábor Alexovics, Gregor Buergisser, Andrey Dermeyko, Various Interactive, Clayton Belcher, Александр Татаринцев, and Keno Krewer.
+
+Last but not least, we are very grateful for our very engaged translation contributors on Crowdin, who translated quite a few OpenProject strings! This release we would like to highlight
+- [José Helbert Pina](https://crowdin.com/profile/GZTranslations), for a great number of translations into Portuguese.
+- [Alexander Aleschenko](https://crowdin.com/profile/top4ek), for a great number of translations into Russian.
+- [Adam Siemienski](https://crowdin.com/profile/siemienas), for a great number of translations into Polish.
+
+Would you like to help out with translations yourself? Then take a look at our [translation guide](../../contributions-guide/translate-openproject/) and find out exactly how you can contribute. It is very much appreciated!

@@ -48,7 +48,7 @@ RSpec.describe "News creation and commenting", :js, :with_cuprite do
   it "allows creating new and commenting it all of which will result in notifications and mails" do
     visit project_news_index_path(project)
 
-    find('[data-test-selector="add-news-button"]', text: "News").click
+    page.find_test_selector("add-news-button").click
 
     # Create the news
     fill_in "Title", with: "My new news"

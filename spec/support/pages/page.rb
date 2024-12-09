@@ -46,9 +46,9 @@ module Pages
     def visit!
       raise "No path defined" unless path
 
-      visit path
+      visit(path)
 
-      self
+      wait_for_reload
     end
 
     def reload!

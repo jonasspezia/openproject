@@ -28,7 +28,17 @@ See COPYRIGHT and LICENSE files for more details.
 ++#%>
 
 <% html_title @sprint.name %>
-<%= toolbar title: @sprint.name do %>
+<%=
+  render Primer::OpenProject::PageHeader.new do |header|
+    header.with_title { @sprint.name }
+    header.with_breadcrumbs([{ href: project_overview_path(@project.id), text: @project.name },
+                             { href: backlogs_project_backlogs_path(@project), text: t(:label_backlogs) },
+                             @sprint.name])
+  end
+%>
+<%# we decided to keep current toolbar design for taskboard %>
+<div class="toolbar-container">
+  <div class="toolbar toolbar_empty-title">
   <li class="toolbar-item toolbar-input-group" id="col_width">
     <div>
       <label for="col_width_input"><%= t('backlogs.column_width') %></label>
@@ -40,10 +50,8 @@ See COPYRIGHT and LICENSE files for more details.
       <%= show_burndown_link(@project, @sprint) %>
     </li>
   <% end %>
-<% end %>
-
-<% breadcrumb_paths(link_to(t(:label_backlogs), backlogs_project_backlogs_path(@project)), link_to(@sprint.name, backlogs_project_backlogs_path(@sprint))) %>
-
+  </div>
+</div>
 <div id='rb'>
   <div id="taskboard">
     <table id="board_header" cellspacing="0">

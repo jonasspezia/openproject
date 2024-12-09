@@ -124,7 +124,7 @@ de:
               not_found: "%{current_path} wurde nicht gefunden."
             set_folders_permissions:
               permission_not_set: konnte keine Berechtigungen auf %{path} setzen.
-          error: An unexpected error occurred. Please ensure that your Nextcloud instance is reachable and check OpenProject worker logs for more information
+          error: Ein unerwarteter Fehler ist aufgetreten. Bitte stellen Sie sicher, dass Ihre Nextcloud-Instanz erreichbar ist und überprüfen Sie die Protokolle von OpenProject Worker für weitere Informationen
           group_does_not_exist: "%{group} existiert nicht. Überprüfen Sie Ihre Nextcloud Instanz-Konfiguration."
           insufficient_privileges: OpenProject hat nicht genügend Rechte, um %{user} zu %{group} hinzuzufügen. Überprüfen Sie Ihre Gruppeneinstellungen in Nextcloud.
           not_allowed: Nextcloud blockiert die Anfrage.
@@ -145,7 +145,7 @@ de:
               not_found: "%{current_path} wurde nicht gefunden."
             set_folders_permissions:
               permission_not_set: konnte keine Berechtigungen auf %{path} setzen.
-          error: An unexpected error occurred. Please ensure that OneDrive/SharePoint is reachable and check OpenProject worker logs for more information
+          error: Ein unerwarteter Fehler ist aufgetreten. Bitte stellen Sie sicher, dass OneDrive/SharePoint erreichbar ist und überprüfen Sie die Protokolle von OpenProject Worker für weitere Informationen
           not_allowed: OpenProject konnte nicht auf dein OneDrive-Laufwerk zugreifen. Bitte überprüfe die Berechtigungen der Azure Anwendung.
           unauthorized: OpenProject konnte nicht mit OneDrive synchronisieren. Bitte überprüfen Sie Ihren Speicher und die Konfiguration der Azure Anwendung.
           user_does_not_exist: "%{user} existiert nicht in Nextcloud."
@@ -289,7 +289,6 @@ de:
     label_creation_time: Erstellungszeit
     label_creator: Ersteller
     label_delete_storage: Dateispeicher löschen
-    label_edit_storage: Dateispeicher bearbeiten
     label_edit_storage_access_management: Speicherzugriffsverwaltung bearbeiten
     label_edit_storage_automatically_managed_folders: Automatisch verwaltete Projektordner des Dateispeichers bearbeiten
     label_edit_storage_host: Dateispeicher-Host bearbeiten
@@ -343,6 +342,9 @@ de:
       success:
         subtitle: Sie werden weitergeleitet
         title: Einrichtung der Integration abgeschlossen
+      timeout:
+        link_text: health status of the file storage setup
+        subtitle: OpenProject could not provide you access to the project folder within the expected period of time. Please, try once again.<br><br> If that problem persists please contact your OpenProject administrator to check the %{storages_health_link}.
       waiting:
         subtitle: Einen Moment bitte, dies könnte etwas dauern...
         title: Wir richten Ihre Berechtigungen für den Projektordner ein.

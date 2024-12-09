@@ -143,6 +143,11 @@ en:
     Any meeting information not in the template will be lost.
     Do you want to continue?
   label_recurring_meeting_restore: "Restore this occurrence"
+  label_recurring_meeting_more: "There are %{count} more scheduled meetings (%{schedule})."
+  label_recurring_meeting_more_singular: "There is %{count} more scheduled meeting (%{schedule})."
+  label_recurring_meeting_more_past: "There are %{count} more past meetings."
+  label_recurring_meeting_more_past_singular: "There is %{count} more past meeting."
+  label_recurring_meeting_show_more: "Show more"
   label_recurring_meeting_series_edit: "Edit meeting series"
   label_recurring_meeting_series_delete: "Delete meeting series"
   label_my_meetings: "My meetings"
@@ -216,17 +221,30 @@ en:
         Enter the number of days or weeks between each occurrence.
     occurrence:
       infoline: "This meeting is part of a recurring meeting series."
+      error_no_next: "There is no next occurrence for this meeting."
+      first_already_exists: "The first occurrence of this meeting series is already instantiated."
+      first_created: > 
+        The first meeting has been successfuly created from template.
+        All future meetings will be created automatically at the time of the previous occurrence.
     template:
+      button_finalize: "Finish template"
+      blank_title: "Your meeting series template is empty"
+      description: >
+        This template will be used whenever new meetings in the series get created.
+        You can add agenda items, participants, and attachments to this template.
+      blankslate_finalize: >
+        When you're done preparing this template, 
+        click the '%{button_title}' button above to finish the setup and schedule the first meeting of the series.
       label_view_template: "View template"
       label_edit_template: "Edit template"
       banner_html: >
         You are currently editing a template of a meeting series: %{link}.
-        Every new instance of a meeting in this series will use this template.
+        Every new occurrence of a meeting in the series will use this template.
         Changes will not affect past or already created meetings.
     frequency:
       every_weekday: "Every %{day_of_the_week}"
       daily: "Daily"
-      working_days: "Working Days"
+      working_days: "Every working day"
       weekly: "Weekly"
     end_after:
       specific_date: "A specific date"
@@ -301,6 +319,7 @@ en:
 
   label_initial_meeting_details: "Meeting"
   label_meeting_details: "Meeting details"
+  label_meeting_series_details: "Meeting series details"
   label_meeting_details_edit: "Edit meeting details"
 
   label_meeting_state: "Meeting status"

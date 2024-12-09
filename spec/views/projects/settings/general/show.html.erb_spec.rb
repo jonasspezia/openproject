@@ -29,6 +29,7 @@
 require "spec_helper"
 
 RSpec.describe "projects/settings/general/show" do
+  include TestSelectorFinders
   let(:project) { build_stubbed(:project) }
 
   describe "project copy permission" do
@@ -44,7 +45,7 @@ RSpec.describe "projects/settings/general/show" do
       end
 
       it "the copy link should be visible" do
-        expect(rendered).to have_css "a.copy"
+        expect(rendered).to have_test_selector "project-settings--copy"
       end
     end
 
@@ -72,8 +73,8 @@ RSpec.describe "projects/settings/general/show" do
     end
 
     it "show delete and archive buttons" do
-      expect(rendered).to have_css("li.toolbar-item span.button--text", text: "Archive")
-      expect(rendered).to have_css("li.toolbar-item span.button--text", text: "Delete")
+      expect(rendered).to have_test_selector "project-settings--archive"
+      expect(rendered).to have_test_selector "project-settings--delete"
     end
   end
 

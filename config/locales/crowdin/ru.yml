@@ -414,22 +414,22 @@ ru:
       will_remove_the_groups_role: "Это удалит роль группы из этого проекта."
       however_work_packages_shared_with_user_html:
         one: "Однако, %{shared_work_packages_link} также был предоставлен этому пользователю."
-        few: "However, %{shared_work_packages_link} have also been shared with this user."
-        many: "However, %{shared_work_packages_link} have also been shared with this user."
+        few: "Однако, %{shared_work_packages_link} так же были предоставлены этому пользователю."
+        many: "Однако, %{shared_work_packages_link} так же были предоставлены этому пользователю."
         other: "Однако, %{shared_work_packages_link} также был предоставлен этому пользователю."
       however_work_packages_shared_with_group_html:
         one: "Однако, %{shared_work_packages_link} также был предоставлен этой группе."
-        few: "However, %{shared_work_packages_link} have also been shared with this group."
-        many: "However, %{shared_work_packages_link} have also been shared with this group."
-        other: "Однако, %{shared_work_packages_link} также был предоставлен этой группе."
+        few: "Однако, %{shared_work_packages_link} так же были предоставлены этой группе."
+        many: "Однако, %{shared_work_packages_link} так же были предоставлены этой группе."
+        other: "Однако, %{shared_work_packages_link} так же был предоставлен этой группе."
       remove_work_packages_shared_with_user_too: "Пользователь, который был удален как участник по-прежнему может получить доступ к общим пакетам работ. Вы хотели бы также удалить эти доступы?"
       remove_work_packages_shared_with_group_too: "Группа, которая была удалена как участник, все еще может получить доступ к общим пакетам работ. Вы хотели бы также удалить эти доступы?"
       will_not_affect_inherited_shares: "(Это не повлияет на рабочие пакеты, которыми они делятся со своей группой)."
       can_remove_direct_but_not_shared_roles: "Вы можете удалить этого пользователя как непосредственного участника проекта, но группа, в которой он состоит, также является участником этого проекта, поэтому он будет продолжать оставаться участником через группу."
       also_work_packages_shared_with_user_html:
         one: "Также, %{shared_work_packages_link} был предоставлен этому пользователю."
-        few: "Also, %{shared_work_packages_link} have been shared with this user."
-        many: "Also, %{shared_work_packages_link} have been shared with this user."
+        few: "Также, %{shared_work_packages_link} были предоставлены этому пользователю."
+        many: "Также, %{shared_work_packages_link} были предоставлены этому пользователю."
         other: "Также, %{shared_work_packages_link} был предоставлен этому пользователю."
       remove_project_membership_or_work_package_shares_too: "Вы хотите удалить только пользователя как непосредственного участника (и сохранить общие ресурсы) или также удалить общие ресурсы рабочего пакета?"
       will_remove_all_user_access_priveleges: "Удаление этого участника удалит все права доступа пользователя к проекту. Пользователь по-прежнему будет существовать как часть системы."
@@ -441,18 +441,18 @@ ru:
       title: "Отменить общий доступ к пакету работ"
       shared_with_this_user_html:
         one: "%{all_shared_work_packages_link} был предоставлен этому пользователю."
-        few: "%{all_shared_work_packages_link} have been shared with this user."
-        many: "%{all_shared_work_packages_link} have been shared with this user."
-        other: "%{all_shared_work_packages_link} был предоставлен этому пользователю."
+        few: "%{all_shared_work_packages_link} были предоставлены этому пользователю."
+        many: "%{all_shared_work_packages_link} были предоставлены этому пользователю."
+        other: "%{all_shared_work_packages_link} были предоставлены этому пользователю."
       shared_with_this_group_html:
         one: "%{all_shared_work_packages_link} был предоставлен этой группе."
-        few: "%{all_shared_work_packages_link} have been shared with this group."
-        many: "%{all_shared_work_packages_link} have been shared with this group."
-        other: "%{all_shared_work_packages_link} был предоставлен этой группе."
+        few: "%{all_shared_work_packages_link} были предоставлены этой группе."
+        many: "%{all_shared_work_packages_link} были предоставлены этой группе."
+        other: "%{all_shared_work_packages_link} были предоставлены этой группе."
       shared_with_permission_html:
         one: "Только %{shared_work_packages_link} был предоставлен общий доступ с правами %{shared_role_name}."
-        few: "Only %{shared_work_packages_link} have been shared with %{shared_role_name} permissions."
-        many: "Only %{shared_work_packages_link} have been shared with %{shared_role_name} permissions."
+        few: "Только %{shared_work_packages_link} был предоставлен общий доступ с правами %{shared_role_name}."
+        many: "Только %{shared_work_packages_link} был предоставлен общий доступ с правами %{shared_role_name}."
         other: "Только %{shared_work_packages_link} был предоставлен общий доступ с правами %{shared_role_name}."
       revoke_all_or_with_role: "Хотите ли Вы отменить доступ ко всем общим пакетам работ или только к тем, которые имеют разрешения %{shared_role_name}?"
       will_not_affect_inherited_shares: "(Это не повлияет на пакеты работ, разделенные с их группой)."
@@ -508,12 +508,12 @@ ru:
     groups:
       member_in_these_groups: "Этот пользователь в настоящее время является членом следующих групп:"
       no_results_title_text: Этот пользователь в настоящее время не является членом какой-либо группы.
-      summary_with_more: Member of %{names} and %{count_link}.
-      more: "%{count} more"
-      summary: Member of %{names}.
+      summary_with_more: Член %{names} и %{count_link}.
+      more: "ещё %{count}"
+      summary: Член %{names}.
     memberships:
       no_results_title_text: Этот пользователь в данный момент в проекте не участвует.
-    open_profile: "Open profile"
+    open_profile: "Открыть профиль"
   page:
     text: "Текст"
   placeholder_users:
@@ -542,8 +542,8 @@ ru:
     and_user: "и %{user}"
     and_others:
       one: и еще 1
-      few: and %{count} others
-      many: and %{count} others
+      few: и еще %{count}
+      many: и еще %{count}
       other: и еще %{count}
     reaction_by: "%{reaction} от"
   reportings:
@@ -958,7 +958,7 @@ ru:
       messages:
         accepted: "нужно подтвердить."
         after: "должно быть после %{date}."
-        after_today: "must be in the future."
+        after_today: "должно быть в будущем."
         after_or_equal_to: "должна быть после или ровно %{date}."
         before: "должны быть до %{date}."
         before_or_equal_to: "должны быть до или ровно %{date}."
@@ -1005,7 +1005,7 @@ ru:
         not_an_integer: "не является целым числом."
         not_an_iso_date: "недопустимая дата. Требуемый формат: гггг-мм-дд."
         not_same_project: "не принадлежит тому же проекту."
-        datetime_must_be_in_future: "must be in the future."
+        datetime_must_be_in_future: "должно быть в будущем."
         odd: "должно быть нечетным."
         regex_match_failed: "не соответствует регулярному выражению %{expression}."
         regex_invalid: "не может быть проверен связанным регулярным выражением."
@@ -1365,8 +1365,8 @@ ru:
       status: "Статус пакета работ"
       token/api:
         one: Токен доступа
-        few: Access tokens
-        many: Access tokens
+        few: Токены доступа
+        many: Токены доступа
         other: Токены доступа
       type: "Тип"
       user: "Пользователь"
@@ -2313,6 +2313,7 @@ ru:
   label_default: "по умолчанию"
   label_delete_user: "Удалить пользователя"
   label_delete_project: "Удалить проект"
+  label_delete: "Delete"
   label_deleted: "﻿Удалено"
   label_deleted_custom_field: "(удалено настраиваемое поле)"
   label_deleted_custom_option: "(удалённая опция)"
@@ -2637,6 +2638,7 @@ ru:
   label_reporting: "Отчетность"
   label_reporting_plural: "Отчетности"
   label_repository: "Репозиторий"
+  label_repository_remove: "Remove repository"
   label_repository_root: "Корень хранилища"
   label_repository_plural: "Репозитории"
   label_required: "требуется"
@@ -2734,6 +2736,7 @@ ru:
   label_user_settings: "Настройки пользователя"
   label_users_settings: "Настройки пользователей"
   label_version_new: "Новый этап"
+  label_version_edit: "Edit version"
   label_version_plural: "Этапы"
   label_version_sharing_descendants: "С подпроэктами"
   label_version_sharing_hierarchy: "С иерархией проектов"
@@ -3040,7 +3043,7 @@ ru:
   notice_successful_connection: "Подключение выполнено."
   notice_successful_create: "Создание выполнено."
   notice_successful_delete: "Удаление выполнено."
-  notice_successful_cancel: "Successful cancellation."
+  notice_successful_cancel: "Отмена прошла успешно."
   notice_successful_update: "Обновление выполнено."
   notice_successful_update_custom_fields_added_to_project: |
     Успешное обновление. Пользовательские поля активированных типов автоматически активируются
@@ -3152,7 +3155,7 @@ ru:
   permission_select_project_modules: "Выбор модулей проекта"
   permission_share_work_packages: "Поделиться пакетами работ"
   permission_manage_types: "Выберите типы"
-  permission_manage_own_reminders: "Create own reminders"
+  permission_manage_own_reminders: "Создать собственные напоминания"
   permission_view_project: "Просмотр проектов"
   permission_view_changesets: "Просмотр изменений репозитория в OpenProject"
   permission_view_commit_author_statistics: "Посмотреть статистику автора, внесшего свою часть работы"

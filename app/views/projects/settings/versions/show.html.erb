@@ -26,19 +26,27 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
+<%=
+  render Primer::OpenProject::PageHeader.new do |header|
+    header.with_title { t(:label_version_plural) }
+    header.with_breadcrumbs( [{ href: project_overview_path(@project.id), text: @project.name  },
+                              { href: project_settings_general_path(@project.id), text: I18n.t("label_project_settings") },
+                              t(:label_version_plural)
+                             ])
+  end
+%>
 
-<%= toolbar title: t(:label_version_plural) do %>
-  <% if current_user.allowed_in_project?(:manage_versions, @project) %>
-    <li class="toolbar-item">
-      <%= link_to_if_authorized({ controller: '/versions', action: 'new', project_id: @project },
-                                { class: 'button -primary',
-                                  aria: {label: t(:label_version_new)},
-                                  title: t(:label_version_new)}) do %>
-        <%= op_icon('button--icon icon-add') %>
-        <span class="button--text"><%= t('activerecord.models.version') %></span>
-      <% end %>
-    </li>
-  <% end %>
+<% if current_user.allowed_in_project?(:manage_versions, @project) %>
+  <%= render(Primer::OpenProject::SubHeader.new) do |subheader|
+    subheader.with_action_button(scheme: :primary,
+                                 aria: { label: t(:label_version_new) },
+                                 title: t(:label_version_new),
+                                 tag: :a,
+                                 href: url_for({ controller: '/versions', action: 'new', project_id: @project })) do |button|
+      button.with_leading_visual_icon(icon: :plus)
+      t('activerecord.models.version')
+    end
+  end %>
 <% end %>
 
 <% if @versions.any? %>

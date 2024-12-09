@@ -41,12 +41,16 @@ export default class FormController extends Controller<HTMLFormElement> {
     return result.job_id;
   }
 
+  generateExportURL():string {
+    const actionURL = this.element.getAttribute('action') as string;
+    const searchParams = this.getExportParams();
+    const append = actionURL.includes('?') ? '&' : '?';
+    return `${actionURL}${append}${searchParams.toString()}`;
+  }
+
   submitForm(evt:CustomEvent) {
     evt.preventDefault(); // Don't submit
-    const formatURL = this.element.getAttribute('action');
-    const searchParams = this.getExportParams();
-    const exportURL = `${formatURL}?${searchParams.toString()}`;
-    this.requestExport(exportURL)
+    this.requestExport(this.generateExportURL())
       .then((job_id) => this.showJobModal(job_id))
       .catch((error:HttpErrorResponse) => this.handleError(error));
   }

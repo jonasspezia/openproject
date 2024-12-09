@@ -43,6 +43,24 @@ class SysController < ActionController::Base
     end
   end
 
+  def fetch_changesets
+    projects = []
+    if params[:id]
+      projects << Project.active.has_module(:repository).find_by!(identifier: params[:id])
+    else
+      projects = Project.active.has_module(:repository)
+                        .includes(:repository).references(:repositories)
+    end
+    projects.each do |project|
+      if project.repository
+        project.repository.fetch_changesets
+      end
+    end
+    head :ok
+  rescue ActiveRecord::RecordNotFound
+    head :not_found
+  end
+
   private
 
   def authorized?(project, user)

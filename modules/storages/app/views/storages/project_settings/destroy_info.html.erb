@@ -26,6 +26,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
+<%=
+  render Primer::OpenProject::PageHeader.new do |header|
+    header.with_title { t('storages.page_titles.project_settings.delete') }
+    header.with_breadcrumbs([{ href: project_overview_path(@project.id), text: @project.name },
+                             { href: project_settings_general_path(@project.id), text: I18n.t("label_project_settings") },
+                             { href: external_file_storages_project_settings_project_storages_path(@project), text: t("project_module_storages") },
+                             t('storages.page_titles.project_settings.delete')])
+  end
+%>
+
 <%= styled_form_tag(project_settings_project_storage_path(project_id: @project_storage_to_destroy.project, id: @project_storage_to_destroy),
                     class: 'danger-zone',
                     method: :delete) do %>

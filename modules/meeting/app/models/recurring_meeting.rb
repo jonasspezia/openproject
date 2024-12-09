@@ -8,6 +8,10 @@ class RecurringMeeting < ApplicationRecord
   validates_presence_of :start_time, :title, :frequency, :end_after
   validates_presence_of :end_date, if: -> { end_after_specific_date? }
   validates_numericality_of :iterations, if: -> { end_after_iterations? }
+  validates_numericality_of :interval,
+                            only_integer: true,
+                            greater_than_or_equal_to: 1,
+                            if: -> { !frequency_working_days? }
 
   validate :end_date_constraints,
            if: -> { end_after_specific_date? }
@@ -180,7 +184,7 @@ class RecurringMeeting < ApplicationRecord
     if end_after_iterations?
       rule.count(iterations)
     else
-      rule.until(end_date)
+      rule.until(end_date.to_time(:utc))
     end
   end
 end

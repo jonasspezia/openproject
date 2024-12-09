@@ -1343,5 +1343,3 @@ vi:
       waiting_subtitle:
         network_off: "Có vấn đề về mạng."
         network_on: "Mạng đã trở lại. Chúng tôi đang thử lại."
-        timeout: >
-          OpenProject không thể cung cấp cho bạn quyền truy cập vào thư mục dự án trong khoảng thời gian dự kiến. Vui lòng thử lại.<br><br> Nếu vấn đề vẫn tiếp tục, vui lòng liên hệ với quản trị viên OpenProject của bạn để kiểm tra <a href="https://www.openproject.org/docs/system-admin-guide/files/external-file-storages/file-storage-troubleshooting/">tình trạng sức khỏe của cài đặt lưu trữ tệp</a>.

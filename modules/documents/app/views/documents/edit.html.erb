@@ -27,7 +27,14 @@ See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
 
-<%= toolbar title: Document.model_name.human %>
+<%=
+  render Primer::OpenProject::PageHeader.new do |header|
+    header.with_title { @document.title }
+    header.with_breadcrumbs( [{ href: project_overview_path(@project.id), text: @project.name },
+                              { href: project_documents_path(@project), text: t(:label_document_plural) },
+                              @document.title])
+  end
+%>
 
 <%= labelled_tabular_form_for @document, url: document_path(@document), method: 'PATCH' do |f| -%>
   <%= render partial: "documents/form", locals: { f: f } %>

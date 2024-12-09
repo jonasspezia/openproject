@@ -27,6 +27,34 @@ RSpec.describe RecurringMeeting,
     end
   end
 
+  describe "intervals" do
+    subject { build(:recurring_meeting) }
+
+    it "validates integer values >= 1" do
+      subject.interval = 1
+      expect(subject).to be_valid
+      expect(subject.errors[:interval]).to be_empty
+    end
+
+    it "adds errors for invalid values", :aggregate_failures do
+      subject.interval = 0
+      expect(subject).not_to be_valid
+      expect(subject.errors[:interval]).to include("must be greater than or equal to 1.")
+
+      subject.interval = -1
+      expect(subject).not_to be_valid
+      expect(subject.errors[:interval]).to include("must be greater than or equal to 1.")
+
+      subject.interval = 0.1
+      expect(subject).not_to be_valid
+      expect(subject.errors[:interval]).to include("is not an integer.")
+
+      subject.interval = "asdf"
+      expect(subject).not_to be_valid
+      expect(subject.errors[:interval]).to include("is not a number.")
+    end
+  end
+
   describe "daily schedule" do
     subject do
       build(:recurring_meeting,
@@ -38,7 +66,7 @@ RSpec.describe RecurringMeeting,
 
     it "schedules daily", :aggregate_failures do
       expect(subject.first_occurrence).to eq Time.zone.tomorrow + 10.hours
-      expect(subject.last_occurrence).to eq Time.zone.tomorrow + 1.week + 10.hours
+      expect(subject.last_occurrence).to eq Time.zone.tomorrow + 6.days + 10.hours
 
       occurrence_in_two_days = Time.zone.today + 2.days + 10.hours
       Timecop.freeze(Time.zone.tomorrow + 11.hours) do
@@ -106,7 +134,7 @@ RSpec.describe RecurringMeeting,
 
     it "schedules weekly", :aggregate_failures do
       expect(subject.first_occurrence).to eq Time.zone.tomorrow + 10.hours
-      expect(subject.last_occurrence).to eq Time.zone.tomorrow + 4.weeks + 10.hours
+      expect(subject.last_occurrence).to eq Time.zone.tomorrow + 3.weeks + 10.hours
 
       following_occurrence = Time.zone.tomorrow + 7.days + 10.hours
       Timecop.freeze(Time.zone.tomorrow + 11.hours) do
@@ -118,8 +146,7 @@ RSpec.describe RecurringMeeting,
         Time.zone.tomorrow + 10.hours,
         Time.zone.tomorrow + 7.days + 10.hours,
         Time.zone.tomorrow + 14.days + 10.hours,
-        Time.zone.tomorrow + 21.days + 10.hours,
-        Time.zone.tomorrow + 28.days + 10.hours
+        Time.zone.tomorrow + 21.days + 10.hours
       ]
 
       Timecop.freeze(Time.zone.tomorrow + 5.weeks) do

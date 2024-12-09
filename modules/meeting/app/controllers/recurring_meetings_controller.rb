@@ -1,17 +1,20 @@
 class RecurringMeetingsController < ApplicationController
+  include RecurringMeetingsHelper
   include Layout
   include PaginationHelper
   include OpTurbo::ComponentStream
   include OpTurbo::FlashStreamHelper
   include OpTurbo::DialogStreamHelper
 
-  before_action :find_meeting, only: %i[show update details_dialog destroy edit init delete_scheduled]
+  before_action :find_meeting,
+                only: %i[show update details_dialog destroy edit init delete_scheduled template_completed download_ics]
   before_action :find_optional_project, only: %i[index show new create update details_dialog destroy edit delete_scheduled]
   before_action :authorize_global, only: %i[index new create]
   before_action :authorize, except: %i[index new create]
   before_action :get_scheduled_meeting, only: %i[delete_scheduled]
 
   before_action :convert_params, only: %i[create update]
+  before_action :check_template_completable, only: %i[template_completed]
 
   menu_item :meetings
 
@@ -34,17 +37,16 @@ class RecurringMeetingsController < ApplicationController
     @recurring_meeting = RecurringMeeting.new(project: @project)
   end
 
-  def show # rubocop:disable Metrics/AbcSize
+  def show
     @direction = params[:direction]
-    if params[:direction] == "past"
-      @meetings = @recurring_meeting
-        .scheduled_instances(upcoming: false)
-        .page(page_param)
-        .per_page(per_page_param)
-    else
-      @meetings = upcoming_meetings
-      @total_count = @recurring_meeting.remaining_occurrences.count - @meetings.count
-    end
+    @max_count = max_count
+    @count = [(params[:count].to_i + 5), @max_count].min
+
+    @meetings = if @direction == "past"
+                  @recurring_meeting.scheduled_instances(upcoming: false).limit(@count)
+                else
+                  upcoming_meetings(count: @count)
+                end
 
     respond_to do |format|
       format.html do
@@ -142,6 +144,20 @@ class RecurringMeetingsController < ApplicationController
     end
   end
 
+  def template_completed
+    call = ::RecurringMeetings::InitOccurrenceService
+      .new(user: current_user, recurring_meeting: @recurring_meeting)
+      .call(start_time: @first_occurrence.to_time)
+
+    if call.success?
+      flash[:success] = I18n.t("recurring_meeting.occurrence.first_created")
+    else
+      flash[:error] = call.message
+    end
+
+    redirect_to action: :show, id: @recurring_meeting, status: :see_other
+  end
+
   def delete_scheduled
     if @scheduled.update(cancelled: true)
       flash[:notice] = I18n.t(:notice_successful_cancel)
@@ -152,15 +168,25 @@ class RecurringMeetingsController < ApplicationController
     redirect_to polymorphic_path([@project, @recurring_meeting]), status: :see_other
   end
 
+  def download_ics
+    ::RecurringMeetings::ICalService
+      .new(user: current_user, series: @recurring_meeting)
+      .call
+      .on_failure { |call| render_500(message: call.message) }
+      .on_success do |call|
+      send_data call.result, filename: filename_for_content_disposition("#{@recurring_meeting.title}.ics")
+    end
+  end
+
   private
 
-  def upcoming_meetings
+  def upcoming_meetings(count:)
     meetings = @recurring_meeting
       .scheduled_instances(upcoming: true)
       .index_by(&:start_time)
 
     merged = @recurring_meeting
-      .scheduled_occurrences(limit: 5)
+      .scheduled_occurrences(limit: count)
       .map do |start_time|
       meetings.delete(start_time) || scheduled_meeting(start_time)
     end
@@ -220,6 +246,25 @@ class RecurringMeetingsController < ApplicationController
     if params[:structured_meeting].present?
       params
         .require(:structured_meeting)
+    end
+  end
+
+  def check_template_completable
+    @first_occurrence = @recurring_meeting.next_occurrence&.to_time
+    if @first_occurrence.nil?
+      render_400(message: I18n.t("recurring_meeting.occurrence.error_no_next"))
+      return
+    end
+
+    is_scheduled = @recurring_meeting
+      .scheduled_meetings
+      .where(start_time: @first_occurrence)
+      .where.not(meeting_id: nil)
+      .exists?
+
+    if is_scheduled
+      flash[:info] = I18n.t("recurring_meeting.occurrence.first_already_exists")
+      redirect_to action: :show, status: :see_other
     end
   end
 end

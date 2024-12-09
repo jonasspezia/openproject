@@ -30,7 +30,7 @@ env = ENV["RAILS_ENV"] || "production"
 
 if (db_config = ActiveRecord::Base.configurations.configs_for(env_name: env)[0]) &&
    db_config.configuration_hash["adapter"]&.start_with?("mysql")
-  warn <<~ERROR
+  abort <<~ERROR
     ======= INCOMPATIBLE DATABASE DETECTED =======
     Your database is set up for use with a MySQL or MySQL-compatible variant.
     This installation of OpenProject no longer supports these variants.
@@ -45,8 +45,4 @@ if (db_config = ActiveRecord::Base.configurations.configs_for(env_name: env)[0])
 
     ==============================================
   ERROR
-
-  # rubocop:disable Rails/Exit
-  Kernel.exit 1
-  # rubocop:enable Rails/Exit
 end

@@ -85,12 +85,18 @@ RSpec.describe "Recurring meetings creation",
       wait_for_network_idle
       expect_and_dismiss_flash(type: :success, message: "Successful creation.")
 
+      # Use is redirected to the template
+      expect(page).to have_current_path(project_meeting_path(project, meeting.template))
+      expect(page).to have_content(I18n.t("recurring_meeting.template.description"))
+      expect(page).to have_link("Finish template")
+
+      click_link_or_button "Finish template"
+
       # Does not send invitation mails by default
       perform_enqueued_jobs
       expect(ActionMailer::Base.deliveries.size).to eq 0
 
       show_page.visit!
-
       expect(page).to have_css(".start_time", count: 3)
 
       show_page.expect_open_meeting date: "12/31/2024 01:30 PM"

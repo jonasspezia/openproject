@@ -1343,5 +1343,3 @@ ms:
       waiting_subtitle:
         network_off: "Terdapat masalah rangkaian."
         network_on: "Rangkaian kembali. Kami sedang mencuba."
-        timeout: >
-          OpenProject tidak dapat memberikan anda akses ke folder projek dalam tempoh masa yang dijangkakan. Sila cubasekali lagi.<br><br> Jika masalah itu berterusan, sila hubungi pentadbir OpenProject anda untuk menyemak <a href="https://www.openproject.org/docs/system-admin-guide/files/external-file-storages/file-storage-troubleshooting/">status kesihatan penyediaan storan fail</a>.

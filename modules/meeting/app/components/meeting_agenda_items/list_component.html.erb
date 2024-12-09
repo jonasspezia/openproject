@@ -28,20 +28,7 @@
               border_box.with_body(
                 scheme: :default
               ) do
-                render(Primer::Beta::Blankslate.new) do |component|
-                  component.with_visual_icon(icon: :book)
-                  component.with_heading(tag: :h2).with_content(t("text_meeting_empty_heading"))
-                  component.with_description do
-                    flex_layout do |flex|
-                      flex.with_row(mb: 2) do
-                        render(Primer::Beta::Text.new(color: :subtle)) { t("text_meeting_empty_description_1") }
-                      end
-                      flex.with_row do
-                        render(Primer::Beta::Text.new(color: :subtle)) { t("text_meeting_empty_description_2") }
-                      end
-                    end
-                  end
-                end
+                render(MeetingAgendaItems::BlankSlateComponent.new(meeting: @meeting))
               end
             end
             border_box.with_row(p: 0, border_top: 0) do

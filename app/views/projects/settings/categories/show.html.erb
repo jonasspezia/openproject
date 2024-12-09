@@ -26,19 +26,29 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
+<%=
+  render Primer::OpenProject::PageHeader.new do |header|
+    header.with_title { t(:label_work_package_category_plural) }
+    header.with_breadcrumbs([{ href: project_overview_path(@project.id), text: @project.name  },
+                               { href: project_settings_general_path(@project.id), text: I18n.t("label_project_settings") },
+                               t(:label_work_package_category_plural)
+                             ])
+  end %>
 
-<%= toolbar title: t(:label_work_package_category_plural) do -%>
-  <% if current_user.allowed_in_project?(:manage_categories, @project)  %>
-    <li class="toolbar-item">
-      <%= link_to_if_authorized({ controller: '/categories', action: 'new', project_id: @project },
-                                { aria: { label: t(:label_work_package_category_new) },
-                                  title: t(:label_work_package_category_new),
-                                  class: 'button -primary'}) do %>
-        <%= op_icon('icon-add button--icon') %>
-        <span class="button--text"><%= t('activerecord.models.category') %></span>
-      <% end %>
-    </li>
-  <% end %>
+
+<% if current_user.allowed_in_project?(:manage_categories, @project) %>
+  <%=
+    render(Primer::OpenProject::SubHeader.new) do |subheader|
+      subheader.with_action_button(scheme: :primary,
+                                   aria: { label: t(:label_work_package_category_new) },
+                                   title: t(:label_work_package_category_new),
+                                   tag: :a,
+                                   href: url_for({ controller: '/categories', action: 'new', project_id: @project })) do |button|
+        button.with_leading_visual_icon(icon: :plus)
+        t('activerecord.models.category')
+      end
+    end
+  %>
 <% end %>
 
 <% if @project.categories.any? %>

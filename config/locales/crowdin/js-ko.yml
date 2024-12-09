@@ -1343,5 +1343,3 @@ ko:
       waiting_subtitle:
         network_off: "네트워크 문제가 있습니다."
         network_on: "네트워크가 복원되었습니다. 작업 중입니다."
-        timeout: >
-          예상 시간 내에 OpenProject에서 프로젝트 폴더에 대한 액세스를 제공하지 못했습니다. 다시 한 번 시도해 보세요.<br><br> 문제가 지속되면 OpenProject 관리자에게 문의하여 <a href="https://www.openproject.org/docs/system-admin-guide/files/external-file-storages/file-storage-troubleshooting/">파일 저장소 설정 상태</a>를 확인하세요.

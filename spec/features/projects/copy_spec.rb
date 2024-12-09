@@ -167,7 +167,8 @@ RSpec.describe "Projects copy", :js, :with_cuprite,
         original_settings_page = Pages::Projects::Settings.new(project)
         original_settings_page.visit!
 
-        find(".toolbar a", text: "Copy").click
+        page.find_test_selector("project-settings-more-menu").click
+        page.find_test_selector("project-settings--copy").click
 
         expect(page).to have_text "Copy project \"#{project.name}\""
 
@@ -232,7 +233,8 @@ RSpec.describe "Projects copy", :js, :with_cuprite,
         original_settings_page = Pages::Projects::Settings.new(project)
         original_settings_page.visit!
 
-        find(".toolbar a", text: "Copy").click
+        page.find_test_selector("project-settings-more-menu").click
+        page.find_test_selector("project-settings--copy").click
 
         expect(page).to have_text "Copy project \"#{project.name}\""
 
@@ -305,7 +307,8 @@ RSpec.describe "Projects copy", :js, :with_cuprite,
         original_settings_page = Pages::Projects::Settings.new(project)
         original_settings_page.visit!
 
-        find(".toolbar a", text: "Copy").click
+        page.find_test_selector("project-settings-more-menu").click
+        page.find_test_selector("project-settings--copy").click
 
         expect(page).to have_text "Copy project \"#{project.name}\""
 
@@ -376,7 +379,8 @@ RSpec.describe "Projects copy", :js, :with_cuprite,
         original_settings_page = Pages::Projects::Settings.new(project)
         original_settings_page.visit!
 
-        find(".toolbar a", text: "Copy").click
+        page.find_test_selector("project-settings-more-menu").click
+        page.find_test_selector("project-settings--copy").click
 
         expect(page).to have_text "Copy project \"#{project.name}\""
 
@@ -409,7 +413,8 @@ RSpec.describe "Projects copy", :js, :with_cuprite,
       original_settings_page = Pages::Projects::Settings.new(project)
       original_settings_page.visit!
 
-      find(".toolbar a", text: "Copy").click
+      page.find_test_selector("project-settings-more-menu").click
+      page.find_test_selector("project-settings--copy").click
 
       expect(page).to have_text "Copy project \"#{project.name}\""
 
@@ -543,7 +548,8 @@ RSpec.describe "Projects copy", :js, :with_cuprite,
       original_settings_page = Pages::Projects::Settings.new(project)
       original_settings_page.visit!
 
-      find(".toolbar a", text: "Copy").click
+      page.find_test_selector("project-settings-more-menu").click
+      page.find_test_selector("project-settings--copy").click
 
       fill_in "Name", with: "Copied project"
 

@@ -289,7 +289,6 @@ ko:
     label_creation_time: 생성 시간
     label_creator: 생성자
     label_delete_storage: 저장소 삭제
-    label_edit_storage: 저장소 편집
     label_edit_storage_access_management: 저장소 액세스 관리 편집
     label_edit_storage_automatically_managed_folders: 저장소 자동 관리 폴더 편집
     label_edit_storage_host: 저장소 호스트 편집
@@ -343,6 +342,9 @@ ko:
       success:
         subtitle: 리디렉션 중입니다
         title: 통합 설정 완료됨
+      timeout:
+        link_text: health status of the file storage setup
+        subtitle: OpenProject could not provide you access to the project folder within the expected period of time. Please, try once again.<br><br> If that problem persists please contact your OpenProject administrator to check the %{storages_health_link}.
       waiting:
         subtitle: 잠시 기다려 주세요. 시간이 좀 걸릴 수 있습니다.
         title: 프로젝트 폴더에 대한 권한을 설정하는 중입니다.
