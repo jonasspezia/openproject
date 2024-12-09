@@ -48,7 +48,7 @@
           if @series.present?
             details.with_row(mb: 2) do
               render_meeting_attribute_row(:iterations) do
-                render(Primer::Beta::Link.new(href: recurring_meeting_path(@series), target: "_blank")) do
+                render(Primer::Beta::Link.new(href: recurring_meeting_path(@series))) do
                   @series.title
                 end
               end
