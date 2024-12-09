@@ -45,7 +45,7 @@ module OpenProject::Meeting
                      meeting_minutes: %i[history show diff],
                      "meetings/menus": %i[show],
                      work_package_meetings_tab: %i[index count],
-                     recurring_meetings: %i[index show new create] },
+                     recurring_meetings: %i[index show new create download_ics] },
                    permissible_on: :project
         permission :create_meetings,
                    {

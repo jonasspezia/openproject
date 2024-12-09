@@ -40,7 +40,16 @@ FactoryBot.define do
     end
 
     trait :persisted do
-      meeting factory: :structured_meeting
+      transient do
+        meeting_start_time { nil }
+      end
+
+      after(:build) do |schedule, evaluator|
+        schedule.meeting = build(:meeting,
+                                 recurring_meeting: schedule.recurring_meeting,
+                                 start_time: evaluator.meeting_start_time || schedule.start_time,
+                                 project: schedule.recurring_meeting.project)
+      end
     end
   end
 end

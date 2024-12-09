@@ -180,7 +180,7 @@ class RecurringMeeting < ApplicationRecord
     if end_after_iterations?
       rule.count(iterations)
     else
-      rule.until(end_date)
+      rule.until(end_date.to_time(:utc))
     end
   end
 end

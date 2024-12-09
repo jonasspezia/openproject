@@ -5,7 +5,8 @@ class RecurringMeetingsController < ApplicationController
   include OpTurbo::FlashStreamHelper
   include OpTurbo::DialogStreamHelper
 
-  before_action :find_meeting, only: %i[show update details_dialog destroy edit init delete_scheduled template_completed]
+  before_action :find_meeting,
+                only: %i[show update details_dialog destroy edit init delete_scheduled template_completed download_ics]
   before_action :find_optional_project, only: %i[index show new create update details_dialog destroy edit delete_scheduled]
   before_action :authorize_global, only: %i[index new create]
   before_action :authorize, except: %i[index new create]
@@ -165,6 +166,16 @@ class RecurringMeetingsController < ApplicationController
     end
 
     redirect_to polymorphic_path([@project, @recurring_meeting]), status: :see_other
+  end
+
+  def download_ics
+    ::RecurringMeetings::ICalService
+      .new(user: current_user, series: @recurring_meeting)
+      .call
+      .on_failure { |call| render_500(message: call.message) }
+      .on_success do |call|
+      send_data call.result, filename: filename_for_content_disposition("#{@recurring_meeting.title}.ics")
+    end
   end
 
   private

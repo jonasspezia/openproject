@@ -38,7 +38,7 @@ RSpec.describe RecurringMeeting,
 
     it "schedules daily", :aggregate_failures do
       expect(subject.first_occurrence).to eq Time.zone.tomorrow + 10.hours
-      expect(subject.last_occurrence).to eq Time.zone.tomorrow + 1.week + 10.hours
+      expect(subject.last_occurrence).to eq Time.zone.tomorrow + 6.days + 10.hours
 
       occurrence_in_two_days = Time.zone.today + 2.days + 10.hours
       Timecop.freeze(Time.zone.tomorrow + 11.hours) do
@@ -106,7 +106,7 @@ RSpec.describe RecurringMeeting,
 
     it "schedules weekly", :aggregate_failures do
       expect(subject.first_occurrence).to eq Time.zone.tomorrow + 10.hours
-      expect(subject.last_occurrence).to eq Time.zone.tomorrow + 4.weeks + 10.hours
+      expect(subject.last_occurrence).to eq Time.zone.tomorrow + 3.weeks + 10.hours
 
       following_occurrence = Time.zone.tomorrow + 7.days + 10.hours
       Timecop.freeze(Time.zone.tomorrow + 11.hours) do
@@ -118,8 +118,7 @@ RSpec.describe RecurringMeeting,
         Time.zone.tomorrow + 10.hours,
         Time.zone.tomorrow + 7.days + 10.hours,
         Time.zone.tomorrow + 14.days + 10.hours,
-        Time.zone.tomorrow + 21.days + 10.hours,
-        Time.zone.tomorrow + 28.days + 10.hours
+        Time.zone.tomorrow + 21.days + 10.hours
       ]
 
       Timecop.freeze(Time.zone.tomorrow + 5.weeks) do

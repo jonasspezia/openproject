@@ -31,6 +31,12 @@
         'aria-label': t(:label_recurring_meeting_series_edit),
         test_selector: "edit-meeting-details-button",
       )
+
+      menu.with_item(
+        label: t(:label_icalendar_download),
+        href: download_ics_recurring_meeting_path(@meeting)
+      )
+
       menu.with_item(
         label: I18n.t(:label_recurring_meeting_series_delete),
         href: polymorphic_path([@project, @meeting]),

@@ -59,6 +59,7 @@ Rails.application.routes.draw do
   resources :recurring_meetings do
     member do
       get :details_dialog
+      get :download_ics
       post :init
       post :delete_scheduled
       post :template_completed
