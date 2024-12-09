@@ -198,7 +198,7 @@ de:
       first_created: >
         The first meeting has been successfuly created from template. All future meetings will be created automatically at the time of the previous occurrence.
     template:
-      button_finalize: "Finish template"
+      button_finalize: "Vorlage fertigstellen"
       blank_title: "Your meeting series template is empty"
       description: >
         This template will be used whenever new meetings in the series get created. You can add agenda items, participants, and attachments to this template.
