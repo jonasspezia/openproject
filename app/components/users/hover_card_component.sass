@@ -6,7 +6,7 @@
 // modal overlay will darken the background while the hover card is active, since its semi-transparent bg shading is
 // added on top of the other dialog background shaders. We don't want an additional spot modal background here,
 // so we disable it for this edge case.
-.controller-projects.action-index
+.controller-projects.action-index, .controller-meetings.action-show
   .spot-modal-overlay:not(:has(.op-user-hover-card))
     background: transparent
 
