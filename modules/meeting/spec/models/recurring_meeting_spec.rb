@@ -27,6 +27,34 @@ RSpec.describe RecurringMeeting,
     end
   end
 
+  describe "intervals" do
+    subject { build(:recurring_meeting) }
+
+    it "validates integer values >= 1" do
+      subject.interval = 1
+      expect(subject).to be_valid
+      expect(subject.errors[:interval]).to be_empty
+    end
+
+    it "adds errors for invalid values", :aggregate_failures do
+      subject.interval = 0
+      expect(subject).not_to be_valid
+      expect(subject.errors[:interval]).to include("must be greater than or equal to 1.")
+
+      subject.interval = -1
+      expect(subject).not_to be_valid
+      expect(subject.errors[:interval]).to include("must be greater than or equal to 1.")
+
+      subject.interval = 0.1
+      expect(subject).not_to be_valid
+      expect(subject.errors[:interval]).to include("is not an integer.")
+
+      subject.interval = "asdf"
+      expect(subject).not_to be_valid
+      expect(subject.errors[:interval]).to include("is not a number.")
+    end
+  end
+
   describe "daily schedule" do
     subject do
       build(:recurring_meeting,
