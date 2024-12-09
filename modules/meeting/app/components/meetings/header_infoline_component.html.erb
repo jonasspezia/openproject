@@ -1,5 +1,5 @@
 <%= render(Primer::BaseComponent.new(tag: :div)) do %>
-  <% if @series %>
+  <% if @series && !@meeting.template? %>
     <%= t("recurring_meeting.occurrence.infoline", title: @series.title) %>
   <% else %>
     <%= t(:label_meeting_created_by) %>
