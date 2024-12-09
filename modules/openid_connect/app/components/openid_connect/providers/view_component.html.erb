@@ -22,7 +22,8 @@
                                        edit_state:,
                                        next_edit_state: :client_details,
                                        edit_mode:,
-                                       heading: nil
+                                       heading: nil,
+                                       fetch_metadata: true
                                      )
                                   else
                                     OpenIDConnect::Providers::Sections::ShowComponent.new(
@@ -44,6 +45,7 @@
             edit_state:,
             edit_mode:,
             heading: nil,
+            fetch_metadata: true
           ))
         else
           render(OpenIDConnect::Providers::Sections::ShowComponent.new(
@@ -66,7 +68,8 @@
                                        edit_state:,
                                        next_edit_state: :client_details,
                                        edit_mode:,
-                                       heading: nil
+                                       heading: nil,
+                                       fetch_metadata: true
                                      )
                                   else
                                     OpenIDConnect::Providers::Sections::ShowComponent.new(
@@ -87,7 +90,8 @@
             form_class: OpenIDConnect::Providers::ClientDetailsForm,
             edit_state:,
             edit_mode:,
-            heading: nil
+            heading: nil,
+            fetch_metadata: true
           ))
         else
           render(OpenIDConnect::Providers::Sections::ShowComponent.new(
@@ -137,7 +141,8 @@
             heading: nil,
             edit_state:,
             edit_mode:,
-            next_edit_state: :metadata_details
+            next_edit_state: :metadata_details,
+            fetch_metadata: true
           ))
         else
           render(OpenIDConnect::Providers::Sections::ShowComponent.new(
