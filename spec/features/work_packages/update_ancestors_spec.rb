@@ -86,7 +86,8 @@ RSpec.describe "Update ancestors", :js, :with_cuprite do
   shared_let(:query) do
     create(:query,
            show_hierarchies: true,
-           column_names: %i[id status estimated_hours remaining_hours done_ratio subject])
+           column_names: %i[id status estimated_hours remaining_hours done_ratio subject],
+           sort_criteria: [["id", "asc"]])
   end
 
   let(:wp_table) { Pages::WorkPackagesTable.new project }
