@@ -38,7 +38,7 @@ module RecurringMeetings
       true
     end
 
-    def has_footer? # rubocop:disable Metrics/AbcSize
+    def has_footer?
       return false unless recurring_meeting
 
       options[:max_count] - count > 0
