@@ -48,6 +48,8 @@ RSpec.describe "Working Days", :js, :with_cuprite do
 
   before do
     visit admin_settings_working_days_and_hours_path
+    # wait for "holidays and closures" calendar to load
+    find(".fc-next-button")
   end
 
   describe "week days" do
