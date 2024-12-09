@@ -155,4 +155,32 @@ RSpec.describe "Recurring meetings show",
       expect(response).to have_http_status(:not_found)
     end
   end
+
+  describe "Show more" do
+    context "when there are more than 5 scheduled instances" do
+      it "shows the footer" do
+        get recurring_meeting_path(recurring_meeting)
+
+        expect(page).to have_css("#recurring-meetings-footer-component")
+      end
+    end
+
+    context "when there are 5 or fewer scheduled instances" do
+      let(:recurring_meeting) do
+        create :recurring_meeting,
+               project:,
+               author: user,
+               start_time: Time.zone.today + 1.day,
+               frequency: "daily",
+               end_after: "iterations",
+               iterations: 5
+      end
+
+      it "shows no footer" do
+        get recurring_meeting_path(recurring_meeting)
+
+        expect(page).to have_no_css("#recurring-meetings-footer-component")
+      end
+    end
+  end
 end
