@@ -22,8 +22,8 @@
         if @meeting.template?
           "#{@meeting.title} (#{I18n.t(:label_template)})"
         elsif @series.present?
-          concat render(Primer::Beta::Text.new) { format_date(@meeting.start_time) }
-          concat render(Primer::Beta::Text.new(color: :subtle)) { " (#{@series.title})" }
+          concat render(Primer::Beta::Text.new) { @meeting.title }
+          concat render(Primer::Beta::Text.new(color: :subtle)) { " (#{format_date(@meeting.start_time)})" }
         else
           @meeting.title
         end
