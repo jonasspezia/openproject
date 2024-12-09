@@ -29,7 +29,7 @@ At the end, you will find a complete list of all changes and bug fixes.
 - Bugfix: Storage in copied project does not have the correct Project Folder setting \[[#59344](https://community.openproject.org/wp/59344)\]
 - Bugfix: Cannot change limit\_self\_registration for SAML auth providers \[[#59370](https://community.openproject.org/wp/59370)\]
 - Bugfix: Option to limit\_self\_registration in SAML provider not respected \[[#59375](https://community.openproject.org/wp/59375)\]
-- Bugfix: Migration of SAML auth providers doesn&#39;t retain limit\_self\_registration \[[#59403](https://community.openproject.org/wp/59403)\]
+- Bugfix: Migration of SAML auth providers doesn't retain limit\_self\_registration \[[#59403](https://community.openproject.org/wp/59403)\]
 - Bugfix: OpenID connect does not allow setting custom scopes \[[#59430](https://community.openproject.org/wp/59430)\]
 
 <!-- END AUTOMATED SECTION -->

@@ -21,7 +21,7 @@ Enterprise customers can now use a new type of custom field that allows **multi-
 
 Each custom field of type hierarchy can be given a short name (e.g. B for Berlin). Here's an example of how custom fields of the hierarchy type look like, using the example of a detailed assignment of workspaces:
 
-![Example screenshot of custom fields of type hiearchy, displaying different cities as main offices](openproject-15-1-custom-field-hierarchy.jpg)
+![Example screenshot of custom fields of type hierarchy, displaying different cities as main offices](openproject-15-1-custom-field-hierarchy.jpg)
 
 [Read all about custom fields in our system admin guide](../../system-admin-guide/custom-fields/).
 
@@ -54,7 +54,7 @@ Here's an example screenshot of the redesigned Meetings index page:
 
 With our work package export feature, people can generate good-looking PDFs. Sometimes, however, the page break comes at an inconvenient place. With version 15.1, users can now force a manual page break in the work package description. This ensures, for example, that a signature can always be inserted on the correct page.
 
-![Example of a work package description with an employee conctract and inserted page breaks](openproject-15-1-page-break-contract-highlighted.png)
+![Example of a work package description with an employee contract and inserted page breaks](openproject-15-1-page-break-contract-highlighted.png)
 
 [Learn how to export work packages and what options you have](../../user-guide/work-packages/exporting/).
 

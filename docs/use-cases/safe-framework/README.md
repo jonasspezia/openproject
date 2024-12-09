@@ -77,11 +77,11 @@ You can also use [project templates](../../user-guide/projects/project-templates
 
 Project portfolios allow you to view, organize, sort and filter through all projects and their hierarchies. Since individual projects represent Agile Release trains, project portfolios can be used to access information at a **Solution train**-level.
 
-OpenProject offers a new **Project list** view that lets you create and save custom lists of Projects using your own set of filter criteria. These lists can also display custom project attributes. Individual projects can also be favourited for easier access. Project lists allow you to be build very precise and useful dashboards at a solution-train level.
+OpenProject offers a new **Project list** view that lets you create and save custom lists of Projects using your own set of filter criteria. These lists can also display custom project attributes. Individual projects can also be favored for easier access. Project lists allow you to be build very precise and useful dashboards at a solution-train level.
 
 ![You can create custom project lists](project_list_-_solution_train.png)
 
-Alternatively, one can also create a meta-project that contains multiple sub-projects (representing ARTs and teams) and create a consolidated custom view. This **work package table** view can be filtered and customised to show particular attributes and custom fields as columns, grouped and sorted. They can also be configured to display epics, features and user stories not just from sub-projects, but from entirely different projects.
+Alternatively, one can also create a meta-project that contains multiple sub-projects (representing ARTs and teams) and create a consolidated custom view. This **work package table** view can be filtered and customized to show particular attributes and custom fields as columns, grouped and sorted. They can also be configured to display epics, features and user stories not just from sub-projects, but from entirely different projects.
 
 ![All Features and User Stories across all teams](all_features_across_all_teams.png)
 
