@@ -109,6 +109,7 @@ RSpec.describe "create users", :with_cuprite do
 
       perform_enqueued_jobs do
         new_user_page.submit!
+        wait_for_network_idle
       end
     end
 
@@ -120,6 +121,9 @@ RSpec.describe "create users", :with_cuprite do
     it_behaves_like "successful user creation" do
       describe "activation", :js do
         before do
+          # Ensure we clear any flashes
+          visit "/logout"
+
           allow(User).to receive(:current).and_call_original
 
           visit "/account/activate?token=#{token}"
