@@ -30,7 +30,7 @@
 
 module OpenIDConnect::Providers::Sections
   class FormComponent < ::Saml::Providers::Sections::SectionComponent
-    attr_reader :edit_state, :next_edit_state, :edit_mode
+    attr_reader :edit_state, :next_edit_state, :edit_mode, :fetch_metadata
 
     def initialize(provider,
                    edit_state:,
@@ -39,7 +39,8 @@ module OpenIDConnect::Providers::Sections
                    banner: nil,
                    banner_scheme: :default,
                    next_edit_state: nil,
-                   edit_mode: nil)
+                   edit_mode: nil,
+                   fetch_metadata: false)
       super(provider)
 
       @edit_state = edit_state
@@ -49,6 +50,7 @@ module OpenIDConnect::Providers::Sections
       @heading = heading
       @banner = banner
       @banner_scheme = banner_scheme
+      @fetch_metadata = fetch_metadata
     end
 
     def url
@@ -61,9 +63,9 @@ module OpenIDConnect::Providers::Sections
 
     def form_url_params
       if edit_mode
-        { edit_state:, edit_mode:, next_edit_state: }
+        { edit_state:, fetch_metadata:, edit_mode:, next_edit_state: }
       else
-        { edit_state: }
+        { edit_state:, fetch_metadata: }
       end
     end
 

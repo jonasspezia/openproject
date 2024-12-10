@@ -674,7 +674,7 @@ sr:
       follows_description: "The related work package necessarily needs to finish before this one can start"
       label_child_singular: "child"
       label_child_plural: "children"
-      child_description: "Makes the related a work package a sub-item of the current (parent) work package"
+      child_description: "Makes the related work package a sub-item of the current (parent) work package"
       label_blocks_singular: "blocks"
       label_blocks_plural: "blocks"
       blocks_description: "The related work package cannot be closed until this one is closed first"

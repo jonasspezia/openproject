@@ -675,7 +675,7 @@ uk:
       follows_description: "Зв’язаний пакет робіт обов’язково має завершуватися перед початком цього"
       label_child_singular: "дочірній елемент"
       label_child_plural: "дочірні елементи"
-      child_description: "Вкладає звʼязаний пакет робіт як піделемент поточного (батьківського) пакета робіт"
+      child_description: "Makes the related work package a sub-item of the current (parent) work package"
       label_blocks_singular: "блоки"
       label_blocks_plural: "блоки"
       blocks_description: "Звʼязаний пакет робіт можна закрити лише після закриття цього"

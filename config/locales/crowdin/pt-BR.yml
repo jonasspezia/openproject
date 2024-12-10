@@ -663,7 +663,7 @@ pt-BR:
       follows_description: "O pacote de trabalho relacionado deve ser finalizado antes que este possa ser iniciado"
       label_child_singular: "filho"
       label_child_plural: "filhos"
-      child_description: "Torna o pacote de trabalho relacionado uma subtarefa do pacote de trabalho atual (pai)"
+      child_description: "Makes the related work package a sub-item of the current (parent) work package"
       label_blocks_singular: "blocos"
       label_blocks_plural: "blocos"
       blocks_description: "O pacote de trabalho relacionado não pode ser concluído até que este seja concluído primeiro"

@@ -104,8 +104,9 @@ export function initializeCoreDisplayFields(displayFieldService:DisplayFieldServ
         'TimeEntriesActivity',
         'Version',
         'Category',
+        'CustomField::Hierarchy::Item',
         'CustomOption'])
-      .addFieldType(ResourcesDisplayField, 'resources', ['[]CustomOption'])
+      .addFieldType(ResourcesDisplayField, 'resources', ['[]CustomOption', '[]CustomField::Hierarchy::Item'])
       .addFieldType(ResourcesDisplayField, 'resources', ['[]Version'])
       .addFieldType(MultipleUserFieldModule, 'users', ['[]User'])
       .addFieldType(FormattableDisplayField, 'formattable', ['Formattable'])

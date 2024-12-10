@@ -657,7 +657,7 @@ ko:
       follows_description: "이 패키지를 시작하려면 관련 작업 패키지가 반드시 먼저 완료되어야 합니다"
       label_child_singular: "자식"
       label_child_plural: "자식"
-      child_description: "관련 작업 패키지를 현재(부모) 작업 패키지의 하위 항목으로 만듭니다"
+      child_description: "Makes the related work package a sub-item of the current (parent) work package"
       label_blocks_singular: "블록"
       label_blocks_plural: "블록"
       blocks_description: "이 패키지가 먼저 종료될 때까지 관련 작업 패키지를 종료할 수 없습니다"

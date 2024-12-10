@@ -664,7 +664,7 @@ fr:
       follows_description: "Le lot de travaux lié doit nécessairement se terminer avant que celui-ci puisse commencer"
       label_child_singular: "enfant"
       label_child_plural: "enfants"
-      child_description: "Fait du lot de travaux apparenté un sous-élément du lot de travaux actuel (parent)"
+      child_description: "Makes the related work package a sub-item of the current (parent) work package"
       label_blocks_singular: "blocs"
       label_blocks_plural: "blocs"
       blocks_description: "Le lot de travaux associé ne peut pas être fermé avant que celui-ci soit fermé en premier"

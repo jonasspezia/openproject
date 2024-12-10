@@ -655,7 +655,7 @@ zh-TW:
       follows_description: "在這個工作項目開始之前，相關的工作必須先完成"
       label_child_singular: "子項目"
       label_child_plural: "子項目"
-      child_description: "使相關工作項目成為目前（父）工作子項目"
+      child_description: "Makes the related work package a sub-item of the current (parent) work package"
       label_blocks_singular: "區塊"
       label_blocks_plural: "區塊"
       blocks_description: "在本工作項目結束之前，關聯工作無法結束"
