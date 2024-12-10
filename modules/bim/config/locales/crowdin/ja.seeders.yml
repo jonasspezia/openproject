@@ -47,7 +47,7 @@ ja:
           name: クラッシュ
       global_queries:
         item_0:
-          name: 'Embedded table: Children'
+          name: ''
       type_configuration:
         item_0:
           form_configuration:
@@ -55,7 +55,7 @@ ja:
               group_name: 子
       groups:
         item_0:
-          name: Architects
+          name: アーキテクト
         item_1:
           name: BIM Coordinators
         item_2:

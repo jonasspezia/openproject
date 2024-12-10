@@ -126,6 +126,11 @@ ru:
   label_recurring_occurrence_delete_confirmation: >
     Любая информация о встрече, не включенная в шаблон, будет потеряна. Вы хотите продолжить?
   label_recurring_meeting_restore: "Восстановить это событие"
+  label_recurring_meeting_more: "There are %{count} more scheduled meetings (%{schedule})."
+  label_recurring_meeting_more_singular: "There is %{count} more scheduled meeting (%{schedule})."
+  label_recurring_meeting_more_past: "There are %{count} more past meetings."
+  label_recurring_meeting_more_past_singular: "There is %{count} more past meeting."
+  label_recurring_meeting_show_more: "Show more"
   label_recurring_meeting_series_edit: "Изменить серию встреч"
   label_recurring_meeting_series_delete: "Удалить серию встреч"
   label_my_meetings: "Мои встречи"
@@ -195,25 +200,25 @@ ru:
         Введите количество дней или недель между каждым событием.
     occurrence:
       infoline: "Эта встреча является частью повторяющейся серии встреч."
-      error_no_next: "There is no next occurrence for this meeting."
-      first_already_exists: "The first occurrence of this meeting series is already instantiated."
+      error_no_next: "Следующее событие для этой встречи не состоится."
+      first_already_exists: "Первое событие этой серии встреч уже произошло."
       first_created: >
-        The first meeting has been successfuly created from template. All future meetings will be created automatically at the time of the previous occurrence.
+        Первая встреча была успешно создана из шаблона. Все последующие встречи будут создаваться автоматически в момент предыдущей.
     template:
-      button_finalize: "Finish template"
-      blank_title: "Your meeting series template is empty"
+      button_finalize: "Завершить шаблон"
+      blank_title: "Ваш шаблон серии встреч пуст"
       description: >
-        This template will be used whenever new meetings in the series get created. You can add agenda items, participants, and attachments to this template.
+        Этот шаблон будет использоваться каждый раз, когда будут создаваться новые встречи в серии. Вы можете добавить в этот шаблон пункты повестки дня, участников и вложения.
       blankslate_finalize: >
-        When you're done preparing this template, click the '%{button_title}' button above to finish the setup and schedule the first meeting of the series.
+        По завершении подготовки шаблона нажмите кнопку '%{button_title}', чтобы завершить установку и запланировать первую встречу этой серии.
       label_view_template: "Посмотреть шаблон"
       label_edit_template: "Изменить шаблон"
       banner_html: >
-        В настоящее время вы редактируете шаблон серии встреч: %{link}. Каждый новый экземпляр встречи в этой серии будет использовать этот шаблон. Изменения не повлияют на прошлые или уже созданные встречи.
+        You are currently editing a template of a meeting series: %{link}. Every new occurrence of a meeting in the series will use this template. Changes will not affect past or already created meetings.
     frequency:
       every_weekday: "Каждый %{day_of_the_week}"
       daily: "Ежедневно"
-      working_days: "Рабочие дни"
+      working_days: "Every working day"
       weekly: "Еженедельно"
     end_after:
       specific_date: "Конкретная дата"
@@ -278,6 +283,7 @@ ru:
   text_deleted_agenda_item: 'Удаленный пункт повестки'
   label_initial_meeting_details: "Встреча"
   label_meeting_details: "Детали совещания"
+  label_meeting_series_details: "Meeting series details"
   label_meeting_details_edit: "Изменить сведения о встрече"
   label_meeting_state: "Статус встречи"
   label_meeting_state_open: "Открыть"

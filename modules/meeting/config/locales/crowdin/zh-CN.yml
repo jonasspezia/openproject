@@ -123,6 +123,11 @@ zh-CN:
   label_recurring_occurrence_delete_confirmation: >
     任何不在模板中的会议信息都将丢失。要继续吗？
   label_recurring_meeting_restore: "恢复此事件"
+  label_recurring_meeting_more: "There are %{count} more scheduled meetings (%{schedule})."
+  label_recurring_meeting_more_singular: "There is %{count} more scheduled meeting (%{schedule})."
+  label_recurring_meeting_more_past: "There are %{count} more past meetings."
+  label_recurring_meeting_more_past_singular: "There is %{count} more past meeting."
+  label_recurring_meeting_show_more: "Show more"
   label_recurring_meeting_series_edit: "编辑会议系列"
   label_recurring_meeting_series_delete: "删除会议系列"
   label_my_meetings: "我的会议"
@@ -206,11 +211,11 @@ zh-CN:
       label_view_template: "查看模板"
       label_edit_template: "编辑模板"
       banner_html: >
-        您正在编辑会议系列的模板： %{link}。此系列的每个新建会议都将使用此模板。本更改不会影响过去或已创建的会议。
+        You are currently editing a template of a meeting series: %{link}. Every new occurrence of a meeting in the series will use this template. Changes will not affect past or already created meetings.
     frequency:
       every_weekday: "每个 %{day_of_the_week}"
       daily: "每日"
-      working_days: "工作日"
+      working_days: "Every working day"
       weekly: "每周"
     end_after:
       specific_date: "特定日期"
@@ -275,6 +280,7 @@ zh-CN:
   text_deleted_agenda_item: '删除的议程项目'
   label_initial_meeting_details: "会议"
   label_meeting_details: "会议详情"
+  label_meeting_series_details: "Meeting series details"
   label_meeting_details_edit: "编辑会议详情"
   label_meeting_state: "会议状态"
   label_meeting_state_open: "开放"

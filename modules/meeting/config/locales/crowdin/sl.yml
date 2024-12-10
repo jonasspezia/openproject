@@ -126,6 +126,11 @@ sl:
   label_recurring_occurrence_delete_confirmation: >
     Any meeting information not in the template will be lost. Do you want to continue?
   label_recurring_meeting_restore: "Restore this occurrence"
+  label_recurring_meeting_more: "There are %{count} more scheduled meetings (%{schedule})."
+  label_recurring_meeting_more_singular: "There is %{count} more scheduled meeting (%{schedule})."
+  label_recurring_meeting_more_past: "There are %{count} more past meetings."
+  label_recurring_meeting_more_past_singular: "There is %{count} more past meeting."
+  label_recurring_meeting_show_more: "Show more"
   label_recurring_meeting_series_edit: "Edit meeting series"
   label_recurring_meeting_series_delete: "Delete meeting series"
   label_my_meetings: "My meetings"
@@ -209,11 +214,11 @@ sl:
       label_view_template: "View template"
       label_edit_template: "Edit template"
       banner_html: >
-        You are currently editing a template of a meeting series: %{link}. Every new instance of a meeting in this series will use this template. Changes will not affect past or already created meetings.
+        You are currently editing a template of a meeting series: %{link}. Every new occurrence of a meeting in the series will use this template. Changes will not affect past or already created meetings.
     frequency:
       every_weekday: "Every %{day_of_the_week}"
       daily: "Daily"
-      working_days: "Working Days"
+      working_days: "Every working day"
       weekly: "Weekly"
     end_after:
       specific_date: "A specific date"
@@ -278,6 +283,7 @@ sl:
   text_deleted_agenda_item: 'Deleted agenda item'
   label_initial_meeting_details: "Sestanek"
   label_meeting_details: "Meeting details"
+  label_meeting_series_details: "Meeting series details"
   label_meeting_details_edit: "Edit meeting details"
   label_meeting_state: "Meeting status"
   label_meeting_state_open: "Odpri"

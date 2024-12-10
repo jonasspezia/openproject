@@ -124,6 +124,11 @@ de:
   label_recurring_occurrence_delete_confirmation: >
     Alle Besprechungsinformationen, die nicht in der Vorlage enthalten sind, gehen verloren. Möchten Sie fortfahren?
   label_recurring_meeting_restore: "Dieses Ereignis wiederherstellen"
+  label_recurring_meeting_more: "There are %{count} more scheduled meetings (%{schedule})."
+  label_recurring_meeting_more_singular: "There is %{count} more scheduled meeting (%{schedule})."
+  label_recurring_meeting_more_past: "There are %{count} more past meetings."
+  label_recurring_meeting_more_past_singular: "There is %{count} more past meeting."
+  label_recurring_meeting_show_more: "Show more"
   label_recurring_meeting_series_edit: "Besprechungsreihe bearbeiten"
   label_recurring_meeting_series_delete: "Besprechungsreihe löschen"
   label_my_meetings: "Meine Besprechungen"
@@ -207,11 +212,11 @@ de:
       label_view_template: "Vorlagen ansehen"
       label_edit_template: "Vorlage bearbeiten"
       banner_html: >
-        Sie bearbeiten gerade eine Vorlage für eine Besprechungsserie: %{link}. Jede neue Instanz einer Besprechung in dieser Serie verwendet diese Vorlage. Änderungen wirken sich nicht auf frühere oder bereits erstellte Besprechungen aus.
+        You are currently editing a template of a meeting series: %{link}. Every new occurrence of a meeting in the series will use this template. Changes will not affect past or already created meetings.
     frequency:
       every_weekday: "Jeden %{day_of_the_week}"
       daily: "Täglich"
-      working_days: "Arbeitstage"
+      working_days: "Every working day"
       weekly: "Wöchentlich"
     end_after:
       specific_date: "Ein bestimmtes Datum"
@@ -276,6 +281,7 @@ de:
   text_deleted_agenda_item: 'Gelöschter Tagesordnungspunkt'
   label_initial_meeting_details: "Besprechung"
   label_meeting_details: "Besprechungsdetails"
+  label_meeting_series_details: "Meeting series details"
   label_meeting_details_edit: "Besprechungsdetails bearbeiten"
   label_meeting_state: "Besprechungsstatus"
   label_meeting_state_open: "Offen"
