@@ -8,12 +8,11 @@
 
       grid.with_area(:description, tag: :div, color: :subtle, test_selector: 'storage-description') do
         concat(render(Primer::Beta::Text.new) { storage_description })
-
         if can_show_open_link?
           concat(render(Primer::Beta::Text.new) { " - " })
-          concat(render(Primer::Beta::Link.new(href: open_href, target: "_blank")) do
-            concat(render(Primer::Beta::Text.new) { "#{I18n.t('storages.buttons.open_storage')} " })
-            concat(render(Primer::Beta::Octicon.new(icon: "link-external", size: :small)))
+          concat(render(Primer::Beta::Link.new(href: open_href, target: "_blank")) do |link|
+            link.with_trailing_visual_icon(icon: "link-external", size: :small)
+            I18n.t('storages.buttons.open_storage')
           end)
         end
       end
