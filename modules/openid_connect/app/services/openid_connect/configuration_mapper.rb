@@ -47,7 +47,7 @@ module OpenIDConnect
         "host" => options["host"],
         "port" => options["port"],
         "scheme" => options["scheme"],
-        "claims" => options["claims"],
+        "claims" => extract_claims(options["claims"]),
         "tenant" => options["tenant"],
         "post_logout_redirect_uri" => options["post_logout_redirect_uri"],
         "limit_self_registration" => options["limit_self_registration"],
@@ -68,6 +68,15 @@ module OpenIDConnect
     end
 
     private
+
+    def extract_claims(claims_value)
+      case claims_value
+      when Hash
+        claims_value.to_json
+      else
+        claims_value.to_s
+      end
+    end
 
     def extract_scope(value)
       return if value.blank?

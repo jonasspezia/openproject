@@ -136,6 +136,45 @@ RSpec.describe OpenIDConnect::ConfigurationMapper, type: :model do
     end
   end
 
+  describe "claims" do
+    subject { result["claims"] }
+
+    let(:parsed_hash) do
+      {
+        "id_token" => {
+          "roles" => {
+            "essential" => true,
+            "values" => ["openproject.login"]
+          }
+        }
+      }
+    end
+
+    context "when provided as string" do
+      let(:configuration) { { claims: parsed_hash.to_json } }
+
+      it "outputs as a string", :aggregate_failures do
+        expect(subject).to be_a String
+        expect(JSON.parse(subject)).to eq(parsed_hash)
+      end
+    end
+
+    context "when provided as Hash" do
+      let(:configuration) { { claims: parsed_hash } }
+
+      it "converts to string", :aggregate_failures do
+        expect(subject).to be_a String
+        expect(JSON.parse(subject)).to eq(parsed_hash)
+      end
+    end
+
+    context "when not provided" do
+      let(:configuration) { {} }
+
+      it { is_expected.to be_blank }
+    end
+  end
+
   %w[authorization_endpoint token_endpoint userinfo_endpoint end_session_endpoint jwks_uri].each do |key|
     describe "setting #{key}" do
       subject { result }
