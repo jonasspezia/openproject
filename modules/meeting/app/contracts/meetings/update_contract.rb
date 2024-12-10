@@ -28,7 +28,10 @@
 
 module Meetings
   class UpdateContract < BaseContract
+    include Redmine::I18n
+
     validate :user_allowed_to_edit
+    validate :not_before_scheduled_time
 
     attribute :lock_version do
       if model.lock_version.nil? || model.lock_version_changed?
@@ -39,6 +42,16 @@ module Meetings
     def user_allowed_to_edit
       unless user.allowed_in_project?(:edit_meetings, model.project)
         errors.add :base, :error_unauthorized
+      end
+    end
+
+    def not_before_scheduled_time
+      return unless model.recurring_meeting_id && model.scheduled_meeting
+      return unless model.changed.intersect?(%w[start_time start_date])
+
+      scheduled_time = model.scheduled_meeting.start_time
+      if model.start_time < scheduled_time
+        errors.add :start_date, :after, date: format_date(scheduled_time)
       end
     end
   end
