@@ -66,7 +66,7 @@ class CustomField < ApplicationRecord
     errors.add(:name, :taken) if name.in?(taken_names)
   end
 
-  validates :field_format, inclusion: { in: OpenProject::CustomFieldFormat.available_formats }
+  validates :field_format, inclusion: { in: -> { OpenProject::CustomFieldFormat.available_formats } }
 
   validate :validate_default_value
   validate :validate_regex
