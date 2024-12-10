@@ -37,4 +37,8 @@ class CustomField::Hierarchy::Item < ApplicationRecord
   scope :including_children, -> { includes(children: :children) }
 
   def to_s = short.nil? ? label : "#{label} (#{short})"
+
+  def ancestry_path
+    self_and_ancestors.filter_map(&:to_s).reverse.join(" / ")
+  end
 end
