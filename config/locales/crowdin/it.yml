@@ -654,7 +654,7 @@ it:
       follows_description: "La macro-attività correlata deve necessariamente terminare prima dell'inizio di questa"
       label_child_singular: "figlia"
       label_child_plural: "figlie"
-      child_description: "Rende la macro-attività correlata un sottoelemento della macro-attività corrente (genitore)"
+      child_description: "Makes the related work package a sub-item of the current (parent) work package"
       label_blocks_singular: "blocca"
       label_blocks_plural: "blocca"
       blocks_description: "La relativa macro-attività non può essere chiusa fino a quando questa non sarà chiusa prima"

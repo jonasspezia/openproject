@@ -673,7 +673,7 @@ ru:
       follows_description: "Соответствующий пакет работ обязательно должен быть завершен до того, как начнется этот пакет"
       label_child_singular: "дочерний пакет работ"
       label_child_plural: "дочерние пакеты работ"
-      child_description: "Делает связанный пакет работ дочерним текущему (родительскому) пакету работ"
+      child_description: "Makes the related work package a sub-item of the current (parent) work package"
       label_blocks_singular: "блоки"
       label_blocks_plural: "блоки"
       blocks_description: "Связанный пакет работ не может быть закрыт до тех пор, пока не будет закрыт этот пакет"

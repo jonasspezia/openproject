@@ -671,7 +671,7 @@ pl:
       follows_description: "Powiązany pakiet roboczy musi koniecznie zostać ukończony przed rozpoczęciem tego pakietu"
       label_child_singular: "element podrzędny"
       label_child_plural: "elementy podrzędne"
-      child_description: "Sprawia, że powiązany pakiet roboczy staje się elementem podrzędnym bieżącego (nadrzędnego) pakietu roboczego"
+      child_description: "Makes the related work package a sub-item of the current (parent) work package"
       label_blocks_singular: "blok"
       label_blocks_plural: "bloki"
       blocks_description: "Powiązany pakiet roboczy nie może zostać zamknięty, dopóki najpierw nie zostanie zamknięty ten pakiet roboczy"
