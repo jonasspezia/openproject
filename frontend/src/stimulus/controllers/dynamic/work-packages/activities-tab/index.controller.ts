@@ -358,9 +358,18 @@ export default class IndexController extends Controller {
   private tryScroll(activityId:string, attempts:number, maxAttempts:number) {
     const scrollableContainer = this.getScrollableContainer();
     const activityElement = document.getElementById(`activity-anchor-${activityId}`);
+    const topPadding = 70;
 
     if (activityElement && scrollableContainer) {
-      scrollableContainer.scrollTop = activityElement.offsetTop - 70;
+      scrollableContainer.scrollTop = 0;
+
+      setTimeout(() => {
+        const containerRect = scrollableContainer.getBoundingClientRect();
+        const elementRect = activityElement.getBoundingClientRect();
+        const relativeTop = elementRect.top - containerRect.top;
+
+        scrollableContainer.scrollTop = relativeTop - topPadding;
+      }, 50);
     } else if (attempts < maxAttempts) {
       setTimeout(() => this.tryScroll(activityId, attempts + 1, maxAttempts), 1000);
     }
