@@ -5,8 +5,8 @@
       component.with_description { I18n.t('sharing.project_queries.upsale.message') }
 
       href = "#{OpenProject::Static::Links.links[:upsale][:href]}/?utm_source=unknown&utm_medium=community-edition&utm_campaign=project-list-sharing-modal"
-      component.with_secondary_action(href:, target: "_blank") do |link|
-        link.with_trailing_visual_icon(icon: "link-external", size: :small)
+      component.with_secondary_action(href:) do |link|
+        link.with_trailing_visual_icon(icon: "link-external")
         I18n.t("admin.enterprise.enterprise_link")
       end
     end
